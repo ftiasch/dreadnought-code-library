@@ -1,0 +1,290 @@
+\documentclass[titlepage,landscape,a4paper,10pt]{article}
+\usepackage{listings, color, fontspec, minted, setspace, titlesec, fancyhdr, dingbat, mdframed, multicol}
+\usepackage{graphicx, amssymb, amsmath, textcomp}
+\usepackage[Chinese]{ucharclasses}
+\usepackage[left=1.5cm, right=0.7cm, top=1.7cm, bottom=0.0cm]{geometry}
+
+%configure the top corners
+\pagestyle{fancy}
+\setlength{\headsep}{0.1cm}
+\rhead{Page \thepage}
+\lhead{上海交通大学 Shanghai Jiao Tong University}
+
+%configure space between the two columns
+\setlength{\columnsep}{30pt}
+
+%configure fonts
+\setmonofont{Consolas}[Scale=0.8]
+\newfontfamily\substitutefont{SimHei}[Scale=0.8]
+\setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
+
+%configure minted to display codes 
+\definecolor{Gray}{rgb}{0.9,0.9,0.9}
+
+%remove leading numbers in table of contents
+\setcounter{secnumdepth}{0}
+
+%configure section style
+%\titleformat{\section}
+%	{\normalfont\normalsize}	% The style of the section title
+%	{}					% a prefix
+%	{0pt}				% How much space exists between the prefix and the title
+%	{\quad}				% How the section is represented
+\titleformat{\section}{\large}{}{0pt}{}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+
+%enable section to start new page automatically
+%\let\stdsection\section
+%\renewcommand\section{\penalty-100\vfilneg\stdsection}
+
+%\renewcommand\theFancyVerbLine{\arabic{FancyVerbLine}}
+\renewcommand{\theFancyVerbLine}{\small \oldstylenums{\arabic{FancyVerbLine}}}
+
+\setminted[cpp]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=1.0,
+	tabsize=2,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+}
+\setminted[java]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=1.0,
+	tabsize=2,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+}
+\setminted[text]{
+	style=xcode,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=1.0,
+	tabsize=2,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+}
+
+%configure titles
+\title{\LARGE{Dracarys} \\[2ex] \Large{Team Referrence Library} }
+\date{\today}
+
+%THE SCL BEGINS
+\begin{document}
+\maketitle
+
+\begin{multicols*}{2}
+
+\begin{spacing}{0}
+	\tableofcontents
+\end{spacing}
+\end{multicols*}
+
+\begin{multicols}{2}
+
+\newpage
+
+
+\begin{spacing}{0.8}
+
+\section{多边形与圆面积交}
+\inputminted{cpp}{src/多边形与圆面积交.cpp}
+
+\section{二维几何}
+\inputminted{cpp}{src/二维几何.cpp}
+
+\section{$n\log n$ 半平面交}
+\inputminted{cpp}{src/nlogn半平面交.cpp}
+
+\section{三维几何操作合并}
+\inputminted{cpp}{src/三维几何操作合并.cpp}
+
+\section{三维旋转操作}
+\inputminted{cpp}{src/三维旋转操作.cpp}
+
+\section{三维凸包}
+\inputminted{cpp}{src/三维凸包.cpp}
+
+\section{直线和凸包交点 ( 返回最近和最远点 )}
+\inputminted{cpp}{src/直线和凸包交点(返回最近和最远点).cpp}
+
+\section{圆的面积模板 ($n^2\log n$)}
+\inputminted{cpp}{src/圆的面积模板.cpp}
+
+\section{三角形的心}
+\inputminted{cpp}{src/三角形的心.cpp}
+
+\section{最小覆盖球}
+\inputminted{cpp}{src/最小覆盖球.cpp}
+
+\section{经纬度求球面最短距离}
+\inputminted{cpp}{src/经纬度求球面最短距离.cpp}
+
+\section{长方体表面两点最短距离}
+\inputminted{cpp}{src/长方体表面两点最短距离.cpp}
+
+\section{最大团}
+\inputminted{cpp}{src/最大团.cpp}
+
+\section{极大团计数}
+\inputminted{cpp}{src/极大团计数.cpp}
+
+\section{KM}
+\inputminted{cpp}{src/KM.cpp}
+
+\section{无向图最小割}
+\inputminted{cpp}{src/无向图最小割.cpp}
+
+\section{带花树}
+\inputminted{cpp}{src/带花树.cpp}
+
+\section{动态最小生成树}
+\inputminted{cpp}{src/动态最小生成树.cpp}
+
+\section{Hopcroft}
+\inputminted{cpp}{src/Hopcroft.cpp}
+
+\section{素数判定}
+\inputminted{cpp}{src/素数判定.cpp}
+
+\section{启发式分解}
+\inputminted{cpp}{src/启发式分解.cpp}
+
+\section{二次剩余}
+\inputminted{cpp}{src/二次剩余.cpp}
+
+\section{Pell 方程}
+\inputminted{cpp}{src/Pell方程.cpp}
+
+\section{蔡勒公式}
+\inputminted{cpp}{src/蔡勒公式.cpp}
+
+\section{Romberg}
+\inputminted{cpp}{src/Romberg.cpp}
+
+\section{线性规划}
+\inputminted{cpp}{src/线性规划.cpp}
+
+\section{FFT}
+\inputminted{cpp}{src/fft.cpp}
+
+\section{NTT}
+\inputminted{cpp}{src/ntt.cpp}
+
+\section{回文串 manacher}
+\inputminted{cpp}{src/回文串manacher.cpp}
+
+\section{后缀数组 ( 倍增 )}
+\inputminted{cpp}{src/后缀数组(nlogn).cpp}
+
+\section{后缀数组 (DC3)}
+\inputminted{cpp}{src/DC3.cpp}
+
+\section{后缀自动机}
+\inputminted{cpp}{src/后缀自动机.cpp}
+
+\section{字符串最小表示}
+\inputminted{cpp}{src/字符串最小表示.cpp}
+
+\section{轻重链剖分}
+\inputminted{cpp}{src/轻重链剖分.cpp}
+
+\section{KD Tree}
+\inputminted{cpp}{src/KDTree.cpp}
+
+\section{Splay Tree}
+\inputminted{cpp}{src/Splay.cpp}
+
+\section{Link Cut Tree}
+\inputminted{cpp}{src/LCT.cpp}
+
+\section{Dominator Tree}
+\inputminted{cpp}{src/Dominator Tree.cpp}
+
+\section{DancingLinks}
+\inputminted{cpp}{src/DancingLinks.cpp}
+%\input{src/DancingLinks.tex}
+
+\section{弦图相关}
+\input{src/弦图相关.tex}
+
+\section{图同构 Hash}
+\input{src/图同构Hash.tex}
+
+%\section{魔方旋转群}
+%\inputminted{cpp}{src/魔方旋转群.cpp}
+
+\section{直线下有多少个格点}
+\inputminted{cpp}{src/直线下格点统计.cpp}
+
+\section{网络流}
+消圈
+
+\section{综合}
+\input{src/综合.tex}
+%\inputminted{cpp}{src/综合.cpp}
+
+%\section{基本形}
+%\inputminted{cpp}{src/基本形.cpp}
+
+%\section{树的计数}
+%\inputminted{cpp}{src/树的计数.cpp}
+
+%\section{代数}
+%\inputminted{cpp}{src/代数.cpp}
+
+%\section{三角公式}
+%\inputminted{cpp}{src/三角公式.cpp}
+
+\end{spacing}
+\end{multicols}
+\section{积分表}
+\input{src/积分表.tex}
+
+
+\begin{multicols}{2}
+\begin{spacing}{0.8}
+
+%\section{积分表}
+%\inputminted{cpp}{src/积分表.cpp}
+
+\section{Java}
+\inputminted{java}{src/Main.java}
+
+\section{Vimrc}
+\inputminted{text}{src/vimrc.vim}
+\end{spacing}
+
+\end{multicols}
+\end{document}
+%THE SCL ENDS

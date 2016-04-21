@@ -1,0 +1,11 @@
+
+$$F_t(i) = 
+    (F_{t-1}(i) \times A + 
+    \sum_{i\rightarrow j} F_{t-1}(j) \times B + 
+    \sum_{j\rightarrow i} F_{t-1}(j) \times C +
+    D \times (i = a))\ mod\ P
+$$
+
+枚举点 a ， 迭代 K 次后求得的就是 a 点所对应的 hash 值 
+
+其中 K , A , B , C , D , P 为 hash 参数 , 可自选

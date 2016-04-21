@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{//a 点绕 Ob 向量，逆时针旋转弧度}
+\PYG{c+c1}{//angle, sin(angle),cos(angle) 先求出来，减少精度问题}
+\PYG{n}{point} \PYG{n}{e1}\PYG{p}{,}\PYG{n}{e2}\PYG{p}{,}\PYG{n}{e3}\PYG{p}{;} \PYG{n}{point} \PYG{n+nf}{Rotate}\PYG{p}{(} \PYG{n}{point} \PYG{n}{a}\PYG{p}{,} \PYG{n}{point} \PYG{n}{b}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{angle} \PYG{p}{)\PYGZob{}}
+	\PYG{n}{b}\PYG{p}{.}\PYG{n}{std}\PYG{p}{();}\PYG{c+c1}{// 单位化，注意 b 不能为 (0,0,0)}
+	\PYG{n}{e3}\PYG{o}{=}\PYG{n}{b}\PYG{p}{;} \PYG{k+kt}{double} \PYG{n}{lens}\PYG{o}{=}\PYG{n}{a}\PYG{o}{*}\PYG{n}{e3}\PYG{p}{;}\PYG{c+c1}{//dot(a,e3)}
+	\PYG{n}{e1}\PYG{o}{=}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{n}{e3}\PYG{o}{*}\PYG{n}{lens}\PYG{p}{;} \PYG{k}{if} \PYG{p}{(}\PYG{n}{e1}\PYG{p}{.}\PYG{n}{len}\PYG{p}{()}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{l+m+mf}{1e\PYGZhy{}8}\PYG{p}{))} \PYG{n}{e1}\PYG{p}{.}\PYG{n}{std}\PYG{p}{();} \PYG{k}{else} \PYG{k}{return} \PYG{n}{a}\PYG{p}{;}
+	\PYG{n}{e2}\PYG{o}{=}\PYG{n}{e1}\PYG{o}{/}\PYG{n}{e3}\PYG{p}{;} \PYG{c+c1}{//det(e1,e3)}
+	\PYG{k+kt}{double} \PYG{n}{x1}\PYG{o}{=}\PYG{n}{a}\PYG{o}{*}\PYG{n}{e2}\PYG{p}{,}\PYG{n}{y1}\PYG{o}{=}\PYG{n}{a}\PYG{o}{*}\PYG{n}{e1}\PYG{p}{,}\PYG{n}{x}\PYG{o}{=}\PYG{n}{x1}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{angle}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{y1}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{angle}\PYG{p}{);}
+	\PYG{k+kt}{double} \PYG{n}{y}\PYG{o}{=}\PYG{n}{x1}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{angle}\PYG{p}{)}\PYG{o}{+}\PYG{n}{y1}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{angle}\PYG{p}{);}
+	\PYG{k}{return} \PYG{n}{e3}\PYG{o}{*}\PYG{n}{lens}\PYG{o}{+}\PYG{n}{e1}\PYG{o}{*}\PYG{n}{y}\PYG{o}{+}\PYG{n}{e2}\PYG{o}{*}\PYG{n}{x}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

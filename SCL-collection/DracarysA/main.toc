@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Simplex Algorithm}{1}
+\contentsline {section}{\numberline {2}Fast Fourier Transform}{2}
+\contentsline {section}{\numberline {3}Geometry Extended}{4}
+\contentsline {section}{\numberline {4}Dominator Tree}{4}
+\contentsline {section}{\numberline {5}vimrc}{6}

@@ -1,0 +1,18 @@
+\begin{lstlisting}
+int used[MAX_N], dis[MAX_N];
+void dijstra(int s) {
+	fill(dis, dis + N, INF); dis[s] = 0;
+	priority_queue<pair<int, int> > que;
+	que.push(make_pair(-dis[s], s));
+	while (!que.empty()) {
+		int u = que.top().second; que.pop();
+		if (used[u]) continue;
+		used[u] = true;
+		foreach(e, E[u])
+			if (dis[u] + e->w < dis[e->t]) {
+				dis[e->t] = dis[u] + e->w;
+				que.push(make_pair(-dis[e->t], e->t));
+			}
+	}
+}
+\end{lstlisting}

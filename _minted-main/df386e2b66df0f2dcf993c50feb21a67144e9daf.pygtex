@@ -1,0 +1,66 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{link}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,}\PYG{n}{match}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],}\PYG{n}{Queue}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],}\PYG{n}{head}\PYG{p}{,}\PYG{n}{tail}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{pred}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],}\PYG{n}{base}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],}\PYG{n}{start}\PYG{p}{,}\PYG{n}{finish}\PYG{p}{,}\PYG{n}{newbase}\PYG{p}{;}
+\PYG{k+kt}{bool} \PYG{n}{InQueue}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],}\PYG{n}{InBlossom}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{void} \PYG{n+nf}{push}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)\PYGZob{}} \PYG{n}{Queue}\PYG{p}{[}\PYG{n}{tail}\PYG{o}{++}\PYG{p}{]}\PYG{o}{=}\PYG{n}{u}\PYG{p}{;}\PYG{n}{InQueue}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{pop}\PYG{p}{()\PYGZob{}} \PYG{k}{return} \PYG{n}{Queue}\PYG{p}{[}\PYG{n}{head}\PYG{o}{++}\PYG{p}{];} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{FindCommonAncestor}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{)\PYGZob{}}
+	\PYG{k+kt}{bool} \PYG{n}{InPath}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{n}{InPath}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)\PYGZob{}} \PYG{n}{u}\PYG{o}{=}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];}\PYG{n}{InPath}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;}\PYG{k}{if}\PYG{p}{(}\PYG{n}{u}\PYG{o}{==}\PYG{n}{start}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}\PYG{n}{u}\PYG{o}{=}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{match}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]];} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)\PYGZob{}} \PYG{n}{v}\PYG{o}{=}\PYG{n}{base}\PYG{p}{[}\PYG{n}{v}\PYG{p}{];}\PYG{k}{if}\PYG{p}{(}\PYG{n}{InPath}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])} \PYG{k}{break}\PYG{p}{;}\PYG{n}{v}\PYG{o}{=}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]];} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{v}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{ResetTrace}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{newbase}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{v}\PYG{o}{=}\PYG{n}{match}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];}
+		\PYG{n}{InBlossom}\PYG{p}{[}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{InBlossom}\PYG{p}{[}\PYG{n}{base}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]]}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;}
+		\PYG{n}{u}\PYG{o}{=}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{v}\PYG{p}{];}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{newbase}\PYG{p}{)} \PYG{n}{pred}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n}{v}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{BlossomContract}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{newbase}\PYG{o}{=}\PYG{n}{FindCommonAncestor}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{);}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+	\PYG{n}{InBlossom}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{ResetTrace}\PYG{p}{(}\PYG{n}{u}\PYG{p}{);}\PYG{n}{ResetTrace}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{newbase}\PYG{p}{)} \PYG{n}{pred}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n}{v}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{base}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{newbase}\PYG{p}{)} \PYG{n}{pred}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{=}\PYG{n}{u}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{InBlossom}\PYG{p}{[}\PYG{n}{base}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]])\PYGZob{}}
+		\PYG{n}{base}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{newbase}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{InQueue}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{n}{push}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{FindAugmentingPath}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)\PYGZob{}}
+	\PYG{k+kt}{bool} \PYG{n}{found}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{pred}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{base}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{n}{InQueue}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{n}{start}\PYG{o}{=}\PYG{n}{u}\PYG{p}{;}\PYG{n}{finish}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{head}\PYG{o}{=}\PYG{n}{tail}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{push}\PYG{p}{(}\PYG{n}{start}\PYG{p}{);}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{head}\PYG{o}{\PYGZlt{}}\PYG{n}{tail}\PYG{p}{)\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{u}\PYG{o}{=}\PYG{n}{pop}\PYG{p}{();}
+		\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{n}{link}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{()}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)\PYGZob{}}
+			\PYG{k+kt}{int} \PYG{n}{v}\PYG{o}{=}\PYG{n}{link}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{base}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{base}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{match}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{!=}\PYG{n}{v}\PYG{p}{)}
+				\PYG{k}{if}\PYG{p}{(}\PYG{n}{v}\PYG{o}{==}\PYG{n}{start}\PYG{o}{||}\PYG{p}{(}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]]}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{p}{))}
+					\PYG{n}{BlossomContract}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{);}
+				\PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+					\PYG{n}{pred}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{=}\PYG{n}{u}\PYG{p}{;}
+					\PYG{k}{if}\PYG{p}{(}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{push}\PYG{p}{(}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+					\PYG{k}{else}\PYG{p}{\PYGZob{}} \PYG{n}{finish}\PYG{o}{=}\PYG{n}{v}\PYG{p}{;} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+				\PYG{p}{\PYGZcb{}}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{found}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{AugmentPath}\PYG{p}{()\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{u}\PYG{o}{=}\PYG{n}{finish}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{;}
+	\PYG{k}{while}\PYG{p}{(}\PYG{n}{u}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}} \PYG{n}{v}\PYG{o}{=}\PYG{n}{pred}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];}\PYG{n}{w}\PYG{o}{=}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{];}\PYG{n}{match}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{o}{=}\PYG{n}{u}\PYG{p}{;}\PYG{n}{match}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{=}\PYG{n}{v}\PYG{p}{;}\PYG{n}{u}\PYG{o}{=}\PYG{n}{w}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{FindMaxMatching}\PYG{p}{()\PYGZob{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{match}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{k}{if}\PYG{p}{(}\PYG{n}{match}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{if}\PYG{p}{(}\PYG{n}{FindAugmentingPath}\PYG{p}{(}\PYG{n}{i}\PYG{p}{))} \PYG{n}{AugmentPath}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

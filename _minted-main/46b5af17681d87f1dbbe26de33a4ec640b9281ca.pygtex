@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{int} \PYG{n}{ansn}\PYG{p}{;} \PYG{n}{LL} \PYG{n}{ans}\PYG{p}{[}\PYG{l+m+mi}{1000}\PYG{p}{];}
+\PYG{n}{LL} \PYG{n+nf}{func}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{x}\PYG{p}{,}\PYG{n}{LL} \PYG{n}{n}\PYG{p}{)\PYGZob{}} \PYG{k}{return}\PYG{p}{(}\PYG{n}{mod\PYGZus{}mul}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{n}{LL} \PYG{n+nf}{Pollard}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{n}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{LL} \PYG{n}{i}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{,}\PYG{n}{p}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{Rabin\PYGZus{}Miller}\PYG{p}{(}\PYG{n}{n}\PYG{p}{))} \PYG{k}{return} \PYG{n}{n}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{2}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{20}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{x}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;} \PYG{n}{y}\PYG{o}{=}\PYG{n}{func}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);} \PYG{n}{p}\PYG{o}{=}\PYG{n}{gcd}\PYG{p}{(}\PYG{n}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);}
+		\PYG{k}{while}\PYG{p}{(}\PYG{n}{p}\PYG{o}{==}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{n}{x}\PYG{o}{=}\PYG{n}{func}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);} \PYG{n}{y}\PYG{o}{=}\PYG{n}{func}\PYG{p}{(}\PYG{n}{func}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,}\PYG{n}{n}\PYG{p}{),}\PYG{n}{n}\PYG{p}{);} \PYG{n}{p}\PYG{o}{=}\PYG{n}{gcd}\PYG{p}{((}\PYG{n}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{o}{+}\PYG{n}{n}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{,}\PYG{n}{n}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{;\PYGZcb{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{||}\PYG{n}{p}\PYG{o}{==}\PYG{n}{n}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+		\PYG{k}{return} \PYG{n}{p}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{factor}\PYG{p}{(}\PYG{n}{LL} \PYG{n}{n}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{LL} \PYG{n}{x}\PYG{p}{;}
+	\PYG{n}{x}\PYG{o}{=}\PYG{n}{Pollard}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{x}\PYG{o}{==}\PYG{n}{n}\PYG{p}{)\PYGZob{}} \PYG{n}{ans}\PYG{p}{[}\PYG{n}{ansn}\PYG{o}{++}\PYG{p}{]}\PYG{o}{=}\PYG{n}{x}\PYG{p}{;} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{n}{factor}\PYG{p}{(}\PYG{n}{x}\PYG{p}{),} \PYG{n}{factor}\PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{n}{x}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

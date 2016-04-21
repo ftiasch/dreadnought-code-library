@@ -1,0 +1,34 @@
+\begin{lstlisting}
+struct Tree
+{
+	int l, r;
+	Tree *ch[2];
+	Tree() {}
+	Tree(int _l, int _r, int *sqn) {
+		l = _l; r = _r;
+		if (l + 1 == r)
+			return;
+		int mid = l + r >> 1;
+		ch[0] = new Tree(l, mid, sqn);
+		ch[1] = new Tree(mid, r, sqn);
+	}
+	
+	void insert(int p, int x) {
+		if (p < l || p >= r)
+			return;
+		//some operations
+		if (l + 1 == r)
+			return;
+		ch[0]->insert(p, x);
+		ch[1]->insert(p, x);
+	}
+	
+	int query(int _l, int _r, int x) {
+		if (_r <= l || _l >= r)
+			return 0;
+		if (_l <= l && _r >= r)
+			// return information in [l, r)
+		//merge ch[0]->query(_l, _r, x), ch[1]->query(_l, _r, x) and return
+	}
+};
+\end{lstlisting}

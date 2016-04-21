@@ -1,0 +1,119 @@
+\subsection*{高维球}
+\begin{enumerate}
+	\item 体积
+		$V_0=1$, $V_{n+1}=S_n/(n+1)$
+	\item 表面积
+		$S_0=2$, $S_{n+1}=2\pi V_n$
+\end{enumerate}
+	
+\subsection*{三角形}
+\begin{enumerate}
+	\item 半周长
+			$P=(a+b+c)/2$
+	\item 面积
+			$S=aH_a/2=ab\sin(C)/2=\sqrt{P(P-a)(P-b)(P-c)}$
+	\item 中线
+		$M_a=\sqrt{2(b^2+c^2)-a^2)}/2=\sqrt{b^2+c^2+2bc\cos(A)}/2$
+	\item 角平分线 
+		$T_a=\sqrt{bc((b+c)^2-a^2)}/(b+c)=2bc\cos(A/2)/(b+c)$
+	\item 高线
+		$H_a=b\sin(C)=c\sin(B)=\sqrt{b^2-((a^2+b^2-c^2)/(2a))^2}$
+	\item 内切圆半径
+		\begin{align*}
+			r&=S/P=\arcsin(B/2)\sin(C/2)/\sin((B+C)/2)=4R\sin(A/2)\sin(B/2)\sin(C/2)\\
+			&=\sqrt{(P-a)(P-b)(P-c)/P}=P\tan(A/2)\tan(B/2)\tan(C/2)
+		\end{align*}
+	\item 外接圆半径
+		$R=abc/(4S)=a/(2\sin(A))=b/(2\sin(B))=c/(2\sin(C))$
+\end{enumerate}
+
+\subsection*{四边形}
+	$D1,D2$为对角线，$M$对角线中点连线，$A$为对角线夹角
+	\begin{enumerate}
+		\item $a^2+b^2+c^2+d^2=D1^2+D2^2+4M^2$
+		\item $S=D1D2\sin(A)/2$
+		\item 圆内接四边形 $ac+bd=D1D2$
+		\item 圆内接四边形，$P$为半周长 $S=\sqrt{(P-a)(P-b)(P-c)(P-d)}$
+	\end{enumerate}
+
+\subsection*{正n边形}
+	$R$为外接圆半径,$r$为内切圆半径
+	\begin{enumerate}
+		\item 中心角 $A=2\pi/n$
+		\item 内角 $C=(n-2)\pi/n$
+		\item 边长 $a=2\sqrt{R^2-r^2}=2R\sin(A/2)=2r\tan(A/2)$
+		\item 面积 $S=nar/2=nr^2\tan(A/2)=nR^2\sin(A)/2=na^2/(4\tan(A/2))$
+	\end{enumerate}
+
+\subsection*{圆}
+	\begin{enumerate}
+		\item 弧长 $l=rA$
+		\item 弦长 $a=2\sqrt{2hr-h^2}=2r\sin(A/2)$
+		\item 弓形高 $h=r-\sqrt{r^2-a^2/4}=r(1-\cos(A/2))=\arctan(A/4)/2$
+		\item 扇形面积 $S1=rl/2=r^2A/2$
+		\item 弓形面积 $S2=(rl-a(r-h))/2=r^2(A-\sin(A))/2$
+	\end{enumerate}
+	
+\subsection*{棱柱}
+	\begin{enumerate}
+		\item 体积$V=Ah$，$A$为底面积，$h$为高
+		\item 侧面积 $S=lp$，$l$为棱长，$p$为直截面周长
+		\item 全面积 $T=S+2A$
+	\end{enumerate}
+
+\subsection*{棱锥}
+	\begin{enumerate}
+		\item 体积$V=Ah$，$A$为底面积，$h$为高
+		\item 正棱锥侧面积 $S=lp$，$l$为棱长，$p$为直截面周长
+		\item 正棱锥全面积 $T=S+2A$
+	\end{enumerate}
+
+\subsection*{棱台}
+	\begin{enumerate}
+		\item 体积 $V=(A1+A2+\sqrt{A1A2})h/3$, $A1,A2$为上下底面积，$h$为高
+		\item 正棱台侧面积 $S=(p1+p2)l/2$，$p1,p2$为上下底面周长，$l$为斜高
+		\item 正棱台全面积 $T=S+A1+A2$
+	\end{enumerate}
+
+\subsection*{圆柱}
+	\begin{enumerate}
+		\item 侧面积 $S=2\pi rh$
+		\item 全面积 $T=2\pi r(h+r)$
+		\item 体积 $V=\pi r^2h$
+	\end{enumerate}
+
+\subsection*{圆锥}
+	\begin{enumerate}
+		\item 母线 $l=\sqrt{h^2+r^2}$
+		\item 侧面积 $S=\pi rl$
+		\item 全面积 $T=\pi r(l+r)$
+		\item 体积 $V=\pi r^2h/3$
+	\end{enumerate}
+
+\subsection*{圆台}
+	\begin{enumerate}
+		\item 母线 $l=\sqrt{h^2+(r1-r2)^2}$
+		\item 侧面积 $S=\pi(r1+r2)l$
+		\item 全面积 $T=\pi r1(l+r1)+\pi r2(l+r2)$
+		\item 体积 $V=\pi(r1^2+r2^2+r1r2)h/3$
+	\end{enumerate}
+
+\subsection*{球}
+	\begin{enumerate}
+		\item 全面积 $T=4\pi r^2$
+		\item 体积 $V=4\pi r^3/3$
+	\end{enumerate}
+
+\subsection*{球台}
+	\begin{enumerate}
+		\item 侧面积 $S=2\pi rh$
+		\item 全面积 $T=\pi(2rh+r1^2+r2^2)$
+		\item 体积 $V=\pi h(3(r1^2+r2^2)+h^2)/6$
+	\end{enumerate}
+
+\subsection*{球扇形}
+	\begin{enumerate}
+		\item 全面积 $T=\pi r(2h+r0)$，$h$为球冠高，$r0$为球冠底面半径
+		\item 体积 $V=2\pi r^2h/3$
+	\end{enumerate}
+

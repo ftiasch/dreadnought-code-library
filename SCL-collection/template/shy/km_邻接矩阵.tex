@@ -1,0 +1,75 @@
+\begin{lstlisting}
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <cmath>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+const int oo = 1 << 30;
+int ans, value[501][501], n, m, L[501], R[501], v[501];
+bool bx[501], by[501];
+
+
+bool find(int now){
+    bx[now] = true;
+    for (int i = 1; i <= m; i++)
+        if (!by[i] && L[now] + R[i] == value[now][i])
+        {
+           by[i] = true;
+           if (!v[i] || find(v[i]))
+           {
+              v[i] = now;
+              return(true);
+           }
+        }
+    return(false);
+}
+
+inline void km(){
+    memset(L, 0, sizeof(L));
+    memset(R, 0, sizeof(R));
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            L[i] = max(L[i], value[i][j]);
+    ans = 0;
+    memset(v, 0, sizeof(v));
+    for (int i = 1; i <= min(n, m); i++) 
+        for (;;)
+        {
+            memset(bx, false, sizeof(bx));
+            memset(by, false, sizeof(by));
+            if (find(i)) break;
+            int Min = oo;
+            for (int j = 1; j <= n; j++) 
+                if (bx[j]) 
+                   for (int k = 1; k <= m; k++)
+                       if (!by[k]) 
+                          Min = min(Min, L[j] + R[k] - value[j][k]);
+            for (int j = 1; j <= n; j++) if (bx[j]) L[j] -= Min;
+            for (int j = 1; j <= m; j++) if (by[j]) R[j] += Min;
+        }
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= m; j++)
+            if (v[j] == i) ans += value[i][j];
+    printf("%d\n", abs(ans));
+}
+
+int main(){
+    scanf("%d%d", &n, &m);
+    for (int i = 1; i <= n; i++) 
+        for (int j = 1; j <= m; j++) scanf("%d", &value[i][j]), value[i][j] = -value[i][j]; 
+    km();
+    for (int i = 1; i <= n; i++) 
+        for (int j = 1; j <= m; j++) 
+            value[i][j] = -value[i][j];
+    km();
+}
+
+/*hint 500 * 500 1.5s
+can solve problems whose n != m 
+must be complete graph, or should change some values of matrix to satisfy the condition*/
+\end{lstlisting}

@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{int} \PYG{n+nf}{strong\PYGZus{}pseudo\PYGZus{}primetest}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{n}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{base}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{n2}\PYG{o}{=}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{res}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{s}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{n2}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{n2}\PYG{o}{\PYGZgt{}\PYGZgt{}=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{s}\PYG{o}{++}\PYG{p}{;}
+    \PYG{n}{res}\PYG{o}{=}\PYG{n}{powmod}\PYG{p}{(}\PYG{n}{base}\PYG{p}{,}\PYG{n}{n2}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);}
+    \PYG{k}{if}\PYG{p}{((}\PYG{n}{res}\PYG{o}{==}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{||}\PYG{p}{(}\PYG{n}{res}\PYG{o}{==}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{s}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZgt{}=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{res}\PYG{o}{=}\PYG{n}{mulmod}\PYG{p}{(}\PYG{n}{res}\PYG{p}{,}\PYG{n}{res}\PYG{p}{,}\PYG{n}{n}\PYG{p}{);}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{res}\PYG{o}{==}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{s}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// n is not a strong pseudo prime}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{isprime}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{static} \PYG{n}{LL} \PYG{n}{testNum}\PYG{p}{[]}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{11}\PYG{p}{,}\PYG{l+m+mi}{13}\PYG{p}{,}\PYG{l+m+mi}{17}\PYG{p}{,}\PYG{l+m+mi}{19}\PYG{p}{,}\PYG{l+m+mi}{23}\PYG{p}{,}\PYG{l+m+mi}{29}\PYG{p}{,}\PYG{l+m+mi}{31}\PYG{p}{,}\PYG{l+m+mi}{37}\PYG{p}{\PYGZcb{};}
+	\PYG{k}{static} \PYG{n}{LL} \PYG{n}{lim}\PYG{p}{[]}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1373653LL}\PYG{p}{,}\PYG{l+m+mi}{25326001LL}\PYG{p}{,}\PYG{l+m+mi}{25000000000LL}\PYG{p}{,}\PYG{l+m+mi}{2152302898747LL}\PYG{p}{,} \PYGZbs{}
+	\PYG{l+m+mi}{3474749660383LL}\PYG{p}{,}\PYG{l+m+mi}{341550071728321LL}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{};}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{2}\PYG{o}{||}\PYG{n}{n}\PYG{o}{==}\PYG{l+m+mi}{3215031751LL}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{12}\PYG{p}{;}\PYG{o}{++}\PYG{n}{i}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZlt{}}\PYG{n}{lim}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{strong\PYGZus{}pseudo\PYGZus{}primetest}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,}\PYG{n}{testNum}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

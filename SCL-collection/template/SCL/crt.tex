@@ -1,0 +1,35 @@
+\begin{lstlisting}
+LL x, y;
+void exGcd(LL a, LL b)
+{
+	if (b == 0) {
+		x = 1;
+		y = 0;
+		return;
+	}
+	exGcd(b, a % b);
+	LL k = y;
+	y = x - a / b * y;
+	x = k;
+}
+
+LL inversion(LL a, LL b)
+{
+	exGcd(a, b);
+	return (x % b + b) % b;
+}
+
+LL CRT(vector<LL> m, vector<LL> a)
+{
+	int N = m.size();
+	LL M = 1, ret = 0;
+	for(int i = 0; i < N; ++ i)
+		M *= m[i];
+	
+	for(int i = 0; i < N; ++ i) {
+		ret = (ret + (M / m[i]) * a[i] % M * inversion(M / m[i], m[i])) % M;
+	}
+	return ret;
+}
+\end{lstlisting}
+

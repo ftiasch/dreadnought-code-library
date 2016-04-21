@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{//Bool g[][] 为图的邻接矩阵，图点的标号由 1 至 n}
+\PYG{k+kt}{void} \PYG{n+nf}{dfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{)\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{,} \PYG{n}{k}\PYG{p}{,} \PYG{n}{t}\PYG{p}{,} \PYG{n}{cnt}\PYG{p}{,} \PYG{n}{best} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{p}{]}\PYG{o}{==}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{])\PYGZob{}} \PYG{k}{if} \PYG{p}{(}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{]}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{++}\PYG{n}{ans}\PYG{p}{;} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{cnt}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j}\PYG{o}{=}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)}
+		\PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]][}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]])} \PYG{o}{++}\PYG{n}{cnt}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{t}\PYG{o}{==}\PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{cnt}\PYG{o}{\PYGZlt{}}\PYG{n}{best}\PYG{p}{)} \PYG{n}{t}\PYG{o}{=}\PYG{n}{i}\PYG{p}{,} \PYG{n}{best}\PYG{o}{=}\PYG{n}{cnt}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{if} \PYG{p}{(}\PYG{n}{t} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{best}\PYG{o}{\PYGZlt{}=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{n}{k}\PYG{o}{=}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{p}{]}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{k}\PYG{o}{\PYGZlt{}=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}} \PYG{k}{for} \PYG{p}{(}\PYG{n}{i}\PYG{o}{=}\PYG{n}{k}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} 
+		    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{t}\PYG{p}{]][}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]])} \PYG{k}{break}\PYG{p}{;}
+			\PYG{n}{swap}\PYG{p}{(}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{k}\PYG{p}{],} \PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]);}
+		\PYG{p}{\PYGZcb{}} \PYG{n}{i}\PYG{o}{=}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{k}\PYG{p}{];} \PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}}\PYG{n}{k}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)}\PYG{k}{if} \PYG{p}{(}\PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]])} 
+		    \PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{o}{++}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{=}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{j}\PYG{o}{=}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]])} \PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{o}{++}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+		\PYG{n}{dfs}\PYG{p}{(}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);} \PYG{o}{++}\PYG{n}{ne}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{best}\PYG{p}{;}
+		\PYG{k}{for} \PYG{p}{(}\PYG{n}{j}\PYG{o}{=}\PYG{n}{k}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{cnt}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZlt{}=}\PYG{n}{ce}\PYG{p}{[}\PYG{n}{size}\PYG{p}{];} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{list}\PYG{p}{[}\PYG{n}{size}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]])} \PYG{o}{++}\PYG{n}{cnt}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{t}\PYG{o}{==}\PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{cnt}\PYG{o}{\PYGZlt{}}\PYG{n}{best}\PYG{p}{)} \PYG{n}{t}\PYG{o}{=}\PYG{n}{k}\PYG{p}{,} \PYG{n}{best}\PYG{o}{=}\PYG{n}{cnt}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{t} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{best}\PYG{o}{\PYGZlt{}=}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{work}\PYG{p}{()\PYGZob{}}
+	\PYG{n}{ne}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{ce}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}=}\PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{list}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{o}{++}\PYG{n}{ce}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]]}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+	\PYG{n}{ans}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{dfs}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

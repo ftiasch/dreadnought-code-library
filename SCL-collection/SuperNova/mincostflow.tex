@@ -1,0 +1,77 @@
+\begin{lstlisting}
+int flow, cost;
+
+struct Edge
+{
+	int t, c, w;
+	Edge *n, *r;
+} *totEdge, edges[MAX_M], *E[MAX_V];
+
+Edge* makeEdge(int s, int t, int c, int w)
+{
+	Edge *e = totEdge ++;
+	e->t = t; e->c = c; e->w = w; e->n = E[s];
+	return E[s] = e;
+}
+
+void addEdge(int s, int t, int c, int w)
+{
+	Edge *st = makeEdge(s, t, c, w), *ts = makeEdge(t, s, 0, -w);
+	st->r = ts; ts->r = st;
+}
+
+int SPFA()
+{
+	static int que[MAX_V];
+	static int aug[MAX_V];
+	static int in[MAX_V];
+	static int dist[MAX_V];
+	static Edge *prev[MAX_V];
+	int qh = 0, qt = 0;
+	
+	int u, v;
+	fill(dist, dist + cntN, INF); dist[S] = 0;
+	fill(in, in + cntN, 0); in[S] = true;
+	que[qt ++] = S; aug[S] = INF;
+	for( ; qh != qt; ) {
+		u = que[qh]; qh = (qh + 1) % MAX_N;
+		for(Edge *e = E[u]; e; e = e->n) {
+			if (! e->c) continue;
+			v = e->t;
+			if (dist[v] > dist[u] + e->w) {
+				dist[v] = dist[u] + e->w;
+				aug[v] = min(aug[u], e->c);
+				prev[v] = e;
+				if (! in[v]) {
+					in[v] = true;
+					if (qh != qt && dist[v] <= dist[que[qh]]) {
+						qh = (qh - 1 + MAX_N) % MAX_N;
+						que[qh] = v;
+					} else {
+						que[qt] = v;
+						qt = (qt + 1) % MAX_N;
+					}
+				}
+			}
+		}
+		in[u] = false;
+	}
+	
+	if (dist[T] == INF) return false;
+	cost += dist[T] * aug[T];
+	flow += aug[T];
+	for(u = T; u != S; ) {
+		prev[u]->c -= aug[T];
+		prev[u]->r->c += aug[T];
+		u = prev[u]->r->t;
+	}
+	return true;
+}
+
+int minCostFlow()
+{
+	flow = cost = 0;
+	while(SPFA());
+	return cost;
+}
+\end{lstlisting}

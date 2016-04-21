@@ -1,0 +1,17 @@
+\begin{lstlisting}
+void z(char *s, int *next, int N)
+{
+	int j = 0, k = 1;
+	while (j + 1 < N && s[j] == s[j + 1]) ++ j;
+	next[0] = N - 1; next[1] = j;
+	for(int i = 2; i < N; ++ i) {
+		int far = k + next[k] - 1, L = next[i - k];
+		if (L < far - i + 1) next[i] = L;
+		else {
+			j = max(0, far - i + 1);
+			while (i + j < N && s[j] == s[i + j]) ++ j;
+			next[i] = j; k = i;
+		}
+	}
+}
+\end{lstlisting}

@@ -1,0 +1,172 @@
+顺时针或逆时针传入一个凸多边形，返回被半平面$\overrightharp{q1q2}$逆时针方向切割掉之后的凸多边形
+\begin{lstlisting}
+vector<Point> convexCut(const vector<Point>&ps, Point q1, Point q2) {
+	vector<Point> qs;
+	int n = ps.size();
+	for (int i = 0; i < n; ++i) {
+		Point p1 = ps[i], p2 = ps[(i + 1) % n];
+		int d1 = crossOp(q1,q2,p1), d2 = crossOp(q1,q2,p2);
+		if (d1 >= 0)
+			qs.push_back(p1);
+		if (d1 * d2 < 0)
+			qs.push_back(isSS(p1, p2, q1, q2));
+	}
+	return qs;
+}
+\end{lstlisting}
+返回ps的有向面积
+\begin{lstlisting}
+double calcArea(const vector<Point>&ps) {
+	int n = ps.size();
+	double ret = 0;
+	for (int i = 0; i < n; ++i) {
+		ret += ps[i].det(ps[(i + 1) % n]);
+	}
+	return ret / 2;
+}
+\end{lstlisting}
+返回点集ps组成的凸包
+\begin{lstlisting}
+vector<Point> convexHull(vector<Point> ps) {
+	int n = ps.size();
+	if (n <= 1)
+		return ps;
+	sort(ps.begin(), ps.end());
+	vector<Point> qs;
+	for (int i = 0; i < n; qs.push_back(ps[i++])) {
+		while (qs.size() > 1 && crossOp(qs[qs.size()-2],qs.back(),ps[i]) <= 0)
+			qs.pop_back();
+	}
+	for (int i = n - 2, t = qs.size(); i >= 0; qs.push_back(ps[i--])) {
+		while ((int)qs.size() > t && crossOp(qs[(int)qs.size()-2],qs.back(),ps[i]) <= 0)
+			qs.pop_back();
+	}
+	qs.pop_back();
+	return qs;
+}
+\end{lstlisting}
+返回凸包ps的直径
+\begin{lstlisting}
+double convexDiameter(const vector<Point>&ps) {
+	int n = ps.size();
+	int is = 0, js = 0;
+	for (int i = 1; i < n; ++i) {
+		if (ps[i].x > ps[is].x)
+			is = i;
+		if (ps[i].x < ps[js].x)
+			js = i;
+	}
+	double maxd = ps[is].distTo(ps[js]);
+	int i = is, j = js;
+	do {
+		if ((ps[(i + 1) % n] - ps[i]).det(ps[(j + 1) % n] - ps[j]) >= 0)
+			(++j) %= n;
+		else
+			(++i) %= n;
+		maxd = max(maxd, ps[i].distTo(ps[j]));
+	} while (i != is || j != js);
+	return maxd;
+}
+\end{lstlisting}
+判断点p在线段q1q2上，端点重合返回true
+\begin{lstlisting}
+int onSegment(Point p, Point q1, Point q2)
+{
+	return crossOp(q1, q2, p) == 0 && sign((p - q1).dot(p - q2)) <= 0;
+}
+\end{lstlisting}
+判断线段p1p2和q1q2是否严格相交，重合或端点相交返回false
+\begin{lstlisting}
+int isIntersect(Point p1, Point p2, Point q1, Point q2)
+{
+	return crossOp(p1, p2, q1) * crossOp(p1, p2, q2) < 0 && crossOp(q1, q2, p1) * cross(q1, q2, p2) < 0;
+}
+\end{lstlisting}
+判断直线p1p2和q1q2是否垂直
+\begin{lstlisting}
+int isParallel(Point p1, Point p2, Point q1, Point q2)
+{
+	return sign((p2 - p1).det(q2 - q1)) == 0;
+}
+\end{lstlisting}
+返回点p到直线uv的距离
+\begin{lstlisting}
+double distPointToLine(Point p, Point u, Point v)
+{
+	return abs((u - p).det(v - p)) / u.distTo(v);
+}
+\end{lstlisting}
+判断点q是否在简单多边形p内部，边界返回false
+\begin{lstlisting}
+int insidePolygon(Point q, vector<Point> &p)
+{
+	int n = p.size();
+	for(int i = 0; i < n; ++ i) {
+		if (onSegment(q, p[i], p[(i + 1) % n])) return false;
+	}
+	Point q2;
+	double offsite = LIM;
+	for( ; ; ) {
+		int flag = true;
+		int rnd = rand() % 10000;
+		q2.x = cos(rnd) * offsite;
+		q2.y = sin(rnd) * offsite;
+		for(int i = 0; i < n; ++ i) {
+			if (onSegment(p[i], q, q2)) {
+				flag = false;
+				break;
+			}
+		}
+		if (flag) break;
+	}
+	int cnt = 0;
+	for(int i = 0; i < n; ++ i) {
+		cnt += isIntersect(p[i], p[(i + 1) % n], q, q2);
+	}
+	return cnt & 1;
+}
+\end{lstlisting}
+判断直线l1l2是否与圆相交，相切返回true
+\begin{lstlisting}
+int isIntersectLineToCircle(Point c, double r, Point l1, Point l2)
+{
+	return (distPointToLine(c, l1, l2) - r) <= 0;
+}
+\end{lstlisting}
+判断圆与线段是否有公共点，线段在圆内部返回true
+\begin{lstlisting}
+int isIntersectSegmentToCircle(Point c, double r, Point p1, Point p2)
+{
+	if ((distPointToLine(c, p1, p2) - r) > 0) return false;
+	if (sign(c.distTo(p1) - r) <= 0 || sign(c.distTo(p2) - r) <= 0) return true;
+	Point c2 = (p2 - p1).rot90() + c;
+	return crossOp(c, c2, p1) * crossOp(c, c2, p2) <= 0;
+}
+\end{lstlisting}
+判断圆与圆是否相交，外切或内切返回true
+\begin{lstlisting}
+int isIntersectCircleToCircle(Point c1, double r1, Point c2, double r2)
+{
+	double dis = c1.distTo(c2);
+	return sign(dis - abs(r1 - r2)) >= 0 && sign(dis - (r1 + r2)) <= 0;
+}
+\end{lstlisting}
+求直线与圆的两个交点
+\begin{lstlisting}
+void intersectionLineToCircle(Point c, double r, Point l1, Point l2, Point& p1, Point& p2) {
+	Point c2 = c + (l2 - l1).rot90();
+	c2 = isSS(c, c2, l1, l2);
+	double t = sqrt(r * r - (c2 - c).abs2());
+	p1 = c2 + (l2 - l1).unit() * t;
+	p2 = c2 - (l2 - l1).unit() * t;
+}
+\end{lstlisting}
+求圆与圆的两个交点
+\begin{lstlisting}
+void intersectionCircleToCircle(Point c1, double r1, Point c2, double r2, Point &p1, Point &p2) {
+	double t = (1 + (r1 * r1 - r2 * r2) / (c1 - c2).abs2()) / 2;
+	Point u = c1 + (c2 - c1) * t;
+	Point v = u + (c2 - c1).rot90();
+	intersectionLineToCircle(c1, r1, u, v, p1, p2);
+}
+\end{lstlisting}

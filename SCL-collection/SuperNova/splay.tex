@@ -1,0 +1,152 @@
+\begin{lstlisting}
+const int MAX_NODE = 50000 + 10;
+const int INF = 2000000000;
+
+struct Node *null;
+
+struct Node
+{
+	int rev, add;
+	int val, maxv, size;
+	Node *ch[2], *p;
+	
+	void set(Node *t, int _d) {
+		ch[_d] = t;
+		t->p = this;
+	}
+	int dir() {
+		return this == p->ch[1];
+	}
+	void update() {
+		maxv = max(max(ch[0]->maxv, ch[1]->maxv), val);
+		size = ch[0]->size + ch[1]->size + 1;
+	}
+	void relax() {
+		if (add) {
+			ch[0]->appAdd(add);
+			ch[1]->appAdd(add);
+			add = 0;
+		}
+		if (rev) {
+			ch[0]->appRev();
+			ch[1]->appRev();
+			rev = false;
+		}
+	}
+	void appAdd(int x) {
+		if (this == null) return;
+		add += x;
+		val += x;
+		maxv += x;
+	}
+	void appRev() {
+		if (this == null) return;
+		rev ^= true;
+		swap(ch[0], ch[1]);
+	}
+};
+
+Node nodePool[MAX_NODE], *curNode;
+
+Node *newNode(int val = 0)
+{
+	Node *t = curNode ++;
+	t->maxv = t->val = val;
+	t->rev = t->add = 0;
+	t->size = 1;
+	t->ch[0] = t->ch[1] = t->p = null;
+	return t;
+}
+
+struct Splay
+{
+	Node *root;
+	
+	Splay() {
+		root = newNode();
+		root->set(newNode(), 0);
+		root->update();
+	}
+	
+	Splay(int *a, int N) { //sequence is 1-based
+		root = build(a, 0, N + 1);
+	}
+	
+	Node* build(int *a, int l, int r) {
+		if (l > r) return null;
+		int mid = l + r >> 1;
+		Node *t = newNode(a[mid]);
+		t->set(build(a, l, mid - 1), 0);
+		t->set(build(a, mid + 1, r), 1);
+		t->update();
+		return t;
+	}
+	
+	void rot(Node *t)
+	{
+		Node *p = t->p; int d = t->dir();
+		p->relax(); t->relax();
+		if (p == root) root = t;
+		p->set(t->ch[! d], d);
+		p->p->set(t, p->dir());
+		t->set(p, ! d);
+		p->update();
+	}
+	
+	void splay(Node *t, Node *f = null)
+	{
+		for(t->relax(); t->p != f; ) {
+			if (t->p->p == f) rot(t);
+			else t->dir() == t->p->dir() ? (rot(t->p), rot(t)) : (rot(t), rot(t));
+		}
+		t->update();
+	}
+	
+	Node* getKth(int k) {
+		Node *t = root;
+		int tmp;
+		for( ; ; ) {
+			t->relax();
+			tmp = t->ch[0]->size + 1;
+			if (tmp == k) return t;
+			if (tmp < k) {
+				k -= tmp;
+				t = t->ch[1];
+			} else
+				t = t->ch[0];
+		}
+	}
+	
+	//make range[l,r] root->ch[1]->ch[0]
+	//make range[x+1,x] to add something after position x
+	void getRng(int l, int r) { 
+		r += 2;
+		Node *p = getKth(l);
+		Node *q = getKth(r);
+		splay(p); splay(q, p);
+	}
+	
+	void addRng(int l, int r, int x) {
+		getRng(l, r);
+		root->ch[1]->ch[0]->appAdd(x);
+	}
+	
+	void revRng(int l, int r) {
+		getRng(l, r);
+		root->ch[1]->ch[0]->appRev();
+	}
+	
+	int maxvRng(int l, int r) {
+		getRng(l, r);
+		return root->ch[1]->ch[0]->maxv;
+	}
+};
+
+void initNull()
+{
+	curNode = nodePool;
+	null = curNode ++;
+	null->size = 0;
+	null->maxv = - INF;
+}
+\end{lstlisting} 

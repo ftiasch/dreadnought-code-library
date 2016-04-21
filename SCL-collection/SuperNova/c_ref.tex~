@@ -1,0 +1,5 @@
+\begin{enumerate}
+	\item 开栈的命令 #pragma comment(linker, "/STACK:16777216")，交C++
+	\item ios::sync_with_stdio(false);
+	\item \%o 八进制 \%h 十六进制
+\end{enumerate}

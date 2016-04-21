@@ -1,0 +1,125 @@
+\begin{lstlisting}
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+const int N=250;
+int n;//点数(1->n)
+int head;
+int tail;
+int Start;
+int Finish;
+int match[N];//表示哪个点匹配了哪个点
+int Father[N];//增广路的Father
+int Base[N];//该点属于哪朵花
+int Q[N];
+bool mark[N];
+bool mat[N][N];//邻接矩阵
+bool InBlossom[N];
+bool in_Queue[N];
+
+void BlossomContract(int x,int y){
+	memset(mark,0,sizeof(mark));
+	memset(InBlossom,0,sizeof(InBlossom));
+#define pre Father[match[i]]
+	int lca,i;
+	for (i=x;i;i=pre) {i=Base[i]; mark[i]=true; }
+	for (i=y;i;i=pre) {i=Base[i]; if (mark[i]) {lca=i; break;} }//寻找lca,一定要注意i=Base[i]
+	for (i=x;Base[i]!=lca;i=pre){
+		if (Base[pre]!=lca) Father[pre]=match[i];//对于BFS树中的父边是匹配边的点，Father向后跳
+		InBlossom[Base[i]]=true;
+		InBlossom[Base[match[i]]]=true;
+	}
+	for (i=y;Base[i]!=lca;i=pre){
+		if (Base[pre]!=lca) Father[pre]=match[i];//同理
+		InBlossom[Base[i]]=true;
+		InBlossom[Base[match[i]]]=true;
+	}
+#undef pre
+	if (Base[x]!=lca) Father[x]=y;//注意不能从lca这个奇环的关键点跳回来
+	if (Base[y]!=lca) Father[y]=x;
+	for (i=1;i<=n;i++)
+		if (InBlossom[Base[i]]){
+			Base[i]=lca;
+			if (!in_Queue[i]){
+				Q[++tail]=i;
+				in_Queue[i]=true;//要注意如果本来连向BFS树中父结点的边是非匹配边的点，可能是没有入队的
+			}
+		}
+}
+
+void Change(){
+	int x,y,z;
+	z=Finish;
+	while (z){
+		y=Father[z];
+		x=match[y];
+		match[y]=z;
+		match[z]=y;
+		z=x;
+	}
+}
+
+void FindAugmentPath(){
+	memset(Father,0,sizeof(Father));
+	memset(in_Queue,0,sizeof(in_Queue));
+	for (int i=1;i<=n;i++) Base[i]=i;
+	head=0; tail=1;
+	Q[1]=Start;
+	in_Queue[Start]=1;
+	while (head!=tail){
+		int x=Q[++head];
+		for (int y=1;y<=n;y++)
+			if (mat[x][y] && Base[x]!=Base[y] && match[x]!=y) {//无意义的边
+				if ( Start==y || (match[y] && Father[match[y]]))//精髓地用Father表示该点是否
+					BlossomContract(x,y);
+				else if (!Father[y]){
+					Father[y]=x;
+					if (match[y]){
+						Q[++tail]=match[y];
+						in_Queue[match[y]]=true;
+					}
+					else{
+						Finish=y;
+						Change();
+						return;
+					}
+				}
+			}
+	}
+}
+
+void Edmonds(){
+	memset(match,0,sizeof(match));
+	for (Start=1;Start<=n;Start++)
+		if (match[Start]==0)
+			FindAugmentPath();
+}
+
+void output(){
+	memset(mark,0,sizeof(mark));
+	int cnt=0;//一般图最大匹配  最大点数
+	for (int i=1;i<=n;i++)
+		if (match[i]) cnt++;
+	printf("%d\n",cnt);
+	for (int i=1;i<=n;i++)
+		if (!mark[i] && match[i]){
+			mark[i]=true;//i和match[i]匹配
+			mark[match[i]]=true;
+			printf("%d %d\n",i,match[i]);
+		}
+}
+
+int main(){
+	int x,y;
+	scanf("%d",&n);
+	memset(mat,0,sizeof(mat));
+	while (scanf("%d%d",&x,&y)!=EOF)
+		mat[x][y]=mat[y][x]=1;
+	Edmonds();
+	output();
+	return 0;
+}
+\end{lstlisting}

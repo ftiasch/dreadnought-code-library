@@ -1,0 +1,84 @@
+\begin{lstlisting}
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <cmath>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+const int oo = 1 << 30;
+int ans, first[501], l, where[250001], next[250001], value[250001], n, m, L[501], R[501], v[501];
+bool bx[501], by[501];
+
+inline void makelist(int x, int y, int z){
+    where[++l] = y;
+    value[l] = z;
+    next[l] = first[x];
+    first[x] = l;
+}
+
+bool find(int now){
+    bx[now] = true;
+    for (int x = first[now]; x; x = next[x])
+        if (!by[where[x]] && L[now] + R[where[x]] == value[x])
+        {
+           by[where[x]] = true;
+           if (!v[where[x]] || find(v[where[x]]))
+           {
+              v[where[x]] = now;
+              return(true);
+           }
+        }
+    return(false);
+}
+
+inline void km(){
+    memset(L, 0, sizeof(L));
+    memset(R, 0, sizeof(R));
+    for (int i = 1; i <= n; i++)
+        for (int x = first[i]; x; x = next[x])
+            L[i] = max(L[i], value[x]);
+    ans = 0;
+    memset(v, 0, sizeof(v));
+    for (int i = 1; i <= min(n, m); i++) 
+        for (;;)
+        {
+            memset(bx, false, sizeof(bx));
+            memset(by, false, sizeof(by));
+            if (find(i)) break;
+            int Min = oo;
+            for (int j = 1; j <= n; j++) 
+                if (bx[j]) 
+                   for (int x = first[j]; x; x = next[x])
+                       if (!by[where[x]]) 
+                          Min = min(Min, L[j] + R[where[x]] - value[x]);
+            for (int j = 1; j <= n; j++) if (bx[j]) L[j] -= Min;
+            for (int j = 1; j <= m; j++) if (by[j]) R[j] += Min;
+        }
+    for (int i = 1; i <= n; i++)
+        for (int x = first[i]; x; x = next[x])
+            if (v[where[x]] == i) ans += value[x];
+    printf("%d\n", abs(ans));
+}
+
+int main(){
+    scanf("%d%d", &n, &m);
+    memset(first, 0, sizeof(first)); l = 0;
+    for (int i = 1; i <= n; i++) 
+        for (int j = 1; j <= m; j++) 
+        {
+            int x;
+            scanf("%d", &x);
+            makelist(i, j, -x);
+        }
+    km();
+    for (int i = 1; i <= l; i++) value[i] = -value[i];
+    km();
+}
+
+//hint 500 * 500 2.2s
+//can solve problems whose n != m
+\end{lstlisting}

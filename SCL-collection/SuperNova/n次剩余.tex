@@ -1,0 +1,162 @@
+\begin{lstlisting}
+const int LimitSave=100000;
+long long P,K,A;
+vector<long long>ans;
+struct tp{
+	long long expo,res;
+}data[LimitSave+100];
+long long _mod(long long a, long long mo) {
+	a=a%mo;
+	if (a<0) a+=mo;
+	return a;
+}
+long long powers(long long a , long long K , long long modular) {
+	long long res;
+	res=1;
+	while (K!=0) {
+		if (K & 1) res=_mod(res*a,modular);
+		K=K>>1;
+		a=_mod(a*a , modular);
+	}
+	return res;
+}
+long long get_originroot(long long p) {
+	long long primes[100];
+	long long tot,i,tp,j;
+	i=2; tp=P-1; tot=0;
+	while (i*i<=P-1) {
+		if (_mod(tp,i)==0) {
+			tot++;
+			primes[tot]=i;
+			while (_mod(tp,i)==0) tp/=i;
+		}
+		i++;
+	}
+	if (tp!=1) {tot++; primes[tot]=tp;}
+	i=2;
+	bool ok;
+	while (1) {
+		ok=true;
+		foru(j,1,tot) {
+			if (powers(i, (P-1)/primes[j] , P)==1) {
+				150
+				ok=false;
+				break;
+			}
+		}
+		if (ok) break;
+		i++;
+	}
+	return i;
+}
+bool
+euclid_extend(long long A ,long long B ,long long C ,long long &x, long
+long &y, long long
+&gcdnum) {
+	long long t;
+	if (A==0) {
+		gcdnum = B;
+		if (_mod(C , B) ==0) {
+			x=0; y=C/B;
+			return true;
+		}
+		else return false;
+	}
+	else if (euclid_extend(_mod(B , A) , A , C , y , t , gcdnum)) {
+		x = t - int(B / A) * y;
+		return true;
+	}
+	else return false;
+}
+long long Division(long long A, long long B, long long modular) {
+	long long gcdnum,K,Y;
+	euclid_extend(modular, B,A,K,Y,gcdnum);
+	Y=_mod(Y,modular);
+	if (Y<0) Y+=modular;
+	return Y;
+}
+bool Binary_Search(long long key, long long &position) {
+	long long start,stop;
+	start=1; stop=LimitSave;
+	bool flag=true;
+	while (start<=stop) {
+		position=(start+stop)/2;
+		if (data[position].res==key) return true;
+		else
+			if (data[position].res<key) start=position+1;
+			else stop=position-1;
+	}
+	return false;
+}
+bool compareab(const tp &a, const tp &b) {
+	return a.res<b.res;
+}
+long long get_log(long long root, long long A, long long modular) {
+	long long i,j,times,XD,XT,position;
+	if (modular-1<LimitSave) {
+		long long now=1;
+		foru(i,0,modular-1) {
+			if (now==A) {
+				return i;
+			}
+			now=_mod(now * root , modular);
+		}
+	}
+	data[1].expo=0; data[1].res=1;
+	foru(i,1,LimitSave-1) {
+		data[i+1].expo=i;
+		data[i+1].res=_mod(data[i].res*root,modular);
+	}
+	sort(data+1,data+LimitSave+1,compareab);
+	times=powers(root,LimitSave,modular);
+	j=0;
+	XD=1;
+	while (1) {
+		XT=Division(A,XD,modular);
+		if (Binary_Search(XT,position)) {
+			return j+data[position].expo;
+		}
+		j=j+LimitSave;
+		XD=_mod(XD*times,modular);
+	}
+}
+void work_ans() {
+	ans.clear();
+	if (A==0) {
+		ans.push_back(0);
+		return;
+	}
+	long long root,logs,delta,deltapower,now,gcdnum, i,x,y;
+	root=get_originroot(P);
+	logs=get_log(root,A,P);
+	if (euclid_extend(K,P-1,logs,x,y,gcdnum)) {
+		delta=(P-1)/gcdnum;
+		x=_mod(x,delta);
+		if (x<0) x+=delta;
+		now=powers(root,x,P);
+		deltapower=powers(root,delta,P);
+		while (x<P-1) {
+			ans.push_back(now);
+			now=_mod(now*deltapower,P);
+			x=x+delta;
+		}
+	}
+	if (ans.size()>1)
+		sort(ans.begin(),ans.end());
+}
+int main(){
+	int i,j,k,test,cases=0;
+	scanf("%d",&test);
+	prepare();
+	while (test) {
+		test--;
+		cin>>P>>K>>A;
+		A=A % P;
+		//x^K mod P = A
+		cases++;
+		printf("Case #%d:\n",cases);
+		work_ans();
+	}
+	return 0;
+}
+\end{lstlisting}

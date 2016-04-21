@@ -1,0 +1,45 @@
+\begin{lstlisting}
+const int MAX_V = 100000 + 10;
+struct Heap
+{
+	int tot;
+	int a[MAX_V], h[MAX_V], ind[MAX_V];
+	void exchange(int i, int j) {
+		swap(h[i], h[j]);
+		swap(ind[h[i]], ind[h[j]]);
+	}
+	inline int val(int x) {
+		return a[h[x]];
+	}
+	void fixUp(int x) {
+		if (x / 2 && val(x / 2) < val(x)) 
+			exchange(x, x / 2), fixUp(x / 2);
+	}
+	void fixDown(int x) {
+		int p = x * 2; if (p > tot) return;
+		if (p < tot && val(p + 1) > val(p)) ++ p;
+		if (val(p) > val(x))
+			exchange(p, x), fixDown(p);
+	}
+	void Update(int i, int x) {
+		a[i] = x;
+		fixUp(ind[i]);
+		fixDown(ind[i]);
+	}
+	int top() {
+		return h[1];
+	}
+	void pop() {
+		exchange(1, tot);
+		-- tot;
+		fixDown(1);
+	}
+	void insert(int i, int x) {
+		++ tot;
+		h[tot] = i;
+		ind[i] = tot;
+		a[i] = x;
+		fixUp(tot);
+	}
+} H;
+\end{lstlisting}

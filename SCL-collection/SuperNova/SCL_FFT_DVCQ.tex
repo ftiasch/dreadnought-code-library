@@ -1,0 +1,248 @@
+\begin{lstlisting}
+#include<cstdio>
+#include<cmath>
+#include<cstring>
+#include<algorithm>
+using namespace std;
+double pi = 2 * acos(0.0);
+const int pw2lim = 65536;
+struct recmap
+{
+	int y, next;
+} map[100011];
+struct recq
+{
+	int p, v;
+} st[50011];
+int idx[50001], ii[5000000], li1, n, K, x, y, z, ans[50001], l, l2, ele, siz[50001], q[50001], cl, dis[50001], fa[50001];
+int L, go[2 * pw2lim], d, nrec, rec[50001], v, p;
+bool f[50001], isprime[50001];
+int mnpw2(int x)
+{
+	int rtn = 1;
+	while(x) 
+	{
+		x >>= 1;
+		rtn <<= 1;
+	}
+	return rtn;
+}
+struct vector
+{
+	int siz, *a;
+	int & operator [] (int x) 
+	{
+		return a[x];
+	}
+	vector()
+	{
+		a = ii + li1;
+	}
+};
+struct C
+{
+	double real, imag;
+	C(const double & _real, const double & _imag) : real(_real), imag(_imag){}
+	C(){}
+	C(const double & x){real = x; imag = 0;}
+	void print(char c)
+	{
+		printf("(%f, %f)%c", real, imag, c);
+	}
+} a[pw2lim], b[pw2lim], res1[pw2lim], res2[pw2lim], res[pw2lim], tmp[pw2lim], unit[pw2lim], temp;
+const C operator * (const C & a, const C & b)
+{
+	return C(a.real * b.real - a.imag * b.imag, a.real * b.imag + a.imag * b.real);
+}
+const C operator + (const C & a, const C & b)
+{
+	return C(a.real + b.real, a.imag + b.imag);
+}
+const C operator - (const C & a, const C & b)
+{
+	return C(a.real - b.real, a.imag - b.imag);
+}
+void build(int x, int y)
+{
+	map[++l].y = y;
+	map[l].next = idx[x];
+	idx[x] = l;
+}
+void dft(C * sour, C * dest)
+{
+	for(int i = 0; i < L; i++) tmp[go[i + L]] = sour[i];
+	for(int l = 1; l < L; l <<= 1)
+	{
+		l2 = l << 1;
+		ele = pw2lim / l2;
+		for(int i = 0; i < L; i += l2)
+			for(int j = 0; j < l; j++)
+			{
+				temp = tmp[i + l + j] * unit[ele * j];
+				tmp[i + l + j] = tmp[i + j] - temp;
+				tmp[i + j] = tmp[i + j] + temp;
+			}
+	}
+	for(int i = 0; i < L; i++) dest[i] = tmp[i];
+}
+void fft(vector p1, vector p2)
+{
+	L = mnpw2(p1.siz + p2.siz - 1);
+	for(int i = 0; i < p1.siz; i++) a[i] = p1[i];
+	for(int i = p1.siz; i < L; i++) a[i] = 0;
+	for(int i = 0; i < p2.siz; i++) b[i] = p2[i];
+	for(int i = p2.siz; i < L; i++) b[i] = 0;
+	dft(a, res1);
+	dft(b, res2);
+	for(int i = 0; i < L; i++) res[i] = res1[i] * res2[i];
+	dft(res, res1);
+	for(int i = 1; i <= nrec and rec[i] < p1.siz + p2.siz - 1; i++) ans[i] += (int)(res1[L - rec[i]].real / L + 0.5);
+	//ans[i](0<=i<L) = res1[(L - i) % L].
+}
+vector dvcq(int v)
+{
+	if(siz[v] == 2)
+	{
+		vector vec;
+		vec.siz = 2;
+		vec[0] = 0;
+		vec[1] = 1;
+		li1 += vec.siz;
+		return vec;
+	}
+	int u=v, sum=1;
+	for(int p=idx[v]; p;)
+	{
+		if(siz[y=map[p].y] > siz[u]/2)
+		{
+			siz[y] += siz[u] -= siz[y];
+			u = y;
+			p = idx[y];
+		}else p = map[p].next;
+	}
+	int bak, biz;
+	vector p1, p2;
+	for(int p = idx[u]; p; p = map[p].next)
+	{
+		sum += siz[map[p].y];
+		if(sum >= siz[u]/2)
+		{
+			biz = siz[u];
+			bak = idx[u];
+			idx[u] = map[p].next;
+			siz[u] -= sum-1;
+			p1 = dvcq(u);
+			idx[u] = bak;
+			bak = map[p].next;
+			map[p].next = 0;
+			siz[u] = sum;
+			p2 = dvcq(u);
+			siz[u] = biz;
+			map[p].next = bak;
+			break;
+		}
+	}
+	fft(p1, p2);
+	vector vec;
+	fa[v] = 0;
+	q[cl=1] = v;
+	dis[v] = 0;
+	vec[0] = 0;
+	vec.siz = 0;
+	for(int op = 1; op <= cl; op++)
+		for(int p = idx[u = q[op]], y; p; p = map[p].next)
+			if((y=map[p].y) != fa[u])
+			{
+				vec[dis[y] = dis[fa[q[++cl] = y] = u] + 1] ++;
+				vec.siz = max(vec.siz, dis[y]);
+			}
+	vec.siz++;
+	li1 += vec.siz;
+	return vec;
+}
+int main()
+{
+	go[1] = 0;
+	for(int i = 2; i <= pw2lim; i <<= 1)
+	{
+		for(int j = 0; j < i / 2; j++)
+		{
+			go[i + j] = go[i / 2 + j] * 2;
+		}
+		for(int j = i / 2; j < i; j++)
+		{
+			go[i + j] = go[j] * 2 + 1;
+		}
+	}
+	unit[0] = 1;
+	unit[32768] = -1;
+	unit[16384] = C(0, 1);
+	for(int i = 8192; i >= 1; i /= 2)
+	{
+		unit[i] = C((unit[0].real + unit[i * 2].real) / 2, (unit[0].imag + unit[i * 2].imag) / 2);
+		double len = sqrt(unit[i].imag * unit[i].imag + unit[i].real * unit[i].real);
+		unit[i].imag *= 1/len; unit[i].real *= 1/len;
+	}
+	for(int i = 1; i <= 65536; i++)
+	{
+		if(i - (i & -i))
+		{
+			unit[i] = C(1, 0);
+			for(int x = i; x; x -= x & -x)
+			{
+				unit[i] = unit[i] * unit[x & -x];
+			}
+		}
+	}//求单位复根
+	memset(isprime, true, sizeof(isprime));
+	nrec = 0; rec[0] = 0x7fffffff;
+	for(int i = 2; i <= 50000; i++)
+	{
+		if(isprime[i]) rec[++nrec] = i;
+		for(int j = 1; j <= nrec and i * rec[j] <= 50000 and i % rec[j - 1]; j++)
+			isprime[i * rec[j]] = false;
+	}
+	scanf("%d", &n);
+	memset(idx, 0, sizeof(idx));
+	l = 1;
+	for(int i = 1; i < n; i++)
+	{
+		scanf("%d%d", &x, &y);
+		build(x, y);
+		build(y, x);
+	}
+	memset(siz, 0, sizeof(siz));
+	memset(f, true, sizeof(f));
+	f[1] = false;
+	st[cl = 1].v = 1;
+	st[1].p = idx[1];
+	while(cl)
+	{
+		v = st[cl].v;
+		st[cl].p = map[p = st[cl].p].next;
+		if(p)
+		{
+			if(f[map[p].y])
+			{
+				st[++cl].v = map[p].y;
+				st[cl].p = idx[map[p].y];
+				f[map[p].y] = false;
+			}
+		}else
+		{
+			siz[v]++;
+			siz[st[cl - 1].v] += siz[v];
+			cl--;
+		}
+	}
+	li1 = 0;
+	memset(ans, 0, sizeof(ans));
+	dvcq(1);
+	long long tot = 0;
+	for(int i = 1; i <= nrec; i++) tot += ans[i];;
+	printf("%lf\n", (double)tot / ((long long)n * (n - 1) / 2));	
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}
+\end{lstlisting}

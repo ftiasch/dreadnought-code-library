@@ -1,0 +1,167 @@
+\subsection{C++ Tips}
+\begin{enumerate}
+\item 开栈的命令 \#pragma comment(linker, "/STACK:16777216"), 交C++
+\item ios::sync\_with\_stdio(false);
+\item \%o 八进制 \%x 十六进制
+\end{enumerate}
+
+\subsection{Java Reference}
+\lstset{language = Java}
+\begin{lstlisting}
+import java.io.*;
+import java.math.*;
+import java.util.*;
+
+public class Main {
+	final static int MOD = (int)1e9 + 7;
+
+	public void run() {
+		try {
+			int n = reader.nextInt();
+			String[] map = new String[n];
+			for (int i = 0; i < n; ++ i) {
+				map[i] = reader.next();
+			}
+			writer.println(10 % MOD);
+		} catch (IOException ex) {
+		}
+		writer.close();
+	}
+
+	InputReader reader;
+	PrintWriter writer;
+
+	Main() {
+		reader = new InputReader();
+		writer = new PrintWriter(System.out);
+	}
+
+	public static void main(String[] args) {
+		new Main().run();
+	}
+
+	void debug(Object...os) {
+		System.err.println(Arrays.deepToString(os));
+	}
+}
+
+class InputReader {
+	BufferedReader reader;
+	StringTokenizer tokenizer;
+
+	InputReader() {
+		reader = new BufferedReader(new InputStreamReader(System.in));
+		tokenizer = new StringTokenizer("");
+	}
+
+	String next() throws IOException {
+		while (!tokenizer.hasMoreTokens()) {
+			tokenizer = new StringTokenizer(reader.readLine());
+		}
+		return tokenizer.nextToken();
+	}
+
+	Integer nextInt() throws IOException {
+		return Integer.parseInt(next());
+	}
+}
+//-------------------------------------------------------
+import java.util.*;
+import java.math.*;
+import java.io.*;
+
+public class Main {
+
+	Scanner cin;
+
+	void solve() {
+		BigInteger a, b, c;
+		a = cin.nextBigInteger();
+		b = cin.nextBigInteger();
+		c = a.add(b);
+		System.out.println(a + " + " + b + " = " + c);
+	}
+
+	void run() {
+		cin = new Scanner(new BufferedInputStream(System.in));
+		int tmp = cin.nextInt();
+		int testcase = 0;
+		while(cin.hasNextBigInteger()) {
+			++ testcase;
+			if (testcase > 1)
+				System.out.println();
+			System.out.println("Case " + testcase + ":");
+			solve();
+		}
+	}
+
+	public static void main(String[] args) {
+		new Main().run();
+	}
+}
+//Arrays
+int a[]=new int[10];
+Arrays.fill(a,0);
+Arrays.sort(a);
+//String
+String s;
+s.charAt(int i);
+s.compareTo(String b);
+s.compareToIgnoreCase();
+s.contains(String b);
+s.length();
+s.substring(int l,int len);
+//BigInteger
+BigInteger a;
+a.abs();
+a.add(b);
+a.bitLength();
+a.subtract(b);
+a.divide(b);
+a.remainder(b);
+a.divideAndRemainder(b);
+a.modPow(b,c);//a^b mod c;
+a.pow(int);
+a.multiply(b);
+a.compareTo(b);
+a.gcd(b);
+a.intValue();
+a.longValue();
+a.isProbablePrime(int certainty);//(1 - 1/2^certainty).
+a.nextProbablePrime();
+a.shiftLeft(int);
+a.valueOf();
+//BigDecimal
+static int ROUND_CEILING,ROUND_DOWN,ROUND_FLOOR,
+		   ROUND_HALF_DOWN,ROUND_HALF_EVEN,ROUND_HALF_UP,ROUND_UP;
+a.divide(BigDecimal b,int scale,int round_mode);
+a.doubleValue();
+a.movePointLeft(int i);
+a.pow(int);
+a.setScale(int scale,int round_mode);
+a.stripTrailingZeros();
+//StringBuilder
+StringBuilder sb=new StringBuilder();
+sb.append(elem);
+out.println(sb);
+//StringTokenizer
+StringTokenizer st=new StringTokenizer(in.readLine());
+st.countTokens();
+st.hasMoreTokens();
+st.nextToken();
+//Vector
+a.add(elem);
+a.add(index,elem);
+a.clear();
+a.elementAt(index);
+a.isEmpty();
+a.remove(index);
+a.set(index,elem);
+a.size();
+//Queue
+a.add(elem);
+a.peek();//front
+a.poll();//pop
+//Integer Double Long
+\end{lstlisting}
+

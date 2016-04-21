@@ -1,0 +1,29 @@
+计算圆心角lat表示纬度,$-90\leq w\leq 90$,lng表示经度 \\
+返回两点所在大圆劣弧对应圆心角,$0\leq angle \leq \pi$
+\begin{lstlisting}
+double angle(double lng1,double lat1,double lng2,double lat2) {
+	double dlng = abs(lng1 - lng2) * PI / 180; 
+	while(dlng >= PI + PI) dlng -= PI + PI;
+	if (dlng > PI) dlng = PI + PI - dlng;
+	lat1 *= PI / 180, lat2 *= PI / 180;
+	return acos(cos(lat1) * cos(lat2) * cos(dlng) + sin(lat1) * sin(lat2));
+}
+\end{lstlisting}
+
+计算直线距离,$r$为球半径
+\begin{lstlisting}
+double line_dist(double r,double lng1,double lat1,double lng2,double lat2) {
+	double dlng = abs(lng1 - lng2) * PI / 180; 
+	while(dlng >= PI + PI) dlng -= PI + PI;
+	if (dlng > PI) dlng = PI + PI - dlng;
+	lat1 *= PI / 180, lat2 *= PI / 180;
+	return r * sqrt(2 - 2 * (cos(lat1) * cos(lat2) * cos(dlng) + sin(lat1) * sin(lat2)));
+}
+\end{lstlisting}
+
+计算球面距离,$r$为球半径 
+\begin{lstlisting}
+inline double sphere_dist(double r,double lng1,double lat1,double lng2,double lat2){
+	return r * angle(lng1, lat1, lng2, lat2);
+}
+\end{lstlisting}

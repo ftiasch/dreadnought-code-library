@@ -1,0 +1,101 @@
+\begin{lstlisting}
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <cmath>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int n, m, S, T, slk[1001], dist[1001], first[1001], l, c[1000001], next[1000001], where[1000001], ll[1000001], v[1000001];
+bool b[1001];
+long long ans1, ans2;
+
+inline void makelist(int x, int y, int z, int p){
+    where[++l] = y; 
+    ll[l] = z;
+    v[l] = p;
+    next[l] = first[x];
+    first[x] = l;
+}
+
+inline void spfa(){    
+    memset(dist, 127, sizeof(dist));
+    memset(b, false, sizeof(b));
+    dist[T] = 0; c[1] = T;
+    for (int k = 1, l = 1; l <= k; l++)
+    {
+        int m = c[l];
+        b[m] = false;
+        for (int x = first[m]; x; x = next[x])
+            if (ll[x ^ 1] && dist[m] - v[x] < dist[where[x]])
+            {
+               dist[where[x]] = dist[m] - v[x];
+               if (!b[where[x]]) b[where[x]] = true, c[++k] = where[x];
+            }
+    }
+}
+
+int zkw_work(int now, int cap){
+    b[now] = true;
+    if (now == T)
+    {
+        ans1 += cap;
+        ans2 += (long long)cap * dist[S];
+        return(cap);
+    }
+    int Left = cap;
+    for (int x = first[now]; x; x = next[x])
+        if (ll[x] && !b[where[x]]) 
+           if (dist[now] == dist[where[x]] + v[x])
+           {
+               int use = zkw_work(where[x], min(Left, ll[x]));
+               ll[x] -= use; ll[x ^ 1] += use;
+               Left -= use;
+               if (!Left) return(cap);
+           }
+           else slk[where[x]] = min(slk[where[x]], dist[where[x]] + v[x] - dist[now]);
+    return(cap - Left);
+}
+
+bool relax(){
+    int Min = 1 << 30;
+    for (int i = 0; i <= T; i++) 
+        if (!b[i]) Min = min(Min, slk[i]);
+    if (Min == 1 << 30) return(false);
+    for (int i = 0; i <= T; i++)
+        if (b[i]) dist[i] += Min;
+    return(true);
+}
+
+inline void zkw(){
+    ans1 = ans2 = 0;
+    spfa();   //hint memset(dist, 0, sizeof(dist)); if all values of edges are nonnegative
+    for (;;)
+    {
+        memset(slk, 127, sizeof(slk));
+        for (;;)
+        {
+            memset(b, false, sizeof(b));
+            if (!zkw_work(S, 1 << 30)) break;
+        }
+        if (!relax()) break;
+    }
+    printf("%I64d %I64d\n", ans1, ans2);
+}
+
+int main(){
+    scanf("%d%d", &n, &m);
+    S = 1; T = n;
+    memset(first, 0, sizeof(first)); l = 1;
+    for (int i = 1; i <= m; i++)
+    {
+        int x, y, z, q;
+        scanf("%d%d%d%d", &x, &y, &z, &q);
+        makelist(x, y, z, q); makelist(y, x, 0, -q);
+    }
+    zkw();
+}
+\end{lstlisting}

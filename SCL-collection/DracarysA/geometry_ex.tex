@@ -1,0 +1,35 @@
+get a s->t plane satisfied $ax + by + c \geq 0$
+
+return {-1, 0, 1}
+\begin{lstlisting}
+int getHalfPlane(LD a, LD b, LD c, Point &s, Point &t)
+{
+	if (sign(a)) {
+		s.y = 0;
+		s.x = -c / a;
+	} else if (sign(b)) {
+		s.x = 0;
+		s.y = -c / b;
+	} else {
+		if (sign(c) < 0) return -1;
+		return 1;
+	}
+	t = s + Point(b, -a);
+	return 0;
+}
+\end{lstlisting}
+
+get a line s-t satisfied $ax + by + c = 0, a^2+b^2\neq 0$
+\begin{lstlisting}
+void getLine(LD a, LD b, LD c, Point &s, Point &t)
+{
+	if (sign(a)) {
+		s.y = 0;
+		s.x = -c / a;
+	} else {
+		s.x = 0;
+		s.y = -c / b;
+	}
+	t = s + Point(b, -a);
+}
+\end{lstlisting}

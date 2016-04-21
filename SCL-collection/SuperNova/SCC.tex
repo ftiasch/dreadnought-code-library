@@ -1,0 +1,39 @@
+\begin{lstlisting}
+int totID, totCol;
+int col[MAX_N], low[MAX_N], dfn[MAX_N];
+int top, stack[MAX_N], instack[MAX_N];
+
+int tarjan(int u)
+{
+	low[u] = dfn[u] = ++ totID;
+	instack[u] = true; stack[++ top] = u;
+	
+	int v;
+	foreach(it, adj[u]) {
+		v = it->first;
+		if (dfn[v] == -1)
+			low[u] = min(low[u], tarjan(v));
+		else if (instack[v])
+			low[u] = min(low[u], dfn[v]);
+	}
+	
+	if (low[u] == dfn[u]) {
+		do {
+			v = stack[top --];
+			instack[v] = false;
+			col[v] = totCol;
+		} while(v != u);
+		++ totCol;
+	}
+	return low[u];
+}
+
+void solve()
+{
+	totID = totCol = top = 0;
+	fill(dfn, dfn + N, 0);
+	for(int i = 0; i < N; ++ i)
+		if (! dfn[i])
+			tarjan(i);
+}
+\end{lstlisting}

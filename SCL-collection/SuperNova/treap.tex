@@ -1,0 +1,80 @@
+
+\begin{lstlisting}
+struct Node *null;
+
+struct Node
+{
+	int key, val, size;
+	Node *ch[2];
+	Node() {
+		key = INT_MAX;
+		val = size = 0;
+	}
+	Node(int _val) {
+		size = 1;
+		val = _val;
+		key = bigRand();
+		ch[0] = ch[1] = null;
+	}
+	int bigRand() {
+		return rand() * RAND_MAX + rand();
+	}
+	void update() {
+		size = ch[0]->size + ch[1]->size + 1;
+	}
+};
+
+struct Treap
+{
+	Node *root;
+	Treap() {
+		root = null;
+	}
+	void rot(Node *&t, int d) {
+		Node *p = t->ch[d]; t->ch[d] = p->ch[! d]; p->ch[! d] = t;
+		t->update(); p->update();
+		t = p;
+	}
+	
+	void insert(Node *&t, int x) {
+		if (t == null) {
+			t = new Node(x);
+			return;
+		}
+		int dir = x >= t->val;
+		insert(t->ch[dir], x);
+		if (t->ch[dir]->key < t->key)
+			rot(t, dir);
+		else
+			t->update();
+	}
+	
+	void erase(Node *&t, int x) {
+		if (t == null)
+			return;
+		if (t->val == x) {
+			int dir = t->ch[1]->key < t->ch[0]->key;
+			if (t->ch[dir] == null) {
+				delete t;
+				t = null;
+				return;
+			}
+			rot(t, dir);
+			erase(t->ch[! dir], x);
+			t->update();
+			return;
+		}
+		bool dir = x > t->val;
+		erase(t->ch[dir], x);
+		t->update();
+	}
+	
+	void insert(int x) {
+		insert(root, x);
+	}
+	
+	void erase(int x) {
+		erase(root, x);
+	}
+};
+\end{lstlisting}

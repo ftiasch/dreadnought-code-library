@@ -1,0 +1,51 @@
+\documentclass[landscape,a4paper,10pt,twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{listings} 
+\usepackage{harpoon}
+\usepackage[left=0cm, right=0cm]{geometry}
+\usepackage[BoldFont]{xeCJK}
+\oddsidemargin -0.1 true cm
+\if@twoside
+	\evensidemargin -0.1 true cm
+\fi
+\setlength{\parindent}{0em}
+\lstset{
+	language=C++,
+	tabsize=2,
+	breaklines=tr,
+	extendedchars=false
+}
+
+\title{\Large{Dracarys} \\ [2ex] \LARGE{Standard Code Library} \\[2ex] \begin{normalsize} $\beta$ version \end{normalsize}}
+\date{October, 2014}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\newpage
+	\section{Simplex Algorithm}
+		\input{simplex.tex}
+
+\newpage
+	\section{Fast Fourier Transform}
+		\input{ntt.tex}
+
+\newpage
+	\section{Geometry Extended}
+		\input{geometry_ex.tex}
+
+\newpage
+	\section{Dominator Tree}
+		\input{dom.tex}
+
+\newpage
+	\section{vimrc}
+		\input{vimrc.vim}
+\end{document}
