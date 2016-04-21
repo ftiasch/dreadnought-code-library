@@ -1,0 +1,126 @@
+\begin{lstlisting}
+struct triple
+{
+    double x, y, z;
+    triple(){}
+    triple(const double & _x, const doule & _y, const double & _z) : x(_x), y(_y), z(_z);
+    double len2() const {return x * x + y * y + z * z;}
+    double len() const {return sqrt(len2());}
+    void scan() {scanf("%lf%lf%lf", &x, &y, &z);}
+};
+triple operator + (const triple & a, const triple & b)
+{return triple(a.x + b.x, a.y + b.y, a.z + b.z);}
+triple operator - (const triple & a, const triple & b)
+{return triple(a.x - b.x, a.y - b.y, a.z - b.z);}
+triple operator * (const double & a, const triple & b)
+{return triple(a * b.x, a * b.y, a * b.z);}
+triple operator * (const triple & a, const triple & b)
+{return triple(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);}
+double operator % (const triple & a, const triple & b)
+{return a.x * b.x + a.y * b.y + a.z * b.z;}
+struct line
+{
+    triple s, d;
+    line(){}
+    line(const triple & _s, const triple & _d) : s(_s), d(_d){}
+    triple operator () const {return d;}
+};
+struct plane
+{
+    triple a, n;
+    plane()
+    plane(const triple & _a, const triple & _n) :a(_a), n(_n){}
+    plane(const triple & _a, const triple & _b, const triple & _c)
+    {a = _a; n = (b - a) * (b - c);}//valid for non-colinear _a, _b, _c.
+};
+const double eps = 1e-12;
+int sign(const double & x)
+{return x < -eps?-1:x > eps?1:0;}
+//判断 相交 平行 垂直
+
+bool parallel(const triple & a, const triple & b)//向量平行
+{
+    return sign((a * b).len2()) == 0;
+}
+bool orthogonal(const triple & a, const triple & b)//向量垂直
+{
+    return sign(a % b) == 0;
+}
+bool dis(const triple & a, const line & b)//点到直线距离 无正负
+{
+    return ((a - b.s) * b.d).len() / b.d.len();
+}//做三角形求高法
+bool perpendicular(const triple & a, const triple & b)//点到直线垂线
+{
+    return line(a, b.d * (b.s - a) * b.d);
+}//若是点在直线上则求出来方向为0的直线
+bool on(const triple & a, const line & b)//点在直线上
+{
+    return parallel(a - b.s, b.d);
+}
+bool parallel(const line & a, const line & b)//直线平行
+{
+    return parallel(a.d, b.d);
+}//重合也算平行
+bool orthogonal(const line & a, const line & b)//直线垂直
+{
+    return orthogonal(a.d, b.d);
+}
+double dis(const line & a, const line & b)//直线间最近距离 无正负
+{
+    triple nor = a.d * b.d;
+    if(sign(nor.len2()) == 0) return dis(b.s, a);//平行直线距离
+    else return nor % (a.s - b.s) / nor.len();//不平行直线最近距离
+}
+bool intersect(const line & a, const line & b)//直线相交:距离为0
+{
+    return sign(dis(a, b)) == 0;
+}
+
+triple intersection(const line & a, const line & b)//直线交点 假设不平行 且交点存在
+{
+    double lambda = (b.s - a.s) * b.d % (a.d * b.d) / (a.d * b.d).len2();
+    return a.s + lambda * a.d;
+}//若是不平行交点也不存在则求出来的是2条直线最近距离两点中第一条直线上的那个点
+
+bool onRay(const triple & a, const line & b) //点在射线上 含
+{
+    return on(a, b) and sign((a - b.s) % (b.d)) >= 0;
+}
+bool onSeg(const triple & a, const triple & b, const triple & c)//点在线段上 含
+{
+    return onRay(a, line(b, c - b)) and onRay(a, line(c, b - c));
+}//有了上面2个函数就可以处理射线 线段和直线相互之间存在交点的问题了
+
+//下面是有关平面的算法
+int dis(const triple & a, const plane & b)//点到平面距离 有正负
+{
+    return (a - b.a) % b.n;
+}
+int above(const triple & a, const plane & b)//above_1 on_0 under_-1
+{
+    return sign(dis(a, b));//和法向同向的算是平面的上面
+}
+bool parallel(const line & a, const plane & b)//直线和平面平行 重合也算平行
+{
+    return orthogonal(a.d, b.n);
+}
+
+bool parallel(const plane & a, const plane & b)//平面和平面平行
+{
+    return parallel(a.n, b.n);
+}
+bool intersect(const line & a, const plane & b)//直线和平面相交?
+{
+    return !parallel(a, b) or sign(a.s * b.n - b.s * b.n) == 0; //不平行或在平面内部
+}
+triple intersection(const line & a, const plane & b)//直线和平面的交点
+{
+    double lambda = b.n % (b.a - a.s) / (a.d % b.n);
+    return a.s + lambda * a.d;
+}
+line intersection(const plane & a, const plane & b)//平面和平面的交线
+{
+    return line(intersection(line(a.a, a.n * b.n * a.n)), a.n * b.n);
+}
+\end{lstlisting}

@@ -1,0 +1,295 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{listings} 
+\usepackage{harpoon}
+\usepackage[left=1.5cm, right=1.5cm]{geometry}
+\usepackage[BoldFont]{xeCJK}
+\oddsidemargin -0.1 true cm
+\if@twoside
+	\evensidemargin -0.1 true cm
+\fi
+\setlength{\parindent}{0em}
+\setCJKmainfont{Microsoft YaHei}
+\lstset{
+	language=C++,
+	numbers=left,
+	tabsize=4,
+	breaklines=tr,
+	extendedchars=false
+}
+
+\title{\LARGE{Standard Code Library}}
+\author{SuperNova}
+\date{October, 2013}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\chapter{二维几何}
+	\section{Naive Tips}
+		\input{注意.tex}
+	\section{几何公式}
+		\input{几何公式.tex}
+	\section{点类}
+		\input{点类.tex}
+	\section{基本操作}
+		\input{基本操作.tex}
+	\section{球面}
+		\input{球面.tex}
+	\section{半平面交}
+		\input{半平面交.tex}
+	\section{最小圆覆盖}
+		\input{最小圆覆盖.tex}
+	\section{求直线与凸包的交点}
+		\subsection{tEJtM}
+			\input{sgu345.tex}
+		\subsection{Seraphim}
+			\input{直线凸包.tex}
+	\section{点到凸包的切线}
+	    \input{amppzstd.tex}
+	\section{判断圆存在交集$NlogK$}
+		\input{判断圆存在交集.tex}
+	\section{圆与三角形的交面积}
+	    \input{SCL_intersect_circle_polygon.tex}
+	\section{圆与圆的交并面积}
+		\input{SCL_cir_k_inter.tex}
+	\section{Farmland}
+		\subsection{Logic\_IU}
+			\input{farmlandLYP.tex}
+		\subsection{tEJtM}
+			\input{SCL_farmland_GY.tex}
+
+\chapter{三维几何}
+	\section{三维几何Seraphim Version}
+	    \subsection{基本操作}
+			\input{S基本操作.tex}
+		\subsection{三维旋转操作}
+			\input{S三维旋转操作.tex}
+		\subsection{三维凸包随机增量}
+			\input{三维凸包.tex}
+	\section{基本操作tEJtM Version}
+		\input{3D_Geo.tex}
+	\section{点类$+$三维凸包$N^3+$凸包求重心}
+		\input{Geo3.tex}
+	\section{三维旋转}
+		\input{三维旋转.tex}
+	\section{最小球覆盖}
+		\input{最小球覆盖.tex}
+		
+\chapter{图论}
+    \section{Dijkstra}
+	    求s到其他点的最短路
+	    \input{dijkstra.tex}
+
+	\section{最大流}
+	    iSAP算法求S到T的最大流，点数为cntN，边表存储在*E[]中
+	    \input{maxflow.tex}
+
+	\section{上下界流}
+	    \input{上下界流建图方法.tex}
+		\subsection{上下界无源汇可行流}
+			\input{上下界无源汇可行流.tex}
+		\subsection{上下界最大流}
+			\input{上下界最大流.tex}
+		\subsection{上下界最小流}
+			\input{上下界最小流.tex}
+		\subsection{上下界有源汇可行流}
+			\input{上下界有源汇可行流.tex}
+
+	\section{费用流}
+		\subsection{Logic\_IU$+$负费用路}
+			注意图的初始化，费用和流的类型依题目而定
+			\input{mincostflow.tex}
+		\subsection{shytangyuan$+$ZKW}
+			\input{zkw.tex}
+
+	\section{强联通分量}
+		\subsection{Logic\_IU}
+			N个点的图求SCC，totID为时间标记，top为栈顶，totCol为强联通分量个数，注意初始化
+			\input{SCC.tex}
+		\subsection{shytangyuan$+$手写栈}
+			\input{手工栈tarjan.tex}
+	
+	\section{KM}
+		\subsection{tEJtM}
+			\input{KM_GY.tex}
+        \subsection{Logic\_IU}
+	        求完备匹配的最大权匹配，建好的完全图用w[][]存储，点数为N
+	        \input{KM.tex}
+		\subsection{shytangyuan$+$邻接阵}
+			\input{km_邻接矩阵.tex}
+		\subsection{shytangyuan$+$链表}
+			\input{km_链表.tex}
+	\section{Hopcroft}
+		\input{Hopcroft.tex}
+	\section{一般图最大匹配}
+		\input{Edmonds.tex}
+	\section{无向图最小割}
+		\input{无向图最小割.tex}
+	\section{最小树形图($ElogE+V^2$)}
+		\input{MDSTNlogN.tex}
+	\section{最小树形图($V^3$)}
+		\input{MDSTN3.tex}
+
+\chapter{数据结构}
+	\section{KD树}
+		\subsection{tEJtM$+$高维}
+			\input{KDTree_GY.tex}
+
+	    \subsection{Logic\_IU}
+	        读入N个点，输出距离每个点的最近点。
+	        \input{KDtree.tex}
+
+	\section{后缀自动机}
+		\subsection{tEJtM$+$LCA非递归Tarjan}
+			\input{SAM_GY.tex}
+		\subsection{Logic\_IU}
+			\input{suffix-automaton.tex}
+
+    \section{Splay树}
+		\subsection{Logic\_IU}
+			注意初始化内存池和null节点，以及根据需要修改update和relax，区间必须是1-based
+			\input{splay.tex}
+		\subsection{shytangyuan}
+			\input{pinhengshu.tex}
+
+	\section{动态树}
+		根据需求修改Node中的relax和update函数，修改access，以及Node的构造函数，注意初始化内存池和null节点
+		\input{LCT.tex}
+
+	\section{二叉堆}
+		双射堆，ind[v]表示标号为v的节点在堆中的位置
+		\input{binary-heap.tex}
+
+	\section{左偏树}
+		没写delete操作，注意初始化内存池和null节点
+		\input{leftist-tree.tex}
+
+	\section{Treap}
+		包含build, insert和erase，执行时注意初始化内存池和null节点
+		\input{treap.tex}
+
+	\section{线段树}
+		包含建树和区间操作样例，没有写具体操作
+		\input{segment-tree.tex}
+
+	\section{轻重链剖分}
+		包含BFS剖分过程，线段树部分视题目而定
+		\input{decomposition.tex}
+	
+	\section{KMP}
+		\input{SCL_KMP.tex}
+	
+	\section{扩展KMP}
+		传入字符串s和长度N，next[i]=LCP(s, s[i..N-1])
+		\input{z.tex}
+	
+	\section{Manacher}
+		\input{Manacher.tex}
+
+	\section{AC自动机}
+		\subsection{Logic\_IU}
+			包含建trie和构造自动机的过程
+			\input{acautomaton.tex}
+		\subsection{shytangyuan}
+			\input{aczidongji_shy.tex}
+
+	\section{后缀数组}
+		\subsection{Logic\_IU}
+			对于串a求SA，长度为N，M为元素值范围，height[i]=LCP(suf[rank[i]],suf[rank[i]-1])
+			\input{suffix-array.tex}
+		\subsection{shytangyuan}
+			\input{后缀数组_shy.tex}
+		\subsection{DC3}
+			\input{DC3.tex}
+
+\chapter{杂}
+	\section{$M^2logN$求线性递推第n项}
+		\input{线性递推.tex}
+	
+	\section{FFT}
+		\input{SCL_FFT_DVCQ.tex}
+
+	\section{中国剩余定理}
+	    包括扩展欧几里得，求逆元，和保证除数互质条件下的CRT
+	    \input{crt.tex}
+
+	\section{Pollard's Rho$+$Miller-Rabbin}
+	    大数分解和素性判断
+	    \input{rho.tex}
+	
+	\section{素数判定(long long内确定性算法)}
+		\input{MillerRabbin2.tex}
+	
+	\section{求前$P$个数的逆元}
+		\input{prefixInverse.tex}
+	
+	\section{广义离散对数(不需要互质)}
+		\input{BabyStep.tex}
+	
+	\section{n次剩余}
+		\input{n次剩余.tex}
+	
+	\section{二次剩余}
+		\input{二次剩余.tex}
+    
+    \section{长方体表面两点最短距离}
+        \input{长方体表面两点最短距离.tex}
+
+	\section{字符串的最小表示}
+		\subsection{Logic\_IU}
+			\input{字符串的最小表示.tex}
+		\subsection{tEJtM}
+			\input{SCL_str_cyc_min_rep.tex}
+    
+    \section{牛顿迭代开根号}
+        \input{牛顿迭代开根号.tex}
+
+    \section{求某年某月某日星期几}
+        \input{求某年某月某日星期几.tex}
+	
+	\section{A*}
+		\input{astar_shy.tex}
+
+	\section{Dancing Links}
+		\input{Dancing.tex}
+
+	\section{弦图判定}
+		\input{弦图判定.tex}
+	
+	\section{弦图求团数}
+		\input{弦图求团数.tex}
+
+	\section{有根树的同构}
+		\input{有根树的同构.tex}
+	
+	\section{极大团搜索算法}
+		\input{极大团搜索.tex}
+	
+	\section{极大团的计数}
+		\input{极大团计数.tex}
+	
+	\section{多项式求根(求导二分)}
+		\input{多项式求根.tex}
+	
+	\section{有多少个点在多边形内}
+		\input{多少个点在多边形内.tex}
+	
+	\section{斜线下格点统计}
+		\input{斜线下格点统计.tex}
+
+	\section{杂知识}
+	    \input{杂知识.tex}
+
+	\section{Language Reference}
+	    \input{language_ref.tex}
+
+	\section{vimrc}
+		\input{vimrc}
+\end{document}

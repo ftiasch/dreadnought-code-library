@@ -1,0 +1,15 @@
+\begin{lstlisting}
+set nu ai ci si et mouse=a ts=4 sts=4 sw=4
+
+nmap <C-A> ggVG
+vmap <C-C> "+y
+
+nmap<F3> : vs %<.in <CR>
+nmap<F8> : !./%< < %<.in <CR>
+nmap<F9> : make %< <CR>
+
+nmap<F4> : !gedit % <CR>
+nmap<F5> : !./%< <CR>
+nmap<F6> : !java %< < %<.in <CR>
+nmap<F10> : !javac % <CR>
+\end{lstlisting}

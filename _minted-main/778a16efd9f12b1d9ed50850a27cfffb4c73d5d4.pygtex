@@ -1,0 +1,45 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{java.io.*}\PYG{o}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{java.util.*}\PYG{o}{;}
+\PYG{k+kn}{import} \PYG{n+nn}{java.math.*}\PYG{o}{;}
+
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Main}\PYG{o}{\PYGZob{}}
+	\PYG{n}{BufferedReader} \PYG{n}{reader} \PYG{o}{=} \PYG{k}{new} \PYG{n}{BufferedReader}\PYG{o}{(}\PYG{k}{new} \PYG{n}{InputStreamReader}\PYG{o}{(}\PYG{n}{System}\PYG{o}{.}\PYG{n+na}{in}\PYG{o}{));}
+	\PYG{n}{PrintWriter} \PYG{n}{writer} \PYG{o}{=} \PYG{k}{new} \PYG{n}{PrintWriter}\PYG{o}{(}\PYG{n}{System}\PYG{o}{.}\PYG{n+na}{out}\PYG{o}{);}
+	\PYG{n}{StringTokenizer} \PYG{n}{tokenizer} \PYG{o}{=} \PYG{k+kc}{null}\PYG{o}{;}
+
+	\PYG{k+kt}{void} \PYG{n+nf}{solve}\PYG{o}{()} \PYG{k+kd}{throws} \PYG{n}{Exception} \PYG{o}{\PYGZob{}}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{k+kt}{void} \PYG{n+nf}{run}\PYG{o}{()}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{k}{try}\PYG{o}{\PYGZob{}}
+			\PYG{k}{while} \PYG{o}{(}\PYG{k+kc}{true}\PYG{o}{)} \PYG{o}{\PYGZob{}}
+				\PYG{n}{solve}\PYG{o}{();}
+			\PYG{o}{\PYGZcb{}}	
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{catch}\PYG{o}{(}\PYG{n}{Exception} \PYG{n}{e}\PYG{o}{)\PYGZob{}}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{finally}\PYG{o}{\PYGZob{}}
+			\PYG{n}{reader}\PYG{o}{.}\PYG{n+na}{close}\PYG{o}{();}
+			\PYG{n}{writer}\PYG{o}{.}\PYG{n+na}{close}\PYG{o}{();}
+		\PYG{o}{\PYGZcb{}}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{n}{String} \PYG{n+nf}{next}\PYG{o}{()}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{k}{for}\PYG{o}{(;}\PYG{n}{tokenizer} \PYG{o}{==} \PYG{k+kc}{null} \PYG{o}{||} \PYG{o}{!}\PYG{n}{tokenizer}\PYG{o}{.}\PYG{n+na}{hasMoreTokens}\PYG{o}{();)\PYGZob{}}
+			\PYG{n}{tokenizer} \PYG{o}{=} \PYG{k}{new} \PYG{n}{StringTokenizer}\PYG{o}{(}\PYG{n}{reader}\PYG{o}{.}\PYG{n+na}{readLine}\PYG{o}{());}
+		\PYG{o}{\PYGZcb{}}
+		\PYG{k}{return} \PYG{n}{tokenizer}\PYG{o}{.}\PYG{n+na}{nextToken}\PYG{o}{();}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{k+kt}{int} \PYG{n+nf}{nextInt}\PYG{o}{()}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n}{Integer}\PYG{o}{.}\PYG{n+na}{parseInt}\PYG{o}{(}\PYG{n}{next}\PYG{o}{());}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{k+kt}{double} \PYG{n+nf}{nextDouble}\PYG{o}{()}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n}{Double}\PYG{o}{.}\PYG{n+na}{parseDouble}\PYG{o}{(}\PYG{n}{next}\PYG{o}{());}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{n}{BigInteger} \PYG{n+nf}{nextBigInteger}\PYG{o}{()}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{k}{return} \PYG{k}{new} \PYG{n}{BigInteger}\PYG{o}{(}\PYG{n}{next}\PYG{o}{());}
+	\PYG{o}{\PYGZcb{}}
+	\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{o}{(}\PYG{n}{String} \PYG{n}{args}\PYG{o}{[])}\PYG{k+kd}{throws} \PYG{n}{Exception}\PYG{o}{\PYGZob{}}
+		\PYG{o}{(}\PYG{k}{new} \PYG{n}{Main}\PYG{o}{()).}\PYG{n+na}{run}\PYG{o}{();}
+	\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

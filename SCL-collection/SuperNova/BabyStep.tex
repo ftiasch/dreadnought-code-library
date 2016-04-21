@@ -1,0 +1,67 @@
+\begin{lstlisting}
+void extendedGcd (int a, int b, long long &x, long long y) {
+	if (b) {
+		extendedGcd(b, a % b, y, x);
+		y -= a / b * x;
+	} else {
+		x = a;
+		y = 0;
+	}
+}
+int inverse (int a, int m) {
+	long long x, y;
+	extendedGcd(a, m, x, y);
+	return (x % m + m) % m;
+}
+// a ^ x = b (mod m)
+int solve (int a, int b, int m) {
+	int tmp = 1 % m, c;
+	map<int, int> s;
+	if (tmp == b) {
+		return 0;
+	}
+	for (int i = 1; i <= 50; ++ i) {
+		tmp = ((long long)tmp * a) % m;
+		if (tmp == b) {
+			return i;
+		}
+	}
+	int x_0 = 0, d = 1 % m;
+	while (true) {
+		tmp = gcd(a, m);
+		if (tmp == 1) {
+			break;
+		}
+		x_0 ++;
+		d = ((long long)d * (a / tmp)) % m;
+		if (b % tmp) {
+			return -1;
+		}
+		b /= tmp;
+		m /= tmp;
+	}
+	b = ((long long)b * inverse(d, m)) % m;
+	c = int(ceil(sqrt(m)));
+	s.clear();
+	tmp = b;
+	int tmpInv = intverse(a, m);
+	for (int i = 0; i != c; ++ i) {
+		if (s.find(tmp) == s.end()) {
+			s[tmp] = i;
+		}
+		tmp = ((long long)tmp * tmpInv) % m;
+	}
+	tmp = 1;
+	for (int i = 0; i != c; ++ i) {
+		tmp = ((long long)tmp * a) % m;
+	}
+	int ans = 1;
+	for (int i = 0; i != c; ++ i) {
+		if (s.find(ans) != s.end()) {
+			return x_0 + i * c + s.find(ans)->second;
+		}
+		ans = ((long long)ans * tmp) % m;
+	}
+	return -1;
+}
+\end{lstlisting}

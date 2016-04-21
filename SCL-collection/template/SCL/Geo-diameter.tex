@@ -1,0 +1,22 @@
+\begin{lstlisting} 
+double convexDiameter(const vector<Point>&ps) {
+	int n = ps.size();
+	int is = 0, js = 0;
+	for (int i = 1; i < n; ++i) {
+		if (ps[i].x > ps[is].x)
+			is = i;
+		if (ps[i].x < ps[js].x)
+			js = i;
+	}
+	double maxd = ps[is].distTo(ps[js]);
+	int i = is, j = js;
+	do {
+		if ((ps[(i + 1) % n] - ps[i]).det(ps[(j + 1) % n] - ps[j]) >= 0)
+			(++j) %= n;
+		else
+			(++i) %= n;
+		maxd = max(maxd, ps[i].distTo(ps[j]));
+	} while (i != is || j != js);
+	return maxd;
+}
+\end{lstlisting} 

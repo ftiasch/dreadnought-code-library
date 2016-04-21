@@ -1,0 +1,249 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.10.24)  24 OCT 2013 17:15
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Âá†‰ΩïÂÖ¨Âºè.tex
+(./Âá†‰ΩïÂÖ¨Âºè.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, et
+hiopic, farsi, arabic, pinyin, croatian, bulgarian, ukrainian, russian, slovak,
+ czech, danish, dutch, usenglishmax, ukenglish, finnish, french, basque, ngerma
+n, german, swissgerman, ngerman-x-2012-05-30, german-x-2012-05-30, monogreek, g
+reek, ibycus, ancientgreek, hungarian, bengali, tamil, hindi, telugu, gujarati,
+ sanskrit, malayalam, kannada, assamese, marathi, oriya, panjabi, italian, lati
+n, latvian, lithuanian, mongolian, mongolianlmc, nynorsk, bokmal, indonesian, e
+speranto, coptic, welsh, irish, interlingua, serbian, serbianc, slovenian, friu
+lan, romansh, estonian, romanian, armenian, uppersorbian, turkish, afrikaans, i
+celandic, kurmanji, polish, portuguese, galician, catalan, spanish, swedish, th
+ai, loaded.
+! Undefined control sequence.
+l.1 \subsection
+               {‰∏âËßíÂΩ¢}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \subsection{‰
+                 ∏âËßíÂΩ¢}
+? 
+Missing character: There is no ‰ in font nullfont!
+Missing character: There is no ∏ in font nullfont!
+Missing character: There is no â in font nullfont!
+Missing character: There is no Ë in font nullfont!
+Missing character: There is no ß in font nullfont!
+Missing character: There is no í in font nullfont!
+Missing character: There is no Â in font nullfont!
+Missing character: There is no Ω in font nullfont!
+Missing character: There is no ¢ in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
+[] 
+ []
+
+Missing character: There is no Â in font nullfont!
+Missing character: There is no ç in font nullfont!
+Missing character: There is no ä in font nullfont!
+Missing character: There is no Â in font nullfont!
+Missing character: There is no ë in font nullfont!
+Missing character: There is no ® in font nullfont!
+Missing character: There is no È in font nullfont!
+Missing character: There is no ï in font nullfont!
+Missing character: There is no ø in font nullfont!
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 		\begin{align*}
+                    
+? 
+Missing character: There is no P in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no + in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no + in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no 2 in font nullfont!
+
+! LaTeX Error: \begin{enumerate} on input line 2 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 		\end{align*}
+                  
+? 
+Missing character: There is no È in font nullfont!
+Missing character: There is no ù in font nullfont!
+Missing character: There is no ¢ in font nullfont!
+Missing character: There is no Á in font nullfont!
+Missing character: There is no ß in font nullfont!
+Missing character: There is no Ø in font nullfont!
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 		\begin{align*}
+                    
+? 
+Missing character: There is no S in font nullfont!
+! Misplaced alignment tab character &.
+l.9 			S&
+         =aH_a/2\\
+? 
+Missing character: There is no = in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no H in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.9 			S&=aH_
+             a/2\\
+? 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 9.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 9.
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.10 			&
+         =ab\sin(C)/2\\
+? 
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.11 			&
+         =\sqrt{P(P-a)(P-b)(P-c)}
+? 
+
+! LaTeX Error: \begin{enumerate} on input line 2 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 		\end{align*}
+                   
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.12 		\end{align*}
+                   
+? 
+
+Overfull \hbox (14.83768pt too wide) in paragraph at lines 7--13
+[]\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 7--13
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (49.1623pt too wide) in paragraph at lines 7--13
+\OML/cmm/m/it/10 ab []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C\OT1/cmr/m/n/10 )\OML/
+cmm/m/it/10 =\OT1/cmr/m/n/10 2[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 7--13
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (115.14108pt too wide) in paragraph at lines 7--13
+[]$ 
+ []
+
+Missing character: There is no ‰ in font nullfont!
+Missing character: There is no ∏ in font nullfont!
+Missing character: There is no ≠ in font nullfont!
+Missing character: There is no Á in font nullfont!
+Missing character: There is no ∫ in font nullfont!
+Missing character: There is no ø in font nullfont!
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 		\begin{align*}
+                     
+? 
+Missing character: There is no M in font nullfont!
+Missing character: There is no a in font nullfont!
+! Misplaced alignment tab character &.
+l.15 			Ma&
+           =\sqrt{2(b^2+c^2)-a^2)}/2\\
+? 
+Missing character: There is no = in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.15 			Ma&=\sqrt{
+                  2(b^2+c^2)-a^2)}/2\\
+? 
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.16 			&
+         =\sqrt{b^2+c^2+2bc\cos(A)}/2
+? 
+
+! LaTeX Error: \begin{enumerate} on input line 2 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 		\end{align*}
+                   
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.17 		\end{align*}
+                   
+? 
+
+Overfull \hbox (88.47453pt too wide) in paragraph at lines 13--18
+[]\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2[] 
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 13--18
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (105.98837pt too wide) in paragraph at lines 13--18
+[]\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2$ 
+ []
+
+Missing character: There is no Ë in font nullfont!
+Missing character: There is no ß in font nullfont!
+Missing character: There is no í in font nullfont!
+Missing character: There is no Â in font nullfont!
+Missing character: There is no π in font nullfont!
+Missing character: There is no ≥ in font nullfont!
+Missing character: There is no Â in font nullfont!
+Missing character: There is no à in font nullfont!
+Missing character: There is n

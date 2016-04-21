@@ -1,0 +1,564 @@
+极大团搜索算法\\
+Int g[][]为图的邻接矩阵。\\
+MC(V)表示点集V的最大团\\
+令Si={vi, vi+1, ..., vn}, mc[i]表示MC(Si)\\
+倒着算mc[i],那么显然MC(V)=mc[1]\\
+此外有mc[i]=mc[i+1] or mc[i]=mc[i+1]+1\\
+\begin{lstlisting}
+void init(){
+	int i, j;
+	for (i=1; i<=n; ++i) for (j=1; j<=n; ++j) scanf("%d", &g[i][j]);
+}
+void dfs(int size){
+	int i, j, k;
+	if (len[size]==0) {
+		if (size>ans) {
+			ans=size; found=true;
+		}
+		return;
+	}
+	for (k=0; k<len[size] && !found; ++k) {
+		if (size+len[size]-k<=ans) break;
+		i=list[size][k];
+		if (size+mc[i]<=ans) break;
+		for (j=k+1, len[size+1]=0; j<len[size]; ++j)
+			if (g[i][list[size][j]]) list[size+1][len[size+1]++]=list[size][j];
+		dfs(size+1);
+	}
+}
+void work(){
+	int i, j;
+	mc[n]=ans=1;
+	for (i=n-1; i; --i) {
+		found=false;
+		len[1]=0;
+		for (j=i+1; j<=n; ++j) if (g[i][j]) list[1][len[1]++]=j;
+		dfs(1);
+		mc[i]=ans;
+	}
+}
+void print(){
+	printf("%d\n", ans);
+}
+\end{lstlisting}
+极大团的计数
+Bool g[][] 为图的邻接矩阵,图点的标号由1至n。\\
+\begin{lstlisting}
+void dfs(int size){
+	int i, j, k, t, cnt, best = 0;
+	bool bb;
+	if (ne[size]==ce[size]){
+		if (ce[size]==0) ++ans;
+		return;
+	}
+	for (t=0, i=1; i<=ne[size]; ++i) {
+		for (cnt=0, j=ne[size]+1; j<=ce[size]; ++j)
+			if (!g[list[size][i]][list[size][j]]) ++cnt;
+		if (t==0 || cnt<best) t=i, best=cnt;
+	}
+	if (t && best<=0) return;
+	for (k=ne[size]+1; k<=ce[size]; ++k) {
+		if (t>0){
+			for (i=k; i<=ce[size]; ++i) if (!g[list[size][t]][list[size][i]])
+				break;
+			swap(list[size][k], list[size][i]);
+		}
+		i=list[size][k];
+		ne[size+1]=ce[size+1]=0;
+		for (j=1; j<k; ++j)if (g[i][list[size][j]])
+			list[size+1][++ne[size+1]]=list[size][j];
+		for (ce[size+1]=ne[size+1], j=k+1; j<=ce[size]; ++j)
+			if (g[i][list[size][j]]) list[size+1][++ce[size+1]]=list[size][j];
+		dfs(size+1);
+		++ne[size];
+		--best;
+		for (j=k+1, cnt=0; j<=ce[size]; ++j) if (!g[i][list[size][j]]) ++cnt;
+		if (t==0 || cnt<best) t=k, best=cnt;
+		if (t && best<=0) break;
+	}
+}
+int work(){
+	int i;
+	ne[0]=0; ce[0]=0;
+	for (i=1; i<=n; ++i) list[0][++ce[0]]=i;
+	ans=0;
+	dfs(0);
+	return 0;
+}
+\end{lstlisting}
+多项式求根(求导二分)
+\begin{lstlisting}
+const double error=1e-12;
+const double infi=1e+12;
+double a[10],x[10];
+int n;
+int sign(double x) {
+	return (x<-error)?(-1):(x>error);
+}
+double f(double a[],int n,double x) {
+	double tmp=1,sum=0;
+	for (int i=0;i<=n;i++) {
+		sum=sum+a[i]*tmp;
+		tmp=tmp*x;
+	}
+	return sum;
+}
+double binary(double l,double r,double a[],int n) {
+	int sl=sign(f(a,n,l)),sr=sign(f(a,n,r));
+	if (sl==0) return l;
+	if (sr==0) return r;
+	if (sl*sr>0) return infi;
+	while (r-l>error) {
+		double mid=(l+r)/2;
+		int ss=sign(f(a,n,mid));
+		if (ss==0) return mid;
+		if (ss*sl>0) l=mid; else r=mid;
+	}
+	return l;
+}
+void solve(int n,double a[],double x[],int &nx) {
+	if (n==1) {
+		x[1]=-a[0]/a[1];
+		nx=1;
+		return;
+	}
+	double da[10],dx[10];
+	int ndx;
+	for (int i=n;i>=1;i--) da[i-1]=a[i]*i;
+	solve(n-1,da,dx,ndx);
+	nx=0;
+	if (ndx==0) {
+		double tmp=binary(-infi,infi,a,n);
+		if (tmp<infi) x[++nx]=tmp;
+		return;
+	}
+	double tmp;
+	tmp=binary(-infi,dx[1],a,n);
+	if (tmp<infi) x[++nx]=tmp;
+	for (int i=1;i<=ndx-1;i++) {
+		tmp=binary(dx[i],dx[i+1],a,n);
+		if (tmp<infi) x[++nx]=tmp;
+	}
+	tmp=binary(dx[ndx],infi,a,n);
+	if (tmp<infi) x[++nx]=tmp;
+}
+int main() {
+	scanf("%d",&n);
+	for (int i=n;i>=0;i--) scanf("%lf",&a[i]);
+	int nx;
+	solve(n,a,x,nx);
+	for (int i=1;i<=nx;i++) printf("%0.6lf\n",x[i]);
+	return 0;
+}
+\end{lstlisting}
+有多少个点在多边形内
+\begin{lstlisting}
+//rn中的标号必须逆时针给出。一开始要旋转坐标,保证同一个x值上只有一个点。正向减点,
+//反向加点。num[i][j]=num[j][i]=严格在这根线下方的点。 on[i][j]=on[j][i]=严格
+//在线段上的点,包括两个端点。若有回边的话注意计算onit的方法,不要多算了线段上的点。
+int ans=0,z,onit=0,lows=0;
+rep(z,t) {
+	i=rn[z]; j=rn[z+1]; onit+=on[i][j]-1;
+	if (a[j].x>a[i].x){ans-=num[i][j];lows+=on[i][j]-1;}
+	else ans+=num[i][j];
+}
+//ans-lows+1 is inside. 只会多算一次正向上的点(除去最左和最右的点)。Lows只算了除开最左边的点,但会多算最右边的点,所以要再加上1.
+printf("%d\n",ans-lows+1+ onit);
+\end{lstlisting}
+斜线下格点统计
+\begin{lstlisting}
+LL solve(LL n, LL a, LL b, LL m){
+	//计算for (int i=0;i<n;++i) s+=floor((a+b*i)/m)
+	//n,m,a,b>0
+	//printf("%lld %lld %lld %lld\n", n, a, b, m);
+	if(b == 0){
+		return n * (a / m);
+	}
+	if(a >= m){
+		return n * (a / m) + solve(n, a % m, b, m);
+	}
+	if(b >= m){
+		return (n - 1) * n / 2 * (b / m) + solve(n, a, b % m, m);
+	}
+	LL q = (a + b * n) / m;
+	return solve(q, (a + b * n) % m, m, b);
+}
+\end{lstlisting}
+素数判定（long long内确定性算法）
+\begin{lstlisting}
+int strong_pseudo_primetest(long long n,int base) {
+	long long n2=n-1,res;
+	int s; s=0;
+	while(n2%2==0) n2>>=1,s++;
+	res=powmod(base,n2,n);
+	if((res==1)||(res==n-1)) return 1;
+	s--;
+	while(s>=0) {
+		res=mulmod(res,res,n);
+		if(res==n-1) return 1;
+		s--;
+	}
+	return 0; // n is not a strong pseudo prime
+}
+int isprime(long long n) {
+	if(n<2) return 0;
+	if(n<4) return 1;
+	if(strong_pseudo_primetest(n,2)==0) return 0;
+	if(strong_pseudo_primetest(n,3)==0) return 0;
+	if(n<1373653LL) return 1;
+	if(strong_pseudo_primetest(n,5)==0) return 0;
+	if(n<25326001LL) return 1;
+	if(strong_pseudo_primetest(n,7)==0) return 0;
+	if(n==3215031751LL) return 0;
+	if(n<25000000000LL) return 1;
+	if(strong_pseudo_primetest(n,11)==0) return 0;
+	if(n<2152302898747LL) return 1;
+	if(strong_pseudo_primetest(n,13)==0) return 0;
+	if(n<3474749660383LL) return 1;
+	if(strong_pseudo_primetest(n,17)==0) return 0;
+	if(n<341550071728321LL) return 1;
+	if(strong_pseudo_primetest(n,19)==0) return 0;
+	if(strong_pseudo_primetest(n,23)==0) return 0;
+	if(strong_pseudo_primetest(n,29)==0) return 0;
+	if(strong_pseudo_primetest(n,31)==0) return 0;
+	if(strong_pseudo_primetest(n,37)==0) return 0;
+	return 1;
+}
+\end{lstlisting}
+O(p)求 1..p-1 的逆元
+\begin{lstlisting}
+void solve (int m) {
+	int inv[m];
+	inv[1] = 1;
+	for (int i = 2; i < m; ++ i) {
+		inv[i] = ((long long)(m - m / i) * inv[m % i]) % m;
+	}
+}
+\end{lstlisting}
+广义离散对数(不需要互质)
+\begin{lstlisting}
+void extendedGcd (int a, int b, long long &x, long long y) {
+	if (b) {
+		extendedGcd(b, a % b, y, x);
+		y -= a / b * x;
+	} else {
+		x = a;
+		y = 0;
+	}
+}
+int inverse (int a, int m) {
+	long long x, y;
+	extendedGcd(a, m, x, y);
+	return (x % m + m) % m;
+}
+// a ^ x = b (mod m)
+int solve (int a, int b, int m) {
+	int tmp = 1 % m, c;
+	map<int, int> s;
+	if (tmp == b) {
+		return 0;
+	}
+	for (int i = 1; i <= 50; ++ i) {
+		tmp = ((long long)tmp * a) % m;
+		if (tmp == b) {
+			return i;
+		}
+	}
+	int x_0 = 0, d = 1 % m;
+	while (true) {
+		tmp = gcd(a, m);
+		if (tmp == 1) {
+			break;
+		}
+		x_0 ++;
+		d = ((long long)d * (a / tmp)) % m;
+		if (b % tmp) {
+			return -1;
+		}
+		b /= tmp;
+		m /= tmp;
+	}
+	b = ((long long)b * inverse(d, m)) % m;
+	c = int(ceil(sqrt(m)));
+	s.clear();
+	tmp = b;
+	int tmpInv = intverse(a, m);
+	for (int i = 0; i != c; ++ i) {
+		if (s.find(tmp) == s.end()) {
+			s[tmp] = i;
+		}
+		tmp = ((long long)tmp * tmpInv) % m;
+	}
+	tmp = 1;
+	for (int i = 0; i != c; ++ i) {
+		tmp = ((long long)tmp * a) % m;
+	}
+	int ans = 1;
+	for (int i = 0; i != c; ++ i) {
+		if (s.find(ans) != s.end()) {
+			return x_0 + i * c + s.find(ans)->second;
+		}
+		ans = ((long long)ans * tmp) % m;
+	}
+	return -1;
+}
+\end{lstlisting}
+n次剩余
+\begin{lstlisting}
+const int LimitSave=100000;
+long long P,K,A;
+vector<long long>ans;
+struct tp{
+	long long expo,res;
+}data[LimitSave+100];
+long long _mod(long long a, long long mo) {
+	a=a%mo;
+	if (a<0) a+=mo;
+	return a;
+}
+long long powers(long long a , long long K , long long modular) {
+	long long res;
+	res=1;
+	while (K!=0) {
+		if (K & 1) res=_mod(res*a,modular);
+		K=K>>1;
+		a=_mod(a*a , modular);
+	}
+	return res;
+}
+long long get_originroot(long long p) {
+	long long primes[100];
+	long long tot,i,tp,j;
+	i=2; tp=P-1; tot=0;
+	while (i*i<=P-1) {
+		if (_mod(tp,i)==0) {
+			tot++;
+			primes[tot]=i;
+			while (_mod(tp,i)==0) tp/=i;
+		}
+		i++;
+	}
+	if (tp!=1) {tot++; primes[tot]=tp;}
+	i=2;
+	bool ok;
+	while (1) {
+		ok=true;
+		foru(j,1,tot) {
+			if (powers(i, (P-1)/primes[j] , P)==1) {
+				150
+				ok=false;
+				break;
+			}
+		}
+		if (ok) break;
+		i++;
+	}
+	return i;
+}
+bool
+euclid_extend(long long A ,long long B ,long long C ,long long &x, long
+long &y, long long
+&gcdnum) {
+	long long t;
+	if (A==0) {
+		gcdnum = B;
+		if (_mod(C , B) ==0) {
+			x=0; y=C/B;
+			return true;
+		}
+		else return false;
+	}
+	else if (euclid_extend(_mod(B , A) , A , C , y , t , gcdnum)) {
+		x = t - int(B / A) * y;
+		return true;
+	}
+	else return false;
+}
+long long Division(long long A, long long B, long long modular) {
+	long long gcdnum,K,Y;
+	euclid_extend(modular, B,A,K,Y,gcdnum);
+	Y=_mod(Y,modular);
+	if (Y<0) Y+=modular;
+	return Y;
+}
+bool Binary_Search(long long key, long long &position) {
+	long long start,stop;
+	start=1; stop=LimitSave;
+	bool flag=true;
+	while (start<=stop) {
+		position=(start+stop)/2;
+		if (data[position].res==key) return true;
+		else
+			if (data[position].res<key) start=position+1;
+			else stop=position-1;
+	}
+	return false;
+}
+bool compareab(const tp &a, const tp &b) {
+	return a.res<b.res;
+}
+long long get_log(long long root, long long A, long long modular) {
+	long long i,j,times,XD,XT,position;
+	if (modular-1<LimitSave) {
+		long long now=1;
+		foru(i,0,modular-1) {
+			if (now==A) {
+				return i;
+			}
+			now=_mod(now * root , modular);
+		}
+	}
+	data[1].expo=0; data[1].res=1;
+	foru(i,1,LimitSave-1) {
+		data[i+1].expo=i;
+		data[i+1].res=_mod(data[i].res*root,modular);
+	}
+	sort(data+1,data+LimitSave+1,compareab);
+	times=powers(root,LimitSave,modular);
+	j=0;
+	XD=1;
+	while (1) {
+		XT=Division(A,XD,modular);
+		if (Binary_Search(XT,position)) {
+			return j+data[position].expo;
+		}
+		j=j+LimitSave;
+		XD=_mod(XD*times,modular);
+	}
+}
+void work_ans() {
+	ans.clear();
+	if (A==0) {
+		ans.push_back(0);
+		return;
+	}
+	long long root,logs,delta,deltapower,now,gcdnum, i,x,y;
+	root=get_originroot(P);
+	logs=get_log(root,A,P);
+	if (euclid_extend(K,P-1,logs,x,y,gcdnum)) {
+		delta=(P-1)/gcdnum;
+		x=_mod(x,delta);
+		if (x<0) x+=delta;
+		now=powers(root,x,P);
+		deltapower=powers(root,delta,P);
+		while (x<P-1) {
+			ans.push_back(now);
+			now=_mod(now*deltapower,P);
+			x=x+delta;
+		}
+	}
+	if (ans.size()>1)
+		sort(ans.begin(),ans.end());
+}
+int main(){
+	int i,j,k,test,cases=0;
+	scanf("%d",&test);
+	prepare();
+	while (test) {
+		test--;
+		cin>>P>>K>>A;
+		A=A % P;
+		//x^K mod P = A
+		cases++;
+		printf("Case #%d:\n",cases);
+		work_ans();
+	}
+	return 0;
+}
+\end{lstlisting}
+二次剩余
+\begin{lstlisting}
+/*
+   a*x^2+b*x+c==0 (mod P)
+   求 0..P-1 的根
+ */
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#define sqr(x) ((x)*(x))
+int pDiv2,P,a,b,c,Pb,d;
+inline int calc(int x,int Time)
+{
+	if (!Time) return 1;
+	int tmp=calc(x,Time/2);
+	tmp=(long long)tmp*tmp%P;
+	if (Time&1) tmp=(long long)tmp*x%P;
+	return tmp;
+}
+inline int rev(int x)
+{
+	if (!x) return 0;
+	return calc(x,P-2);
+}
+inline void Compute()
+{
+	while (1)
+	{
+		b=rand()%(P-2)+2;
+		if (calc(b,pDiv2)+1==P) return;
+	}
+}
+int main()
+{
+	srand(time(0)^312314);
+	int T;
+	for (scanf("%d",&T);T;--T)
+	{
+		scanf("%d%d%d%d",&a,&b,&c,&P);
+		if (P==2)
+		{
+			int cnt=0;
+			for (int i=0;i<2;++i)
+				if ((a*i*i+b*i+c)%P==0) ++cnt;
+			printf("%d",cnt);
+			for (int i=0;i<2;++i)
+				if ((a*i*i+b*i+c)%P==0) printf(" %d",i);
+			puts("");
+		}else
+		{
+			int delta=(long long)b*rev(a)*rev(2)%P;
+			a=(long long)c*rev(a)%P-sqr( (long long)delta )%P;
+			a%=P;a+=P;a%=P;
+			a=P-a;a%=P;
+			pDiv2=P/2;
+			if (calc(a,pDiv2)+1==P) puts("0");
+			else
+			{
+				int t=0,h=pDiv2;
+				while (!(h%2)) ++t,h/=2;
+				int root=calc(a,h/2);
+				if (t>0)
+				{
+					Compute();
+					Pb=calc(b,h);
+				}
+				for (int i=1;i<=t;++i)
+				{
+					d=(long long)root*root*a%P;
+					for (int j=1;j<=t-i;++j)
+						d=(long long)d*d%P;
+					if (d+1==P)
+						root=(long long)root*Pb%P;
+					Pb=(long long)Pb*Pb%P;
+				}
+				root=(long long)a*root%P;
+				int root1=P-root;
+				root-=delta;
+				root%=P;
+				if (root<0) root+=P;
+				root1-=delta;
+				root1%=P;
+				if (root1<0) root1+=P;
+				if (root>root1)
+				{
+					t=root;root=root1;root1=t;
+				}
+				if (root==root1) printf("1 %d\n",root);
+				else printf("2 %d %d\n",root,root1);
+			}
+		}
+	}
+	return 0;
+}
+\end{lstlisting}
+

@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// 注意初始化 null 节点，单点的 isRoot 初始为 true}
+\PYG{k}{struct} \PYG{n}{Node}\PYG{p}{\PYGZob{}}
+	\PYG{n}{Node} \PYG{o}{*}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{],}\PYG{o}{*}\PYG{n}{p}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{isRoot}\PYG{p}{;}
+	\PYG{k+kt}{bool} \PYG{n+nf}{dir}\PYG{p}{();} \PYG{k+kt}{void} \PYG{n+nf}{set}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{bool}\PYG{p}{);} \PYG{k+kt}{void} \PYG{n+nf}{update}\PYG{p}{();} \PYG{k+kt}{void} \PYG{n+nf}{relax}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}} \PYG{o}{*}\PYG{n}{null}\PYG{p}{;}
+\PYG{k+kt}{void} \PYG{n+nf}{rot}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{Node} \PYG{o}{*}\PYG{n}{p}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{;} \PYG{k+kt}{bool} \PYG{n}{d}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{();}
+	\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();} \PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{o}{!}\PYG{n}{d}\PYG{p}{],}\PYG{n}{d}\PYG{p}{);}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{p}{)} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{=}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{,}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{p}{,}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{p}{);}
+	\PYG{k}{else} \PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{());}
+	\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{o}{!}\PYG{n}{d}\PYG{p}{);} \PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{splay}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();}\PYG{o}{!}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{p}{;)}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{p}{)} \PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{);}
+		\PYG{k}{else} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{()}\PYG{o}{==}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{()} \PYG{o}{?}\PYG{p}{(}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{),}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{))} \PYG{o}{:}\PYG{p}{(}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{),}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{));}
+	\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{access}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+	\PYG{k}{for}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{s}\PYG{o}{=}\PYG{n}{null}\PYG{p}{;} \PYG{n}{t}\PYG{o}{!=}\PYG{n}{null}\PYG{p}{;} \PYG{n}{s}\PYG{o}{=}\PYG{n}{t}\PYG{p}{,}\PYG{n}{t}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{splay}\PYG{p}{(}\PYG{n}{t}\PYG{p}{);}
+		\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{o}{=}\PYG{n+nb}{true}\PYG{p}{;} \PYG{n}{s}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{isRoot}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;}
+		\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{=}\PYG{n}{s}\PYG{p}{;} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{dir}\PYG{p}{()\PYGZob{}} \PYG{k}{return} \PYG{k}{this}\PYG{o}{==}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{set}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{,}\PYG{k+kt}{bool} \PYG{n}{\PYGZus{}d}\PYG{p}{)\PYGZob{}} \PYG{n}{ch}\PYG{p}{[}\PYG{n}{\PYGZus{}d}\PYG{p}{]}\PYG{o}{=}\PYG{n}{t}\PYG{p}{;} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{=}\PYG{k}{this}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{update}\PYG{p}{()\PYGZob{}\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{relax}\PYG{p}{()\PYGZob{}} \PYG{k}{if}\PYG{p}{(}\PYG{k}{this}\PYG{o}{==}\PYG{n}{null}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

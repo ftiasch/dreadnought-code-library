@@ -1,0 +1,97 @@
+\begin{lstlisting}
+//http://acm.sdut.edu.cn/judgeonline/showproblem?problem_id=1861 有根树的同构 
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+
+using namespace std;
+
+const int mm=1051697,p=4773737;
+int m,n,first[101],where[10001],next[10001],l,hash[10001],size[10001],pos[10001];
+long long f[10001],rt[10001];
+bool in[10001];
+
+
+inline void makelist(int x,int y){
+    where[++l]=y;
+    next[l]=first[x];
+    first[x]=l;
+}
+
+
+inline void hashwork(int now){
+    int a[1001],v[1001],tot=0;
+    size[now]=1;
+    for (int x=first[now];x;x=next[x])
+    {
+        hashwork(where[x]);
+        a[++tot]=f[where[x]];
+        v[tot]=size[where[x]];
+        size[now]+=size[where[x]];
+    }
+    a[++tot]=size[now];
+    v[tot]=1;
+    int len=0;
+    for (int i=1;i<=tot;i++) 
+       for (int j=i+1;j<=tot;j++)
+          if (a[j]<a[i])
+          {
+             int u=a[i];a[i]=a[j];a[j]=u;
+             u=v[i];v[i]=v[j];v[j]=u;
+          }
+    f[now]=1;
+    for (int i=1;i<=tot;i++)
+       {
+             f[now]=((f[now]*a[i])%p*rt[len])%p;
+             len+=v[i];
+       }
+}
+
+int main(){
+    //freopen("1.txt","r",stdin);
+    //freopen("2.txt","w",stdout);
+    scanf("%d%d",&n,&m);
+    rt[0]=1;
+    for (int i=1;i<=100;i++)
+        rt[i]=(rt[i-1]*mm)%p; 
+    for (int i=1;i<=n;i++)
+    {
+        memset(first,0,sizeof(first));
+        memset(in,false,sizeof(in));
+        l=0;
+        for (int j=1;j<m;j++)
+        {
+            int x,y;
+            scanf("%d%d",&x,&y);
+            makelist(x,y);
+            in[y]=true;
+        }
+        int root=0;
+        for (int j=1;j<=m;j++)
+        if (!in[j]) 
+        {
+            root=j;
+            break;
+        }
+        memset(size,0,sizeof(size));
+        memset(f,0,sizeof(f));
+        hashwork(root);
+        hash[i]=f[root];
+    }
+    for (int i=1;i<=n;i++) pos[i]=i;
+    memset(in,false,sizeof(in));
+    for (int i=1;i<=n;i++)
+     if (!in[i])
+     {
+                printf("%d",i);
+                for (int j=i+1;j<=n;j++)
+                if (hash[j]==hash[i])
+                {
+                    in[j]=true;
+                    printf("=%d",j);
+                }       
+                printf("\n");
+     }
+}
+\end{lstlisting}           

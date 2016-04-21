@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{point} \PYG{n}{ORI}\PYG{p}{;}
+\PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{;}
+\PYG{n}{point} \PYG{n}{info}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{c+c1}{// 用有向面积，划分成一个三角形和圆的面积的交 }
+\PYG{k+kt}{double} \PYG{n+nf}{area2}\PYG{p}{(}\PYG{n}{point} \PYG{n}{pa}\PYG{p}{,} \PYG{n}{point} \PYG{n}{pb}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{pa}\PYG{p}{.}\PYG{n}{len}\PYG{p}{()} \PYG{o}{\PYGZlt{}} \PYG{n}{pb}\PYG{p}{.}\PYG{n}{len}\PYG{p}{())} \PYG{n}{swap}\PYG{p}{(}\PYG{n}{pa}\PYG{p}{,} \PYG{n}{pb}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{pb}\PYG{p}{.}\PYG{n}{len}\PYG{p}{()} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k+kt}{double} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{B}\PYG{p}{,} \PYG{n}{C}\PYG{p}{,} \PYG{n}{sinB}\PYG{p}{,} \PYG{n}{cosB}\PYG{p}{,} \PYG{n}{sinC}\PYG{p}{,} \PYG{n}{cosC}\PYG{p}{,} \PYG{n}{S}\PYG{p}{,} \PYG{n}{h}\PYG{p}{,} \PYG{n}{theta}\PYG{p}{;}
+	\PYG{n}{a} \PYG{o}{=} \PYG{n}{pb}\PYG{p}{.}\PYG{n}{len}\PYG{p}{();}
+	\PYG{n}{b} \PYG{o}{=} \PYG{n}{pa}\PYG{p}{.}\PYG{n}{len}\PYG{p}{();}
+	\PYG{n}{c} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pb} \PYG{o}{\PYGZhy{}} \PYG{n}{pa}\PYG{p}{).}\PYG{n}{len}\PYG{p}{();}
+	\PYG{n}{cosB} \PYG{o}{=} \PYG{n}{dot}\PYG{p}{(}\PYG{n}{pb}\PYG{p}{,} \PYG{n}{pb} \PYG{o}{\PYGZhy{}} \PYG{n}{pa}\PYG{p}{)} \PYG{o}{/} \PYG{n}{a} \PYG{o}{/} \PYG{n}{c}\PYG{p}{;}
+	\PYG{n}{B} \PYG{o}{=} \PYG{n}{acos}\PYG{p}{(}\PYG{n}{cosB}\PYG{p}{);}
+	\PYG{n}{cosC} \PYG{o}{=} \PYG{n}{dot}\PYG{p}{(}\PYG{n}{pa}\PYG{p}{,} \PYG{n}{pb}\PYG{p}{)} \PYG{o}{/} \PYG{n}{a} \PYG{o}{/} \PYG{n}{b}\PYG{p}{;}
+	\PYG{n}{C} \PYG{o}{=} \PYG{n}{acos}\PYG{p}{(}\PYG{n}{cosC}\PYG{p}{);}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{S} \PYG{o}{=} \PYG{p}{(}\PYG{n}{C}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{r}\PYG{o}{*}\PYG{n}{r}\PYG{p}{;}
+		\PYG{n}{h} \PYG{o}{=} \PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{C}\PYG{p}{)}\PYG{o}{/}\PYG{n}{c}\PYG{p}{;}
+		\PYG{k}{if} \PYG{p}{(}\PYG{n}{h} \PYG{o}{\PYGZlt{}} \PYG{n}{r} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{B} \PYG{o}{\PYGZlt{}} \PYG{n}{PI}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{S} \PYG{o}{\PYGZhy{}=} \PYG{p}{(}\PYG{n}{acos}\PYG{p}{(}\PYG{n}{h}\PYG{o}{/}\PYG{n}{r}\PYG{p}{)}\PYG{o}{*}\PYG{n}{r}\PYG{o}{*}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{h}\PYG{o}{*}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{r}\PYG{o}{*}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{h}\PYG{o}{*}\PYG{n}{h}\PYG{p}{));}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{o}{\PYGZgt{}} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{theta} \PYG{o}{=} \PYG{n}{PI} \PYG{o}{\PYGZhy{}} \PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{asin}\PYG{p}{(}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)}\PYG{o}{/}\PYG{n}{r}\PYG{o}{*}\PYG{n}{a}\PYG{p}{);}
+		\PYG{n}{S} \PYG{o}{=} \PYG{l+m+mf}{.5}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{r}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{theta}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{theta}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{r}\PYG{o}{*}\PYG{n}{r}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+		\PYG{n}{S} \PYG{o}{=} \PYG{l+m+mf}{.5}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{C}\PYG{p}{)}\PYG{o}{*}\PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//printf(\PYGZdq{}res = \PYGZpc{}.4f\PYGZbs{}n\PYGZdq{}, S);}
+	\PYG{k}{return} \PYG{n}{S}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n+nf}{area}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{double} \PYG{n}{S} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{n}{S} \PYG{o}{+=} \PYG{n}{area2}\PYG{p}{(}\PYG{n}{info}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{info}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{*} \PYG{n}{Sign}\PYG{p}{(}\PYG{n}{cross}\PYG{p}{(}\PYG{n}{info}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{info}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]));}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(}\PYG{n}{S}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,168 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{listings} 
+\usepackage[top=1cm, bottom=2cm, left=2cm, right=1cm]{geometry}
+\usepackage[BoldFont]{xeCJK}
+\setlength{\parindent}{0em}
+\setCJKmainfont{微软雅黑}
+\lstset {
+    language=C++,
+    numbers=left,
+    tabsize=4,
+    breaklines=tr,
+    extendedchars=false
+}
+
+\title{\LARGE{Standard Code Library}}
+\author{Ceno Liu}
+\date{June, 2013}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Algorithms and Datastructures}
+
+	\section{*High Precision in C Plus Plus}
+	Comming Soon
+
+	\section{*Fraction Class}
+	Comming Soon
+
+	\section{Splay Tree}
+	注意初始化内存池和null节点，以及根据需要修改update和relax，区间必须是1-based
+	\input{splay.tex}
+
+	\section{Link/Cut Tree}
+	根据需求修改Node中的relax和update函数，修改access，以及Node的构造函数，注意初始化内存池和null节点
+	\input{LCT.tex}
+
+	\section{Binary Heap}
+	双射堆，ind[v]表示标号为v的节点在堆中的位置
+	\input{binary-heap.tex}
+
+	\section{Leftist Tree}
+	没写delete操作，注意初始化内存池和null节点
+	\input{leftist-tree.tex}
+
+	\section{Treap}
+	包含build, insert和erase，执行时注意初始化内存池和null节点
+	\input{treap.tex}
+
+	\section{Segment Tree}
+	包含建树和区间操作样例，没有写具体操作
+	\input{segment-tree.tex}
+
+	\section{Heavy-Light Decomposition}
+	包含BFS剖分过程，线段树部分视题目而定
+	\input{decomposition.tex}
+	
+	\section{KD Tree}
+	读入N个点，输出距离每个点的最近点。
+	\input{KDtree.tex}
+
+	\section{Manacher}
+	len[i] means the max palindrome length centered i/2\\
+	eg: cs = "abbacabbaddabbaae"\\
+	len = 1 0 1 4 1 0 1 0 9 0 1 0 1 4 1 0 1 0 1 10 1 0 1 0 1 4 1 0 1 2 1 0 1 0
+	\input{manacher.tex}
+	
+	\section{Z Algorithm}
+	传入字符串s和长度N，next[i]=LCP(s, s[i..N-1])
+	\input{z.tex}
+
+	\section{Aho-Corasick Automaton}
+	包含建trie和构造自动机的过程
+	\input{acautomaton.tex}
+
+	\section{Suffix Array}
+	对于串a求SA，长度为N，M为元素值范围，height[i]=LCP(suf[rank[i]],suf[rank[i]-1])
+	\input{suffix-array.tex}
+
+	\section{Suffix Automaton}
+	……保重
+	\input{suffix-automaton.tex}
+	
+	\section{*Dancing Links}
+	Comming Soon
+
+\chapter{Graph Theory and Network Algorithms}
+
+	\section{Dijkstra}
+	求s到其他点的最短路
+	\input{dijkstra.tex}
+
+	\section{*Minimum Directed Spanning Tree}
+	Comming Soon
+
+	\section{KuhnMunkres}
+	求完备匹配的最大权匹配，建好的完全图用w[][]存储，点数为N
+	\input{KM.tex}
+
+	\section{Maximum Flow}
+	iSAP算法求S到T的最大流，点数为cntN，边表存储在*E[]中
+	\input{maxflow.tex}
+
+	\section{Minimum Cost Maximum Flow}
+	注意图的初始化，费用和流的类型依题目而定
+	\input{mincostflow.tex}
+
+	\section{Strongly Connected Component}
+	N个点的图求SCC，totID为时间标记，top为栈顶，totCol为强联通分量个数，注意初始化
+	\input{SCC.tex}
+	
+	\section{*2-SAT}
+	Comming Soon
+
+\chapter{Number Theory}
+	\section{Chinese Remainder Theorem}
+	包括扩展欧几里得，求逆元，和保证除数互质条件下的CRT
+	\input{crt.tex}
+
+	\section{Pollard's Rho and Miller-Rabbin}
+	大数分解和素性判断
+	\input{rho.tex}
+	
+	\section{*Baby-step Giant-step}
+	Comming soon
+	
+\chapter{Algebraic Algorithms}
+
+	\section{*Linear Equations in $Z_m$}
+	Comming Soon
+	
+	\section{*Linear Equations in $R$}
+	Comming Soon
+	
+	\section{*Fast Fourier Transform}
+	Comming Soon
+
+\chapter{Computational Geometry}
+	
+	\section{Basic Operations}
+	平面几何基本操作，之后的几个都需要先敲它
+	\input{Geo-basic.tex}
+	
+	\section{Convex Hull}
+	Montone Chain
+	\input{Geo-convexhull.tex}
+	
+	\section{Convex Diameter}
+	\input{Geo-diameter.tex}
+	
+	\section{Convex Cut}
+	\input{Geo-convexcut.tex}
+
+\chapter{Classic Problems}
+	\section{Nim Game}
+		对于N堆石子，每人轮流取\\
+		1）每堆石子个数为1，根据奇偶性直接判胜负\\
+		2）有一堆个数大于1，先手必胜（直接根据奇偶性调整留一个还是取光）\\
+		3）Nim游戏：每堆个数任意，xor和为0则为必败态，否则必胜，证明略\\
+		4）Moore's Nim K游戏：从最少1堆最多K堆中取任意数量的石子，结论：把所有堆的石子个数按二进制表示，如果任意一位一的个数总和都为K+1的倍数则为必败态，否则为必胜态，显然Nim是K=1的特殊情况。\\
+		5）anti-nim游戏：取到最后一个石子为败，结论：必胜态当且仅当：1）所有堆石子数都为1且游戏的SG值为0,2）存在某堆石子数大于1且游戏的sg值不为0\\
+
+\end{document}

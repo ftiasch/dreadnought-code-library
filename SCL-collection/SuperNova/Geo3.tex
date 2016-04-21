@@ -1,0 +1,161 @@
+\begin{lstlisting}
+#include<cstring>
+#include<cstdio>
+#include<vector>
+#include<algorithm>
+#include<set>
+#include<string>
+#include<cmath>
+using namespace std;
+multiset<string> st;
+struct triple
+{
+	double x, y, z;
+	double sqrlen() {return x * x + y * y + z * z;}
+	double len() {return sqrt(sqrlen());}
+	triple(){}
+	triple(double _x, double _y, double _z) : x(_x), y(_y), z(_z){}
+} a[111];
+char name[111][211];
+bool flag, ext[111];
+int l, real[111], cnt, n, f[111][111];
+struct plane
+{
+	int a[3];
+	plane(int _x, int _y, int _z)
+	{
+		a[0] = _x;
+		a[1] = _y;
+		a[2] = _z;
+	}
+	int & operator [] (int x)
+	{
+		return a[x];
+	}
+};
+vector<plane> surf;
+triple operator * (const triple & a, const triple & b)
+{
+	return triple(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+}
+triple operator * (const double & lambda, const triple & b)
+{
+	return triple(lambda * b.x, lambda * b.y, lambda * b.z);
+}
+double operator % (const triple & a, const triple & b)
+{
+	return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+triple operator - (const triple & a, const triple & b)
+{
+	return triple(a.x - b.x, a.y - b.y, a.z - b.z);
+}
+triple operator + (const triple & a, const triple & b)
+{
+	return triple(a.x + b.x, a.y + b.y, a.z + b.z);
+}
+double volume(const triple & o, int j)//volume of a tetrahedron := {a point and a triangle undersurface}
+{
+	return (a[surf[j][0]] - o) * (a[surf[j][1]] - o) % (a[surf[j][2]] - o);//can be negative
+}
+double volume(int i, int j)
+{
+	return volume(a[i], j);
+}
+double above(int i, int j) {return volume(i, j) > 0;}//point above plane
+double on(int i, int j) {return volume(i, j) == 0;}//point on plane
+void print(const triple & x, char ch)
+{
+	printf("(%lf, %lf, %lf)%c", x.x, x.y, x.z, ch);
+}
+double dis(const triple & o, int j)//point to plane
+{
+	return fabs(volume(o, j) / ((a[surf[j][1]] - a[surf[j][0]]) * (a[surf[j][2]] - a[surf[j][0]])).len());
+}
+int main()
+{
+	double ans = 0;
+	for(int cv = 1; cv <= 2; cv++)
+	{
+		scanf("%d", &n);
+		for(int i = 1; i <= n; i++)
+		{
+			scanf("%lf%lf%lf", &a[i].x, &a[i].y, &a[i].z);
+		}
+		//->degenerate checking
+		flag = false;
+		for(int i = 3; i <= n; i++)
+		{
+			if(((a[1] - a[i]) * (a[2] - a[i])).sqrlen() != 0)
+			{
+				swap(a[3], a[i]);
+				swap(real[i], real[3]);
+				for(int j = 4; j <= n; j++)	
+				{
+					if((a[1] - a[j]) * (a[2] - a[j]) % (a[3] - a[j]) != 0)
+					{
+						swap(a[4], a[j]);
+						swap(real[4], real[j]);
+						flag = true;
+						break;
+					}
+				}
+				break;
+			}
+		}
+		/*if(flag == false)
+		{
+			//degenerate!
+		}else
+		{*/
+		//->convex polyhedra
+		memset(f, 0, sizeof(f));
+		surf.clear();
+		surf.push_back(plane(1, 2, 3));
+		surf.push_back(plane(3, 2, 1));
+		for(int i = 4; i <= n; i++)
+		{
+			vector<plane> tmp;
+			for(int j = 0; j < surf.size(); j++)
+				if(above(i, j))
+				{
+					for(int d = 0; d < 3; d++)
+					{
+						f[surf[j][d]][surf[j][(d + 2) % 3]] = i;
+					}
+				}else
+				{
+					tmp.push_back(surf[j]);
+				}
+			surf = tmp;
+			for(int j = surf.size() - 1; j >= 0; j--)
+			{
+				for(int d = 0; d < 3; d++)
+					if(f[surf[j][d]][surf[j][(d + 1) % 3]] == i) surf.push_back(plane(surf[j][(d + 1) % 3], surf[j][d], i));
+			}
+		}
+		//end convex polyhedra, result := surf
+		//->centre of gravity
+		double svol = 0;
+		triple qc(0, 0, 0);
+		for(int i = 0; i < surf.size(); i++)
+		{
+			double vol1 = volume(1, i);
+			qc = qc + (vol1 / 4) * (a[1] + a[surf[i][0]] + a[surf[i][1]] + a[surf[i][2]]);
+			svol += vol1;
+		}
+		qc = (1 / svol) * qc;
+		double mn = 1e9;
+		for(int i = 0; i < surf.size(); i++)
+		{
+			mn = min(mn, dis(qc, i));
+		}
+		ans += mn;
+		//end centre of gravity
+		//}
+	}
+	printf("%.5f\n", ans);
+	fclose(stdin);
+	return 0;
+}
+\end{lstlisting}

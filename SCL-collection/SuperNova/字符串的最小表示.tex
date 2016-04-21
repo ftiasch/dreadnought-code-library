@@ -1,0 +1,20 @@
+传入字符串s，返回i，表示以i开始的循环串字典序最小，但不保证i在同样字典序最小的循环串里起始位置最小
+\begin{lstlisting}
+int minCycle(char *a)
+{
+	int n = strlen(a);
+	for(int i = 0; i < n; ++ i) {
+		a[i + n] = a[i];
+	}
+	a[n + n] = 0;
+	int i = 0, j = 1, k = 0;
+	do {
+		for(k = 0; a[i + k] == a[j + k]; ++ k);
+		if (a[i + k] > a[j + k]) i = i + k + 1;
+		else j = j + k + 1;
+		j += i == j;
+		if (i > j) swap(i, j);
+	} while(j < n);
+	return i;
+}
+\end{lstlisting}

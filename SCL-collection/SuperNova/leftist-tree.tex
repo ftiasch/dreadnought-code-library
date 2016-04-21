@@ -1,0 +1,27 @@
+\begin{lstlisting}
+struct Node
+{
+	int dis, val;
+	Node *ch[2];
+} *null;
+
+Node* merge(Node *u, Node *v)
+{
+	if (u == null) return v;
+	if (v == null) return u;
+	if (u->val < v->val) swap(u, v);
+	u->ch[1] = merge(u->ch[1], v);
+	if (u->ch[1]->dis > u->ch[0]->dis)
+		swap(u->ch[1], u->ch[0]);
+	u->dis = u->ch[1]->dis + 1;
+	return u;
+}
+
+Node* newNode(int w)
+{
+	Node *t = totNode ++;
+	t->ch[0] = t->ch[1] = null;
+	t->val = w; t->dis = 0;
+	return t;
+}
+\end{lstlisting}

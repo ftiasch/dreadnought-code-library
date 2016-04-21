@@ -1,0 +1,47 @@
+\begin{lstlisting}
+
+struct acNode
+{
+    int id;
+    acNode *ch[26], *fail;
+} *totNode, *root, nodePool[MAX_V];
+
+acNode* newNode()
+{
+    acNode *now = totNode ++;
+    now->id = 0; now->fail = 0;
+    memset(now->ch, 0, sizeof now->ch);
+    return now;
+}
+
+void acInsert(char *c, int id)
+{
+    acNode *cur = root;
+    while (*c) {
+        int p = *c - 'A'; //change the index
+        if (! cur->ch[p]) cur->ch[p] = newNode();
+        cur = cur->ch[p];
+        ++ c;
+    }
+    cur->id = id;
+}
+
+void getFail()
+{
+    acNode *cur;
+    queue<acNode*> Q;
+    for(int i = 0; i < 26; ++ i)
+        if (root->ch[i]) {
+            root->ch[i]->fail = root;
+            Q.push(root->ch[i]);
+        } else root->ch[i] = root;
+    while (! Q.empty()) {
+        cur = Q.front(); Q.pop();
+        for(int i = 0; i < 26; ++ i)
+            if (cur->ch[i]) {
+                cur->ch[i]->fail = cur->fail->ch[i];
+                Q.push(cur->ch[i]);
+            } else cur->ch[i] = cur->fail->ch[i];
+    }
+}
+\end{lstlisting}

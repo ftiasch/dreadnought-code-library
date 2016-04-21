@@ -1,0 +1,135 @@
+\begin{lstlisting}
+const int MAX_N = 100000 + 10;
+const int MAX_NODE = 200000 + 10;
+const LL INF = 2000000000000000020LL;
+
+int N;
+
+struct Point
+{
+    int x, y, id;
+};
+
+LL dis(const Point &a, const Point &b)
+{
+    return 1LL * (a.x - b.x) * (a.x - b.x) + 1LL * (a.y - b.y) * (a.y - b.y);
+}
+
+struct Node
+{
+    Point p;
+    int maxX, minX, maxY, minY;
+    int l, r, d;
+    Node *ch[2];
+};
+
+LL ret;
+LL ans[MAX_N];
+Node *root;
+Point p[MAX_N], queryPoint;
+Node *totNode, nodePool[MAX_NODE];
+
+int cmpx(const Point &a, const Point &b)
+{
+    return a.x < b.x;
+}
+int cmpy(const Point &a, const Point &b)
+{
+    return a.y < b.y;
+}
+
+Node* newNode(int l, int r, Point p, int deep)
+{
+    Node *t = totNode ++;
+    t->l = l; t->r = r;
+    t->p = p; t->d = deep;
+    t->maxX = t->minX = p.x;
+    t->maxY = t->minY = p.y;
+    return t;
+}
+
+void updateInfo(Node *t, Node *p)
+{
+    t->maxX = max(t->maxX, p->maxX);
+    t->maxY = max(t->maxY, p->maxY);
+    t->minX = min(t->minX, p->minX);
+    t->minY = min(t->minY, p->minY);
+}
+
+Node* build(int l, int r, int deep)
+{
+    if (l == r) return NULL;
+    if (deep & 1) sort(p + l, p + r, cmpx);
+    else sort(p + l, p + r, cmpy);
+    int mid = (l + r) >> 1;
+    Node *t = newNode(l, r, p[mid], deep & 1);
+    if (l + 1 == r) return t;
+    t->ch[0] = build(l, mid, deep + 1);
+    t->ch[1] = build(mid + 1, r, deep + 1);
+    if (t->ch[0]) updateInfo(t, t->ch[0]);
+    if (t->ch[1]) updateInfo(t, t->ch[1]);
+    return t;
+}
+
+void updateAns(Point p)
+{
+    ret = min(ret, dis(p, queryPoint));
+}
+
+LL calc(Node *t, LL d)
+{
+    LL tmp;
+    if (d) {
+        if (queryPoint.x >= t->minX && queryPoint.x <= t->maxX) tmp = 0;
+        else tmp = min(abs(queryPoint.x - t->maxX), abs(queryPoint.x - t->minX));
+    } else {
+        if (queryPoint.y >= t->minY && queryPoint.y <= t->maxY) tmp = 0;
+        else tmp = min(abs(queryPoint.y - t->maxY), abs(queryPoint.y - t->minY));
+    }
+    return tmp * tmp;
+}
+
+void query(Node *t)
+{
+    if (t == NULL) return;
+    if (t->p.id != queryPoint.id) updateAns(t->p);
+    if (t->l + 1 == t->r) return;
+    LL dl = t->ch[0] ? calc(t->ch[0], t->d) : INF;
+    LL dr = t->ch[1] ? calc(t->ch[1], t->d) : INF;
+    if (dl < dr) {
+        query(t->ch[0]);
+        if (ret > dr) query(t->ch[1]);
+    } else {
+        query(t->ch[1]);
+        if (ret > dl) query(t->ch[0]);
+    }
+}
+
+void solve()
+{
+    scanf("%d", &N);
+    for(int i = 0; i < N; ++ i) {
+        scanf("%d%d", &p[i].x, &p[i].y);
+        p[i].id = i;
+    }
+    totNode = nodePool;
+    root = build(0, N, 1);
+    
+    for(int i = 0; i < N; ++ i) {
+        queryPoint = p[i];
+        ret = INF;
+        query(root);
+        ans[p[i].id] = ret;
+    }
+    for(int i = 0; i < N; ++ i)
+        printf("%I64d\n", ans[i]);
+}
+
+int main()
+{
+    int T; scanf("%d", &T);
+    for( ; T --; )
+        solve();
+    return 0;
+}
+\end{lstlisting}
