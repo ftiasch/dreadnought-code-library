@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.10.15)  21 APR 2016 23:31
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.18)  28 APR 2016 20:42
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2015/10/01> patch level 1
-Babel <3.9m> and hyphenation patterns for 79 languages loaded.
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
@@ -61,50 +61,44 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 Package color Info: Driver file: xetex.def on input line 142.
 
 (/usr/local/texlive/2015/texmf-dist/tex/xelatex/xetex-def/xetex.def
-File: xetex.def 2015/09/11 v4.06 LaTeX color/graphics driver for XeTeX (TeX Liv
+File: xetex.def 2015/03/25 v4.04 LaTeX color/graphics driver for XeTeX (TeX Liv
 e/RRM/JK)
-
-(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)))
+))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fontspec/fontspec.sty
-Package: fontspec 2015/09/24 v2.4e Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLaTeX
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2015/09/27 v6111 L3 programming layer (loader) 
+Package: expl3 2015/06/15 v5630 L3 programming layer (loader) 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-Package: expl3 2015/09/27 v6111 L3 programming layer (code) 
-L3 Module: l3bootstrap 2015/09/10 v5983 L3 Bootstrap code
-L3 Module: l3names 2015/09/27 v6108 L3 Namespace for primitives
-L3 Module: l3basics 2015/09/22 v6033 L3 Basic definitions
-L3 Module: l3expan 2015/09/10 v5983 L3 Argument expansion
-L3 Module: l3tl 2015/09/23 v6037 L3 Token lists
-L3 Module: l3str 2015/09/20 v6021 L3 Strings
-L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
-L3 Module: l3int 2015/09/25 v6089 L3 Integers
+Package: expl3 2015/06/15 v5630 L3 programming layer (code) 
+L3 Module: l3bootstrap 2015/05/20 v5608 L3 Bootstrap code
+L3 Module: l3names 2015/02/24 v5535 L3 Namespace for primitives
+L3 Module: l3basics 2015/01/27 v5500 L3 Basic definitions
+L3 Module: l3expan 2014/11/27 v5472 L3 Argument expansion
+L3 Module: l3tl 2015/01/27 v5500 L3 Token lists
+L3 Module: l3str 2015/03/01 v5545 L3 Strings
+L3 Module: l3seq 2014/08/23 v5354 L3 Sequences and stacks
+L3 Module: l3int 2015/02/21 v5529 L3 Integers
 \c_max_int=\count95
 \l_tmpa_int=\count96
 \l_tmpb_int=\count97
 \g_tmpa_int=\count98
 \g_tmpb_int=\count99
-L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
-L3 Module: l3prg 2015/09/10 v5983 L3 Control structures
+L3 Module: l3quark 2014/08/23 v5354 L3 Quarks
+L3 Module: l3prg 2015/04/13 v5566 L3 Control structures
 \g__prg_map_int=\count100
-L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
-L3 Module: l3token 2015/09/23 v6040 L3 Experimental token manipulation
-L3 Module: l3prop 2015/08/05 v5777 L3 Property lists
-L3 Module: l3msg 2015/09/23 v6037 L3 Messages
-L3 Module: l3file 2015/09/23 v6037 L3 File and I/O operations
+L3 Module: l3clist 2014/08/23 v5354 L3 Comma separated lists
+L3 Module: l3token 2014/09/15 v5422 L3 Experimental token manipulation
+L3 Module: l3prop 2014/08/23 v5354 L3 Property lists
+L3 Module: l3msg 2015/02/26 v5537 L3 Messages
+L3 Module: l3file 2015/06/07 v5627 L3 File and I/O operations
 \l_iow_line_count_int=\count101
 \l__iow_target_count_int=\count102
 \l__iow_current_line_int=\count103
 \l__iow_current_word_int=\count104
 \l__iow_current_indentation_int=\count105
-L3 Module: l3skip 2015/09/25 v6089 L3 Dimensions and skips
+L3 Module: l3skip 2015/05/18 v5607 L3 Dimensions and skips
 \c_zero_dim=\dimen107
 \c_max_dim=\dimen108
 \l_tmpa_dim=\dimen109
@@ -123,10 +117,10 @@ L3 Module: l3skip 2015/09/25 v6089 L3 Dimensions and skips
 \l_tmpb_muskip=\muskip13
 \g_tmpa_muskip=\muskip14
 \g_tmpb_muskip=\muskip15
-L3 Module: l3keys 2015/09/23 v6037 L3 Key-value interfaces
+L3 Module: l3keys 2015/06/14 v5629 L3 Key-value interfaces
 \g__keyval_level_int=\count106
 \l_keys_choice_int=\count107
-L3 Module: l3fp 2015/08/25 v5890 L3 Floating points
+L3 Module: l3fp 2014/08/22 v5336 L3 Floating points
 \c__fp_leading_shift_int=\count108
 \c__fp_middle_shift_int=\count109
 \c__fp_trailing_shift_int=\count110
@@ -136,13 +130,13 @@ L3 Module: l3fp 2015/08/25 v5890 L3 Floating points
 \c__fp_Bigg_leading_shift_int=\count114
 \c__fp_Bigg_middle_shift_int=\count115
 \c__fp_Bigg_trailing_shift_int=\count116
-L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
+L3 Module: l3box 2014/08/23 v5354 L3 Experimental boxes
 \c_empty_box=\box28
 \l_tmpa_box=\box29
 \l_tmpb_box=\box30
 \g_tmpa_box=\box31
 \g_tmpb_box=\box32
-L3 Module: l3coffins 2015/08/06 v5789 L3 Coffin code layer
+L3 Module: l3coffins 2014/08/23 v5354 L3 Coffin code layer
 \l__coffin_internal_box=\box33
 \l__coffin_internal_dim=\dimen113
 \l__coffin_offset_x_dim=\dimen114
@@ -163,7 +157,7 @@ L3 Module: l3coffins 2015/08/06 v5789 L3 Coffin code layer
 \l__coffin_display_x_dim=\dimen121
 \l__coffin_display_y_dim=\dimen122
 L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
-L3 Module: l3candidates 2015/09/23 v6039 L3 Experimental additions to l3kernel
+L3 Module: l3candidates 2015/05/21 v5613 L3 Experimental additions to l3kernel
 \l__box_top_dim=\dimen123
 \l__box_bottom_dim=\dimen124
 \l__box_left_dim=\dimen125
@@ -180,17 +174,15 @@ L3 Module: l3candidates 2015/09/23 v6039 L3 Experimental additions to l3kernel
 \l__coffin_top_corner_dim=\dimen135
 \l__coffin_scaled_total_height_dim=\dimen136
 \l__coffin_scaled_width_dim=\dimen137
-L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
-L3 Module: l3luatex 2015/09/10 v5983 L3 Experimental LuaTeX-specific functions
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/l3kernel/l3unicode-data.def
-File: l3unicode-data.def 2015/07/20 v5676 L3 Unicode data
+File: l3unicode-data.def 2015/03/01 v5544 L3 Unicode data
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
-File: l3xdvidpfmx.def 2015/09/10 v5983 L3 Experimental driver: xdvipdfmx
+File: l3xdvidpfmx.def 2015/05/21 v5613 L3 Experimental driver: xdvipdfmx
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2015/09/27 v6111 L3 Experimental document command parser
+Package: xparse 2015/06/15 v5630 L3 Experimental document command parser
 \l__xparse_current_arg_int=\count117
 \l__xparse_m_args_int=\count118
 \l__xparse_mandatory_args_int=\count119
@@ -203,9 +195,10 @@ Package: xparse 2015/09/27 v6111 L3 Experimental document command parser
 \l__fontspec_tmpa_dim=\dimen138
 \l__fontspec_tmpb_dim=\dimen139
 \l__fontspec_tmpc_dim=\dimen140
+Variant \tl_gset:cV already defined; not changing it on line 71
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fontspec/fontspec-patches.sty
-Package: fontspec-patches 2015/09/24 v2.4e Font selection for XeLaTeX and LuaLa
+Package: fontspec-patches 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLa
 TeX
 LaTeX Info: Redefining \em on input line 49.
 LaTeX Info: Redefining \emph on input line 57.
@@ -222,7 +215,7 @@ LaTeX Info: Redefining \- on input line 60.
 .................................................
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2015/09/24 v2.4e Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLaTe
 X
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
@@ -353,44 +346,52 @@ Package graphics Info: Driver file: xetex.def on input line 94.
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \aliasfontfeature with sig. 'mm' on line 258.
+. Defining command \aliasfontfeature with sig. 'mm' on line 261.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 267.
+. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 270.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontscript with sig. 'mm' on line 272.
+. Defining command \newfontscript with sig. 'mm' on line 275.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \newfontlanguage with sig. 'mm' on line 298.
+. Defining command \newfontlanguage with sig. 'mm' on line 301.
 .................................................
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
-. Defining command \DeclareFontsExtensions with sig. 'm' on line 318.
+. Defining command \DeclareFontsExtensions with sig. 'm' on line 321.
 .................................................
+Variant \prop_gput:cnV already defined; not changing it on line 704
+Variant \prop_gput:cnx already defined; not changing it on line 705
 \l__fontspec_tmp_int=\count126
-LaTeX Info: Redefining \itshape on input line 2227.
-LaTeX Info: Redefining \slshape on input line 2232.
-LaTeX Info: Redefining \scshape on input line 2237.
-LaTeX Info: Redefining \upshape on input line 2242.
+LaTeX Info: Redefining \itshape on input line 2232.
+LaTeX Info: Redefining \slshape on input line 2237.
+LaTeX Info: Redefining \scshape on input line 2242.
+LaTeX Info: Redefining \upshape on input line 2247.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/minted/minted.sty
-Package: minted 2015/09/09 v2.1 Yet another Pygments shim for LaTeX
+Package: minted 2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 
@@ -467,7 +468,7 @@ runsystem(rm -- "main.w18")...executed.
 
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count134
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/xstring/xstring.sty
@@ -502,7 +503,7 @@ LaTeX Info: Redefining \\ on input line 3056.
 \FV@BreakSymbolSepLeft=\dimen151
 \FV@BreakSymbolSepRight=\dimen152
 \FV@BreakSymbolIndentLeft=\dimen153
-LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 688
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 677
 .
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/euenc/eu1lmtt.fd
@@ -519,6 +520,10 @@ File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \c@listing=\count146
 )
 runsystem(mkdir -p "_minted-main")...executed.
+
+runsystem(which "pygmentize" && touch "main.aex")...executed.
+
+runsystem(rm "main.aex")...executed.
 
 
 (./_minted-main/default.pygstyle)
@@ -679,7 +684,7 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
+Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \c@tracingmulticols=\count154
 \mult@box=\box56
 \multicol@leftmargin=\dimen160
@@ -926,6 +931,21 @@ Package ifvtex Info: VTeX not detected.
 \g__file_internal_ior=\read3
 \g__fontspec_family_Consolas_int=\count178
 .................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font Consolas/BI (it probably doesn't exist).
+.................................................
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font Consolas/B (it probably doesn't exist).
+.................................................
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font Consolas/I (it probably doesn't exist).
+.................................................
+.................................................
 . fontspec info: "defining-font"
 . 
 . Font family 'Consolas(0)' created for font 'Consolas' with options
@@ -937,33 +957,6 @@ Package ifvtex Info: VTeX not detected.
 . <->s*[0.8]"Consolas/OT:script=latn;language=DFLT;"
 . 
 . * 'small caps' with NFSS spec.:
-. 
-. and font adjustment code:
-. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
-. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
-. 
-. * 'bold' with NFSS spec.:
-. <->s*[0.8]"Consolas/B/OT:script=latn;language=DFLT;"
-. 
-. * 'bold small caps' with NFSS spec.:
-. 
-. and font adjustment code:
-. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
-. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
-. 
-. * 'italic' with NFSS spec.:
-. <->s*[0.8]"Consolas/I/OT:script=latn;language=DFLT;"
-. 
-. * 'small caps' with NFSS spec.:
-. 
-. and font adjustment code:
-. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
-. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
-. 
-. * 'bold italic' with NFSS spec.:
-. <->s*[0.8]"Consolas/BI/OT:script=latn;language=DFLT;"
-. 
-. * 'bold small caps' with NFSS spec.:
 . 
 . and font adjustment code:
 . \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
@@ -1006,12 +999,7 @@ Package ifvtex Info: VTeX not detected.
 . 
 .................................................
 
-(./_minted-main/xcode.pygstyle)
-runsystem(which "pygmentize" && touch "main.aex")...executed.
-
-runsystem(rm "main.aex")...executed.
-
- (./main.aux)
+(./_minted-main/xcode.pygstyle) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
@@ -1104,8 +1092,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> EU1/Consolas(0)/bx/n on input line 103
 .
-
-(./_minted-main/default-pyg-prefix.pygstyle)
 \AtBeginShipoutBox=\box84
 
 *geometry* driver: auto-detecting
@@ -1182,7 +1168,7 @@ hr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\
 n \"); f.close();")...executed.
 
  (./main.mintedmd5)
-(./_minted-main/f39a10fc781639bb8003f02bee98643195ca3da0.pygtex
+(./_minted-main/52fbabe65450e370a543ac9a5fb910990d8e5ae6.pygtex
 LaTeX Font Info:    Font shape `EU1/Consolas(0)/m/n' will be
 (Font)              scaled to size 8.00003pt on input line 1.
 LaTeX Font Info:    Font shape `EU1/Consolas(0)/m/n' will be
@@ -1206,7 +1192,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 ); f.close();")...executed.
 
  (./main.mintedmd5)
-(./_minted-main/f07275534e64f2b212f084aae8450d5cff4e7d2b.pygtex
+(./_minted-main/d937630909adcc6e8d1a169a7d127a80847f48c6.pygtex
 LaTeX Font Info:    Font shape `EU1/Consolas(0)/m/n' will be
 (Font)              scaled to size 4.00002pt on input line 12.
  [2])
@@ -1221,7 +1207,7 @@ chr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput
 
 
 (./main.mintedmd5)
-(./_minted-main/cecef613e757c1dfe1c402ab80989d1ad29b2280.pygtex [3])
+(./_minted-main/5e195eda64f6cc24dfe23f2bf942572819dd1ccd.pygtex [3])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1233,7 +1219,7 @@ n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/dc60ba267f5040af059bdedf4da61cb40624b07a.pygtex)
+(./_minted-main/2adb2636074b5c53651fbb6c0437147aef483771.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1245,7 +1231,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/15f61d6855f8702b22dfcac211e7be756c6b1d1d.pygtex [4])
+(./_minted-main/2329175ad95e07eadc339993dbf503889e1cc3e8.pygtex [4])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1257,7 +1243,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/0c3b3c5d38919b17d5084025ecf5489e64497e0c.pygtex)
+(./_minted-main/2211b906cd31949954d3de5bd32dce916ef801ff.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1269,7 +1255,7 @@ endinput\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/3a247ca49ab0aac437f699432a62c12a04461615.pygtex [5])
+(./_minted-main/ac88eb2fdf0af5fbf360a4d66430d8409b3f3a10.pygtex [5])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1281,7 +1267,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/1720d7ecbb78a7fef9761b0304c36d7252290a09.pygtex [6])
+(./_minted-main/8865273aa57988c26611a6e75d65caeb586784af.pygtex [6])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1293,7 +1279,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/411e769000392d2b79cb80dab730237eef274d80.pygtex)
+(./_minted-main/4e2bef207cea1492773acf6a3881aed7ffabb751.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1305,7 +1291,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/8d354164658a06b4405fee2b27ba60f65214ae07.pygtex [7])
+(./_minted-main/38b336b2a9cb865d6a458516f5af3da489b815da.pygtex [7])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1317,7 +1303,7 @@ t\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/e76987c9dad48a93c4e11bee8f2f1336dc3b3f91.pygtex)
+(./_minted-main/78bec2581498c26f8bd2eb9f7d49257764e3fb5c.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1329,7 +1315,7 @@ ut\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/e4541c986227728b160a78aee45f1c2bc11978e2.pygtex)
+(./_minted-main/a670d17ad1e360eb6bf811280fee20f8e43cd33b.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1341,7 +1327,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/最大�
 
 
 (./main.mintedmd5)
-(./_minted-main/1b102569a8744be3295e8c99f800be41fc92d490.pygtex)
+(./_minted-main/70826e76f51055fbf767f04f6d6ca6749c612d21.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1353,7 +1339,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/f0242831cb819c042b37f2136f788f894ec998fb.pygtex)
+(./_minted-main/335baacabedccc175d5ad6be497d0c75afbd747d.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1365,7 +1351,7 @@ w\"); macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdigest() + chr(125
 
 
 (./main.mintedmd5)
-(./_minted-main/1de9245f0fdb4e112b866af8982c6e4cbc65cf64.pygtex [8])
+(./_minted-main/82f98bc1e5b796efc70d18f0533f38cee6467a88.pygtex [8])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1377,7 +1363,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/14fbab58279501df5b358f3e0db98ce7fa5bc002.pygtex)
+(./_minted-main/ddea1ad960307c451595a8f99d61205e828f79f3.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1389,7 +1375,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/带花�
 
 
 (./main.mintedmd5)
-(./_minted-main/df386e2b66df0f2dcf993c50feb21a67144e9daf.pygtex [9])
+(./_minted-main/c5011b63d491a933fb4fa45a5f8dce966ec3f980.pygtex [9])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1401,7 +1387,7 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
 
 
 (./main.mintedmd5)
-(./_minted-main/a58364607b81e7c884e1910d29f6b2a50d177013.pygtex [10])
+(./_minted-main/badd37bf1986e640e7b05053ce1ce761f4f11157.pygtex [10])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1413,7 +1399,7 @@ n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/d801312fc70acb668067c5440a217d5366dc225c.pygtex [11])
+(./_minted-main/e9fdc8a3becac6d5f2fc16eeb3d6178139570c62.pygtex [11])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1425,7 +1411,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/2bf710c53a2d39744ac362808000e7be3dce591d.pygtex)
+(./_minted-main/d6b18186b875ff538c431955f0084a2d21341fc4.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1437,7 +1423,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/46b5af17681d87f1dbbe26de33a4ec640b9281ca.pygtex)
+(./_minted-main/f05a926f2191eb2abde467f8866df0b3eb78f23a.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1449,7 +1435,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/83f8b94702340dd0328996ac50174a074ea92614.pygtex)
+(./_minted-main/ec8a82b932fe96418cc25f69aadfe29a5acbe335.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1461,7 +1447,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/b02d4d82ffddf900e893b93a70e03c66ff250f02.pygtex [12])
+(./_minted-main/51d0fcd3a332bc472822790d5de3381630d3897f.pygtex [12])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1473,7 +1459,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/8018d441717323bc877fd919d00d5a53bc19615e.pygtex)
+(./_minted-main/6d3c4ea0d0297b7a695f62e93751d9fb16ba325f.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1485,7 +1471,7 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
 
 
 (./main.mintedmd5)
-(./_minted-main/96d8422e4386d0fd60592320fc5460365fd6b100.pygtex)
+(./_minted-main/776af9b11dddb319052504c20851fbe5b70f9a58.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1497,7 +1483,7 @@ p\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/a940a3659c833ceecdace5a030fb1ba3ee7b9bbe.pygtex)
+(./_minted-main/7336e49969d415392b5794686269c316483330b3.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1509,7 +1495,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/fft.cpp
 
 
 (./main.mintedmd5)
-(./_minted-main/42352338646fe95435f9235ab976528f0d90d5bc.pygtex [13])
+(./_minted-main/4bd9077dd5231627071af815a3708eb669d778da.pygtex [13])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1521,7 +1507,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/ntt.cpp
 
 
 (./main.mintedmd5)
-(./_minted-main/39a162c0966992e352931b019e8ec4f39030cd4b.pygtex)
+(./_minted-main/3bd162492c4507ad2c6bfd8d7181be2d61185892.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1533,7 +1519,7 @@ ut\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/44871bfc457821ac2fbfca0037bc2e792f880c2b.pygtex)
+(./_minted-main/46265d58ea92fd76bea9f8ab4894dd46074fac55.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1545,7 +1531,7 @@ ut\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/cb57585bc1b1e251771c0d437bc47e5a34899c1d.pygtex [14])
+(./_minted-main/93f7cee290140e9256da345dd9583b8688f0c013.pygtex [14])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1557,7 +1543,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/DC3.cpp
 
 
 (./main.mintedmd5)
-(./_minted-main/dbc00fe68ef03a3834463a1544fd4c313500c032.pygtex)
+(./_minted-main/92f33d98be0a28171aa0c0b867ac9f1d0828d038.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1569,7 +1555,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/b1e6fafd98f2e18bc65d6be4862bb7d0b2dfb038.pygtex)
+(./_minted-main/7d32ccf886ece8dd92d58310fd7e727c505c507e.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1581,7 +1567,7 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
 
 
 (./main.mintedmd5)
-(./_minted-main/391c76c9163ac2ff8bc90358bca168fc8ad0b383.pygtex [15])
+(./_minted-main/32f917160b389e57fdf6bde19766819e5c716049.pygtex [15])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1593,7 +1579,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/0d91344acafdf87ce553436e894e9cb072e3b599.pygtex)
+(./_minted-main/425f74b30f391b35ef253c2bae88f6beddaa17d5.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1605,7 +1591,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/b6926959a92717a9708c00360ce79aecf04a9004.pygtex [16])
+(./_minted-main/e138df6bb28f0ff62aa696cc869b4c630c12ff50.pygtex [16])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1617,7 +1603,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/86b1d9f136ad5de289306310daa556468f5dee2a.pygtex [17])
+(./_minted-main/b2c694eb5a0286e179c0be2a6147f96c1c53871e.pygtex [17])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1629,7 +1615,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/LCT.cpp
 
 
 (./main.mintedmd5)
-(./_minted-main/045c368ece7db7f32f45023f12735e6f7e36e567.pygtex)
+(./_minted-main/a785cba62de1a38f658bcb4b38e8610623a018cd.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1641,7 +1627,7 @@ input\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/9bd37b81ce9c8da6a36c38d65f5c3e21bb6e4aa0.pygtex [18])
+(./_minted-main/e52e9718c71bea27c1d3d004dec689c5b9026565.pygtex [18])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1653,7 +1639,7 @@ put\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/ae199c630e33a282a93919a8239ad95bdc24bb0e.pygtex [19])
+(./_minted-main/62eb0932c14ecbfb09b62899bcc7935bdfba64e0.pygtex [19])
 (./src/弦图相关.tex) (./src/图同构Hash.tex
 Missing character: There is no ， in font [lmroman10-regular]:mapping=tex-text!
 )
@@ -1667,7 +1653,7 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
  \"); f.close();")...executed.
 
  (./main.mintedmd5)
-(./_minted-main/fe225fb9f74baa78e1fa56a333fef4c116a5e3cd.pygtex) (./src/综合.tex
+(./_minted-main/e11e451f3a61ff924ad803742dc1c6a04bea1379.pygtex) (./src/综合.tex
 Missing character: There is no 。 in font [lmroman10-regular]:mapping=tex-text!
 )
 Underfull \hbox (badness 10000) in paragraph at lines 10--256
@@ -2103,7 +2089,7 @@ va\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 "); f.close();")...executed.
 
  (./main.mintedmd5)
-(./_minted-main/778a16efd9f12b1d9ed50850a27cfffb4c73d5d4.pygtex [21])
+(./_minted-main/14a6fd9b8463b908de28a3e3e11a86c37743612c.pygtex [21])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -2115,7 +2101,7 @@ im\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/0ac50c552f71095a1dcdbcf20e8098e6c348694a.pygtex)
+(./_minted-main/6671b69220467914c1b770b0c35e6c4da79c1e17.pygtex)
 runsystem(rm "main.mintedcmd")...executed.
 
 runsystem(rm "main.mintedmd5")...executed.
@@ -2127,12 +2113,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 21996 strings out of 493668
- 432312 string characters out of 6145662
- 598802 words of memory out of 5000000
- 24889 multiletter control sequences out of 15000+600000
- 10529 words of font info for 67 fonts, out of 8000000 for 9000
+ 20962 strings out of 493710
+ 413591 string characters out of 6145916
+ 585704 words of memory out of 5000000
+ 23822 multiletter control sequences out of 15000+600000
+ 10505 words of font info for 64 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 46i,11n,62p,10404b,651s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,11n,59p,10404b,646s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (23 pages).
