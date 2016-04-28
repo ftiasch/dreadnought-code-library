@@ -3,7 +3,7 @@
 # List of Todo
 
 ## New/Improve
-- Hungarian Algorithm (With proper initialization)
+- ~~Hungarian Algorithm (With proper initialization and n != m)~~
 - Suffix Tree (With walker/With erase)
 - FFT（实数精度改进版/虚部Trick/整数版）
 - 主流
