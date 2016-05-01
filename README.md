@@ -5,7 +5,7 @@
 ## New/Improve
 - ~~Hungarian Algorithm (With proper initialization and n != m)~~
 - Suffix Tree (With walker/With erase)
-- FFT（实数精度改进版/虚部Trick/整数版）
+- ~~FFT（实数精度改进版/虚部Trick）~~
 - 主流
 - ~~德劳内三角剖分~~
 - 循环赛构造
