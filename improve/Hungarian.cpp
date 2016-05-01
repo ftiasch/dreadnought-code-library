@@ -37,7 +37,7 @@ int km() {
 						minv[j] = cur;
 						fa[j] = j0;
 					}
-					if (minv[j]< delta) {
+					if (minv[j] < delta) {
 						delta = minv[j];
 						j1 = j;
 					}
