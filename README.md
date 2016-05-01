@@ -7,7 +7,7 @@
 - Suffix Tree (With walker/With erase)
 - FFT（实数精度改进版/虚部Trick/整数版）
 - 主流
-- 德劳内三角剖分
+- ~~德劳内三角剖分~~
 - 循环赛构造
 - 公共x元组构造
 - 解双人博弈纳什均衡
