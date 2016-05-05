@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kt}{int} \PYG{n+nf}{zeller}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{y}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{m}\PYG{o}{\PYGZlt{}=}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{y}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{,}\PYG{n}{m}\PYG{o}{+=}\PYG{l+m+mi}{12}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{c}\PYG{o}{=}\PYG{n}{y}\PYG{o}{/}\PYG{l+m+mi}{100}\PYG{p}{;} \PYG{n}{y}\PYG{o}{\PYGZpc{}=}\PYG{l+m+mi}{100}\PYG{p}{;}
+	\PYG{k+kt}{int} \PYG{n}{w}\PYG{o}{=}\PYG{p}{((}\PYG{n}{c}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{c}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{n}{y}\PYG{o}{+}\PYG{p}{(}\PYG{n}{y}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{+}\PYG{p}{(}\PYG{l+m+mi}{13}\PYG{o}{*}\PYG{p}{(}\PYG{n}{m}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{o}{+}\PYG{n}{d}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{7}\PYG{p}{;}
+	\PYG{k}{if} \PYG{p}{(}\PYG{n}{w}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{w}\PYG{o}{+=}\PYG{l+m+mi}{7}\PYG{p}{;} \PYG{k}{return}\PYG{p}{(}\PYG{n}{w}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

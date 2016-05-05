@@ -1,0 +1,34 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{// 注意初始化内存池和 null 节点}
+\PYG{k}{struct} \PYG{n}{Node}\PYG{p}{\PYGZob{}}
+	\PYG{k+kt}{int} \PYG{n}{rev}\PYG{p}{,}\PYG{n}{size}\PYG{p}{;} \PYG{n}{Node} \PYG{o}{*}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{],}\PYG{o}{*}\PYG{n}{p}\PYG{p}{;}
+	\PYG{k+kt}{void} \PYG{n+nf}{set}\PYG{p}{(}\PYG{n}{Node}\PYG{o}{*}\PYG{p}{,}\PYG{k+kt}{int}\PYG{p}{);} \PYG{k+kt}{int} \PYG{n+nf}{dir}\PYG{p}{();} \PYG{k+kt}{void} \PYG{n+nf}{update}\PYG{p}{();} \PYG{k+kt}{void} \PYG{n+nf}{relax}\PYG{p}{();} \PYG{k+kt}{void} \PYG{n+nf}{appRev}\PYG{p}{();}
+\PYG{p}{\PYGZcb{}} \PYG{n}{nodePool}\PYG{p}{[}\PYG{n}{MAX\PYGZus{}NODE}\PYG{p}{],}\PYG{o}{*}\PYG{n}{curNode}\PYG{p}{,}\PYG{o}{*}\PYG{n}{null}\PYG{p}{;}
+\PYG{n}{Node} \PYG{o}{*}\PYG{n+nf}{newNode}\PYG{p}{()\PYGZob{}}
+	\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{o}{=}\PYG{n}{curNode}\PYG{o}{++}\PYG{p}{;} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{rev}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+	\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{=}\PYG{n}{null}\PYG{p}{;} \PYG{k}{return} \PYG{n}{t}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{struct} \PYG{n}{Splay}\PYG{p}{\PYGZob{}}
+	\PYG{n}{Node} \PYG{o}{*}\PYG{n}{root}\PYG{p}{;}
+	\PYG{n}{Splay}\PYG{p}{()\PYGZob{}} \PYG{n}{root}\PYG{o}{=}\PYG{n}{newNode}\PYG{p}{();} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{newNode}\PYG{p}{(),}\PYG{l+m+mi}{0}\PYG{p}{);} \PYG{n}{root}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();} \PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{void} \PYG{n}{rot}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{)\PYGZob{}}
+		\PYG{n}{Node} \PYG{o}{*}\PYG{n}{p}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{d}\PYG{o}{=}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{();}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();}
+		\PYG{k}{if}\PYG{p}{(}\PYG{n}{p}\PYG{o}{==}\PYG{n}{root}\PYG{p}{)} \PYG{n}{root}\PYG{o}{=}\PYG{n}{t}\PYG{p}{;}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{o}{!}\PYG{n}{d}\PYG{p}{],}\PYG{n}{d}\PYG{p}{);} \PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{());} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{set}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{o}{!}\PYG{n}{d}\PYG{p}{);}
+		\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{k+kt}{void} \PYG{n}{splay}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{,}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{f}\PYG{o}{=}\PYG{n}{null}\PYG{p}{)\PYGZob{}}
+		\PYG{k}{for}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{relax}\PYG{p}{();}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{!=}\PYG{n}{f}\PYG{p}{;)}
+			\PYG{k}{if}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{==}\PYG{n}{f}\PYG{p}{)} \PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{);}
+			\PYG{k}{else} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{()}\PYG{o}{==}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{dir}\PYG{p}{()}\PYG{o}{?}\PYG{p}{(}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{p}{),}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{))}\PYG{o}{:}\PYG{p}{(}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{),}\PYG{n}{rot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{));}
+		\PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{update}\PYG{p}{();}
+	\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{void} \PYG{n+nf}{initNull}\PYG{p}{()\PYGZob{}} \PYG{n}{curNode}\PYG{o}{=}\PYG{n}{nodePool}\PYG{p}{;}\PYG{n}{null}\PYG{o}{=}\PYG{n}{curNode}\PYG{o}{++}\PYG{p}{;}\PYG{n}{null}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{size}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{set}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{*}\PYG{n}{t}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{\PYGZus{}d}\PYG{p}{)\PYGZob{}} \PYG{n}{ch}\PYG{p}{[}\PYG{n}{\PYGZus{}d}\PYG{p}{]}\PYG{o}{=}\PYG{n}{t}\PYG{p}{;} \PYG{n}{t}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{p}\PYG{o}{=}\PYG{k}{this}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{dir}\PYG{p}{()\PYGZob{}} \PYG{k}{return} \PYG{k}{this}\PYG{o}{==}\PYG{n}{p}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{update}\PYG{p}{()\PYGZob{}} \PYG{n}{size}\PYG{o}{=}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{size}\PYG{o}{+}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{size}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{relax}\PYG{p}{()\PYGZob{}} \PYG{k}{if}\PYG{p}{(}\PYG{n}{rev}\PYG{p}{)} \PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{appRev}\PYG{p}{(),} \PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{appRev}\PYG{p}{(),} \PYG{n}{rev}\PYG{o}{=}\PYG{n+nb}{false}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{Node}\PYG{o}{::}\PYG{n}{appRev}\PYG{p}{()\PYGZob{}} \PYG{k}{if}\PYG{p}{(}\PYG{k}{this}\PYG{o}{==}\PYG{n}{null}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;} \PYG{n}{rev}\PYG{o}{\PYGZca{}=}\PYG{n+nb}{true}\PYG{p}{;} \PYG{n}{swap}\PYG{p}{(}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],}\PYG{n}{ch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]);} \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

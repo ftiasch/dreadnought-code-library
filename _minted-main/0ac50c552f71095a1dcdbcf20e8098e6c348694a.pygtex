@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYGZbs{}begin\PYGZob{}lstlisting\PYGZcb{}
+set nu ai ci si mouse=a ts=4 sts=4 sw=4
+
+nmap\PYGZlt{}C\PYGZhy{}A\PYGZgt{} ggVG
+vmap\PYGZlt{}C\PYGZhy{}C\PYGZgt{} \PYGZdq{}+y
+
+nmap\PYGZlt{}F3\PYGZgt{} : vs \PYGZpc{}\PYGZlt{}.in \PYGZlt{}CR\PYGZgt{}
+nmap\PYGZlt{}F5\PYGZgt{} : !./\PYGZpc{}\PYGZlt{} \PYGZlt{}CR\PYGZgt{}
+nmap\PYGZlt{}F8\PYGZgt{} : !./\PYGZpc{}\PYGZlt{} \PYGZlt{} \PYGZpc{}\PYGZlt{}.in \PYGZlt{}CR\PYGZgt{}
+nmap\PYGZlt{}F9\PYGZgt{} : !g++ \PYGZpc{} \PYGZhy{}o \PYGZpc{}\PYGZlt{} \PYGZhy{}Wall \PYGZlt{}CR\PYGZgt{}
+
+\PYGZdq{}nmap\PYGZlt{}F4\PYGZgt{} : !gedit \PYGZpc{} \PYGZlt{}CR\PYGZgt{}
+\PYGZdq{}autocmd BufNewFile *.cpp 0r \PYGZti{}/temp.cpp
+\PYGZdq{}set hlsearch incseach
+
+\PYGZdq{}syntax on
+\PYGZdq{}filetype plugin indent on
+\PYGZbs{}end\PYGZob{}lstlisting\PYGZcb{}
+\end{Verbatim}
