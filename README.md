@@ -6,21 +6,21 @@
 - ~~Hungarian Algorithm (With proper initialization and n != m)~~
 - Suffix Tree (With walker/With erase)
 - ~~FFT（实数精度改进版/虚部Trick）~~
-- 主流
+- ~~主流~~
 - ~~德劳内三角剖分~~
 - ~~循环赛构造~~
 - ~~斯坦纳三元系构造~~
 - 解双人博弈纳什均衡
 - ~~三角形内外垂心~~
-- 最大团
-- 最大独立集
-- 极大团计数
+- ~~最大团~~
+- ~~最大独立集~~
+- ~~极大团计数~~
 - SAT Solver
 - k上升子序列
 - ~~凸包上快速询问~~
 - ~~动态树~~
-- 有限域分解多项式
-- 扩展KMP/Manacher
+- ~~有限域分解多项式~~
+- ~~扩展KMP/Manacher~~
 
 ## Merge
 - 二维几何基础
