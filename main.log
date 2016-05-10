@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.18)  11 MAY 2016 05:08
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.18)  11 MAY 2016 05:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -883,6 +883,26 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen178
+\lightrulewidth=\dimen179
+\cmidrulewidth=\dimen180
+\belowrulesep=\dimen181
+\belowbottomsep=\dimen182
+\aboverulesep=\dimen183
+\abovetopsep=\dimen184
+\cmidrulesep=\dimen185
+\cmidrulekern=\dimen186
+\defaultaddspace=\dimen187
+\@cmidla=\count175
+\@cmidlb=\count176
+\@aboverulesep=\dimen188
+\@belowrulesep=\dimen189
+\@thisruleclass=\count177
+\@lastruleclass=\count178
+\@thisrulewidth=\dimen190
+)
 (/usr/local/texlive/2015/texmf-dist/tex/xelatex/ucharclasses/ucharclasses.sty
 Package: ucharclasses 2012/09/25 v2.0x Unicode block character classes for XeLa
 TeX
@@ -915,17 +935,17 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-\Gm@cnth=\count175
-\Gm@cntv=\count176
-\c@Gm@tempcnt=\count177
-\Gm@bindingoffset=\dimen178
-\Gm@wd@mp=\dimen179
-\Gm@odd@mp=\dimen180
-\Gm@even@mp=\dimen181
-\Gm@layoutwidth=\dimen182
-\Gm@layoutheight=\dimen183
-\Gm@layouthoffset=\dimen184
-\Gm@layoutvoffset=\dimen185
+\Gm@cnth=\count179
+\Gm@cntv=\count180
+\c@Gm@tempcnt=\count181
+\Gm@bindingoffset=\dimen191
+\Gm@wd@mp=\dimen192
+\Gm@odd@mp=\dimen193
+\Gm@even@mp=\dimen194
+\Gm@layoutwidth=\dimen195
+\Gm@layoutheight=\dimen196
+\Gm@layouthoffset=\dimen197
+\Gm@layoutvoffset=\dimen198
 \Gm@dimlist=\toks29
 )
 \g__file_internal_ior=\read3
@@ -934,7 +954,7 @@ Package ifvtex Info: VTeX not detected.
 . 
 . Font Isotype does not contain any OpenType `Script' information.
 .................................................
-\g__fontspec_family_Isotype_int=\count178
+\g__fontspec_family_Isotype_int=\count182
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -972,7 +992,7 @@ Package ifvtex Info: VTeX not detected.
 . 
 . Font SimHei does not contain any OpenType `Script' information.
 .................................................
-\g__fontspec_family_SimHei_int=\count179
+\g__fontspec_family_SimHei_int=\count183
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -1036,7 +1056,7 @@ LaTeX Font Info:    Try loading font information for TS1+cmr on input line 104.
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 104.
-\c@lstlisting=\count180
+\c@lstlisting=\count184
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -1678,24 +1698,24 @@ im\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/fc9db26fcef9d8b59744aa098f73fd381026782a.pygtex)
+(./_minted-main/fc9db26fcef9d8b59744aa098f73fd381026782a.pygtex) [23]
+(./improve/Addon.tex)
 runsystem(rm "main.mintedcmd")...executed.
 
 runsystem(rm "main.mintedmd5")...executed.
 
- [23]
-(./main.aux)
+ [24] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20951 strings out of 493710
- 413223 string characters out of 6145916
- 569003 words of memory out of 5000000
- 23823 multiletter control sequences out of 15000+600000
+ 21013 strings out of 493710
+ 414054 string characters out of 6145916
+ 569738 words of memory out of 5000000
+ 23877 multiletter control sequences out of 15000+600000
  10168 words of font info for 63 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 46i,12n,59p,10404b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,12n,59p,10414b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (24 pages).
+Output written on main.pdf (25 pages).
