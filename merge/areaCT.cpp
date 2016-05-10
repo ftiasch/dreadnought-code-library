@@ -1,10 +1,6 @@
 double areaCT(Point pa, Point pb, double r) {
-	if (pa.len() < pb.len()) {
-		swap(pa, pb);
-	}
-	if (sign(pb.len()) == 0) {
-		return 0;
-	}
+	if (pa.len() < pb.len()) swap(pa, pb);
+	if (sign(pb.len()) == 0) return 0;
 	double a = pb.len(), b = pa.len(), c = (pb - pa).len();
 	double sinB = fabs(det(pb, pb - pa) / a / c),
 		   cosB = dot(pb, pb - pa) / a / c, 
