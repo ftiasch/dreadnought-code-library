@@ -4,13 +4,11 @@ Point inCenter(const Point &A, const Point &B, const Point &C) { // 内心
 		r = s / p;
 	return (A * a + B * b + C * c) / (a + b + c);
 }
-
 Point circumCenter(const Point &a, const Point &b, const Point &c) { // 外心
 	Point bb = b - a, cc = c - a;
 	double db = bb.len2(), dc = cc.len2(), d = 2 * det(bb, cc);
 	return a - Point(bb.y * dc - cc.y * db, cc.x * db - bb.x * dc) / d;
 }
-
 Point othroCenter(const Point &a, const Point &b, const Point &c) { // 垂心
 	Point ba = b - a, ca = c - a, bc = b - c;
 	double Y = ba.y * ca.y * bc.y,
