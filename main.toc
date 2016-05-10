@@ -29,24 +29,25 @@
 \contentsline {section}{FFT}{21}
 \contentsline {section}{NTT}{22}
 \contentsline {section}{FWT}{22}
-\contentsline {section}{回文串 manacher}{23}
+\contentsline {section}{Manacher/ 扩展 KMP}{23}
 \contentsline {section}{后缀数组 ( 倍增 )}{23}
-\contentsline {section}{后缀数组 (DC3)}{23}
+\contentsline {section}{后缀数组 (DC3)}{24}
 \contentsline {section}{后缀自动机}{24}
 \contentsline {section}{后缀树 (With Walk)}{24}
-\contentsline {section}{后缀树 (With Pop Front)}{26}
+\contentsline {section}{后缀树 (With Pop Front)}{27}
 \contentsline {section}{字符串最小表示}{29}
 \contentsline {section}{轻重链剖分}{29}
-\contentsline {section}{KD Tree}{29}
+\contentsline {section}{KD Tree}{30}
 \contentsline {section}{Splay Tree}{31}
 \contentsline {section}{Link Cut Tree}{31}
-\contentsline {section}{Dominator Tree}{31}
-\contentsline {section}{DancingLinks}{32}
-\contentsline {section}{弦图相关}{33}
-\contentsline {section}{图同构 Hash}{33}
-\contentsline {section}{直线下有多少个格点}{33}
-\contentsline {section}{费用流}{33}
-\contentsline {section}{综合}{34}
-\contentsline {section}{积分表}{35}
-\contentsline {section}{Java}{35}
-\contentsline {section}{Vimrc}{36}
+\contentsline {section}{Dominator Tree}{32}
+\contentsline {section}{DancingLinks}{33}
+\contentsline {section}{弦图相关}{34}
+\contentsline {section}{图同构 Hash}{34}
+\contentsline {section}{环状最长公共子序列}{34}
+\contentsline {section}{直线下有多少个格点}{34}
+\contentsline {section}{费用流}{35}
+\contentsline {section}{综合}{35}
+\contentsline {section}{积分表}{36}
+\contentsline {section}{Java}{36}
+\contentsline {section}{Vimrc}{37}

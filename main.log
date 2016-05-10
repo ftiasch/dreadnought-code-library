@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.18)  10 MAY 2016 23:21
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.18)  11 MAY 2016 00:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1284,7 +1284,7 @@ put\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/53dc2deff419aff1a89fa3a60fa91d45ecde214c.pygtex)
+(./_minted-main/47848d299b884567d73ed50a76e2ef2af7990e22.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1552,15 +1552,15 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
-intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/回文串mana
-cher.cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.minted
-md5\", \"w\"); macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdigest() 
-+ chr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinp
-ut\n \"); f.close();")...executed.
+intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"merge/Manac
+her.cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedm
+d5\", \"w\"); macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdigest() +
+ chr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinpu
+t\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/46265d58ea92fd76bea9f8ab4894dd46074fac55.pygtex)
+(./_minted-main/3956486dc6d3725e5ac64c2446e56f76e808b201.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1572,7 +1572,7 @@ ut\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/93f7cee290140e9256da345dd9583b8688f0c013.pygtex)
+(./_minted-main/93f7cee290140e9256da345dd9583b8688f0c013.pygtex [23])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1584,7 +1584,7 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/DC3.cpp
 
 
 (./main.mintedmd5)
-(./_minted-main/92f33d98be0a28171aa0c0b867ac9f1d0828d038.pygtex [23])
+(./_minted-main/92f33d98be0a28171aa0c0b867ac9f1d0828d038.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1608,7 +1608,8 @@ input\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/24b9a48f2cc94491b71ae4ac480fd46e4d3f8010.pygtex [24] [25])
+(./_minted-main/24b9a48f2cc94491b71ae4ac480fd46e4d3f8010.pygtex [24] [25]
+[26])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1618,10 +1619,8 @@ ntedmd5\", \"w\"); macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdiges
 t() + chr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\en
 dinput\n \"); f.close();")...executed.
 
-
-(./main.mintedmd5)
-(./_minted-main/67a5f9360f4faecd827cce85cea3f75117891437.pygtex [26] [27]
-[28])
+ (./main.mintedmd5)
+(./_minted-main/67a5f9360f4faecd827cce85cea3f75117891437.pygtex [27] [28])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1631,7 +1630,8 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/字符�
 r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
  \"); f.close();")...executed.
 
- (./main.mintedmd5)
+
+(./main.mintedmd5)
 (./_minted-main/32f917160b389e57fdf6bde19766819e5c716049.pygtex)
 \openout5 = `main.mintedcmd'.
 
@@ -1644,7 +1644,7 @@ pp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 
 
 (./main.mintedmd5)
-(./_minted-main/425f74b30f391b35ef253c2bae88f6beddaa17d5.pygtex)
+(./_minted-main/425f74b30f391b35ef253c2bae88f6beddaa17d5.pygtex [29])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1656,7 +1656,7 @@ cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\"
 
 
 (./main.mintedmd5)
-(./_minted-main/e138df6bb28f0ff62aa696cc869b4c630c12ff50.pygtex [29] [30])
+(./_minted-main/e138df6bb28f0ff62aa696cc869b4c630c12ff50.pygtex [30])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1680,7 +1680,7 @@ r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
 
 
 (./main.mintedmd5)
-(./_minted-main/6f3a1245265b37b80a3cd24b2c4786c935d71c1c.pygtex)
+(./_minted-main/6f3a1245265b37b80a3cd24b2c4786c935d71c1c.pygtex [31])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1692,7 +1692,7 @@ endinput\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/c82d16ac3af9b19d7e530efc8a37f8c47b91bc31.pygtex [31])
+(./_minted-main/c82d16ac3af9b19d7e530efc8a37f8c47b91bc31.pygtex [32])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1704,10 +1704,21 @@ put\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/62eb0932c14ecbfb09b62899bcc7935bdfba64e0.pygtex [32])
+(./_minted-main/62eb0932c14ecbfb09b62899bcc7935bdfba64e0.pygtex [33])
 (./src/弦图相关.tex) (./src/图同构Hash.tex
 Missing character: There is no ， in font [lmroman10-regular]:mapping=tex-text!
 )
+\openout5 = `main.mintedcmd'.
+
+runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
+intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"improve/Cyc
+leLongest.cpp\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.m
+intedmd5\", \"w\"); macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdige
+st() + chr(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\e
+ndinput\n \"); f.close();")...executed.
+
+ (./main.mintedmd5)
+(./_minted-main/32072c3ae8a3bb1e654cc7e8540a71b4861198f2.pygtex)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1717,8 +1728,9 @@ intedcmd\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"src/直线�
 r(125) + \"\"; f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n
  \"); f.close();")...executed.
 
- (./main.mintedmd5)
-(./_minted-main/e11e451f3a61ff924ad803742dc1c6a04bea1379.pygtex)
+
+(./main.mintedmd5)
+(./_minted-main/e11e451f3a61ff924ad803742dc1c6a04bea1379.pygtex [34])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -1730,25 +1742,24 @@ dinput\n \"); f.close();")...executed.
 
 
 (./main.mintedmd5)
-(./_minted-main/df22cfeef81e923447dbde420c533d2514edb9a5.pygtex [33])
-(./src/综合.tex
+(./_minted-main/df22cfeef81e923447dbde420c533d2514edb9a5.pygtex) (./src/综合.tex
 Missing character: There is no 。 in font [lmroman10-regular]:mapping=tex-text!
 )
-Underfull \hbox (badness 10000) in paragraph at lines 10--272
+Underfull \hbox (badness 10000) in paragraph at lines 10--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--272
+Underfull \hbox (badness 10000) in paragraph at lines 10--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--272
+Underfull \hbox (badness 10000) in paragraph at lines 10--274
 
  []
 
-(./src/积分表.tex
+[35] (./src/积分表.tex
 Underfull \vbox (badness 10000) detected at line 373
  []
 
@@ -2156,7 +2167,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--373
 []  []  []  []
  []
 
-) [34]
+)
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -2167,7 +2178,7 @@ va\", \"rb\"); hasher.update(f.read()); f.close(); f = open(\"main.mintedmd5\",
 "); f.close();")...executed.
 
  (./main.mintedmd5)
-(./_minted-main/14a6fd9b8463b908de28a3e3e11a86c37743612c.pygtex [35])
+(./_minted-main/14a6fd9b8463b908de28a3e3e11a86c37743612c.pygtex [36])
 \openout5 = `main.mintedcmd'.
 
 runsystem(python -c "import hashlib; hasher = hashlib.sha1(); f = open(\"main.m
@@ -2184,19 +2195,19 @@ runsystem(rm "main.mintedcmd")...executed.
 
 runsystem(rm "main.mintedmd5")...executed.
 
- [36]
+ [37]
 (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20998 strings out of 493710
- 415109 string characters out of 6145916
- 581959 words of memory out of 5000000
- 23828 multiletter control sequences out of 15000+600000
+ 21004 strings out of 493710
+ 415362 string characters out of 6145916
+ 583008 words of memory out of 5000000
+ 23829 multiletter control sequences out of 15000+600000
  10505 words of font info for 64 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  46i,11n,59p,10404b,654s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (37 pages).
+Output written on main.pdf (38 pages).
