@@ -14,35 +14,40 @@
 \contentsline {section}{最大团}{12}
 \contentsline {section}{极大团计数}{13}
 \contentsline {section}{KM}{13}
-\contentsline {section}{无向图最小割}{13}
+\contentsline {section}{最小树形图}{13}
+\contentsline {section}{无向图最小割}{14}
 \contentsline {section}{带花树}{14}
-\contentsline {section}{动态最小生成树}{14}
-\contentsline {section}{Hopcroft}{15}
+\contentsline {section}{动态最小生成树}{15}
+\contentsline {section}{Hopcroft}{16}
 \contentsline {section}{素数判定}{16}
 \contentsline {section}{启发式分解}{16}
-\contentsline {section}{二次剩余}{16}
+\contentsline {section}{二次剩余}{17}
 \contentsline {section}{Pell 方程}{17}
 \contentsline {section}{蔡勒公式}{17}
-\contentsline {section}{Romberg}{17}
-\contentsline {section}{线性规划}{17}
-\contentsline {section}{FFT}{18}
-\contentsline {section}{NTT}{18}
-\contentsline {section}{回文串 manacher}{19}
-\contentsline {section}{后缀数组 ( 倍增 )}{19}
-\contentsline {section}{后缀数组 (DC3)}{19}
-\contentsline {section}{后缀自动机}{20}
-\contentsline {section}{字符串最小表示}{20}
-\contentsline {section}{轻重链剖分}{20}
-\contentsline {section}{KD Tree}{21}
-\contentsline {section}{Splay Tree}{22}
-\contentsline {section}{Link Cut Tree}{22}
-\contentsline {section}{Dominator Tree}{23}
-\contentsline {section}{DancingLinks}{24}
-\contentsline {section}{弦图相关}{24}
-\contentsline {section}{图同构 Hash}{24}
-\contentsline {section}{直线下有多少个格点}{24}
-\contentsline {section}{费用流}{25}
-\contentsline {section}{综合}{25}
-\contentsline {section}{积分表}{26}
-\contentsline {section}{Java}{26}
-\contentsline {section}{Vimrc}{27}
+\contentsline {section}{Schreier-Sims}{17}
+\contentsline {section}{Romberg}{19}
+\contentsline {section}{线性规划}{19}
+\contentsline {section}{FFT}{19}
+\contentsline {section}{NTT}{20}
+\contentsline {section}{FWT}{21}
+\contentsline {section}{回文串 manacher}{21}
+\contentsline {section}{后缀数组 ( 倍增 )}{21}
+\contentsline {section}{后缀数组 (DC3)}{21}
+\contentsline {section}{后缀自动机}{22}
+\contentsline {section}{后缀树 (With Walk)}{22}
+\contentsline {section}{后缀树 (With Pop Front)}{22}
+\contentsline {section}{字符串最小表示}{23}
+\contentsline {section}{轻重链剖分}{23}
+\contentsline {section}{KD Tree}{23}
+\contentsline {section}{Splay Tree}{25}
+\contentsline {section}{Link Cut Tree}{25}
+\contentsline {section}{Dominator Tree}{26}
+\contentsline {section}{DancingLinks}{27}
+\contentsline {section}{弦图相关}{27}
+\contentsline {section}{图同构 Hash}{27}
+\contentsline {section}{直线下有多少个格点}{27}
+\contentsline {section}{费用流}{28}
+\contentsline {section}{综合}{28}
+\contentsline {section}{积分表}{29}
+\contentsline {section}{Java}{29}
+\contentsline {section}{Vimrc}{30}
