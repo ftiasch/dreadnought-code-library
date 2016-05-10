@@ -1,14 +1,8 @@
-
 vector<int> prec[N], succ[N];
-
 vector<int> ord;
-
 int stamp, vis[N];
-
 int num[N];
-
 int fa[N];
-
 void dfs(int u) {
 	vis[u] = stamp;
 	num[u] = ord.size();
@@ -21,11 +15,7 @@ void dfs(int u) {
 		}
 	}
 }
-
-int fs[N], mins[N];
-
-int dom[N], sem[N];
-
+int fs[N], mins[N], dom[N], sem[N];
 int find(int u) {
 	if (u != fs[u]) {
 		int v = fs[u];
@@ -36,36 +26,25 @@ int find(int u) {
 	}
 	return fs[u];
 }
-
-void merge(int u, int v) {
-	fs[u] = v;
-}
-
+void merge(int u, int v) { fs[u] = v; }
 vector<int> buf[N];
-
 int buf2[N];
-
 void mark(int source) {
 	ord.clear();
 	++stamp;
 	dfs(source);
 	for (int i = 0; i < (int)ord.size(); ++i) {
 		int u = ord[i];
-		fs[u] = u;
-		mins[u] = -1;
-		buf2[u] = -1;
+		fs[u] = u, mins[u] = -1, buf2[u] = -1;
 	}
 	for (int i = (int)ord.size() - 1; i > 0; --i) {
 		int u = ord[i], p = fa[u];
 		sem[u] = p;
 		for (int j = 0; j < (int)prec[u].size(); ++j) {
 			int v = prec[u][j];
-			if (use[v] != stamp) {
-				continue;
-			}
+			if (use[v] != stamp) continue;
 			if (num[v] > num[u]) {
-				find(v);
-				v = sem[mins[v]];
+				find(v); v = sem[mins[v]];
 			}
 			if (num[v] < num[sem[u]]) {
 				sem[u] = v;
@@ -93,4 +72,3 @@ void mark(int source) {
 		}
 	}
 }
-

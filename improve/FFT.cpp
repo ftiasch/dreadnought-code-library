@@ -1,21 +1,14 @@
 // double 精度对$10^9+7$ 取模最多可以做到$2^20$
-
 const int MOD = 1000003;
-
 const double PI = acos(-1);
-
 typedef complex<double> Complex;
-
 const int N = 65536, L = 15, MASK = (1 << L) - 1;
-
 Complex w[N];
-
 void FFTInit() {
 	for (int i = 0; i < N; ++i) {
 		w[i] = Complex(cos(2 * i * PI / N), sin(2 * i * PI / N));
 	}
 }
-
 void FFT(Complex p[], int n) {
 	for (int i = 1, j = 0; i < n - 1; ++i) {
 		for (int s = n; j ^= s >>= 1, ~j & s;);
@@ -31,20 +24,14 @@ void FFT(Complex p[], int n) {
 				Complex t = w[rm * j] * p1;
 				p1 = p2 - t;
 				p2 = p2 + t;
-			}
-		}
-	}
-}
-
+}}}}
 Complex A[N], B[N], C[N], D[N];
-
 void mul(int a[N], int b[N]) {
 	for (int i = 0; i < N; ++i) {
 		A[i] = Complex(a[i] >> L, a[i] & MASK);
 		B[i] = Complex(b[i] >> L, b[i] & MASK);
 	}
-	FFT(A, N);
-	FFT(B, N);
+	FFT(A, N), FFT(B, N);
 	for (int i = 0; i < N; ++i) {
 		int j = (N - i) % N;
 		Complex da = (A[i] - conj(A[j])) * Complex(0, -0.5),
@@ -54,8 +41,7 @@ void mul(int a[N], int b[N]) {
 		C[j] = da * dd + da * dc * Complex(0, 1);
 		D[j] = db * dd + db * dc * Complex(0, 1);
 	}
-	FFT(C, N);
-	FFT(D, N);
+	FFT(C, N), FFT(D, N);
 	for (int i = 0; i < N; ++i) {
 		long long da = (long long)(C[i].imag() / N + 0.5) % MOD,
 				  db = (long long)(C[i].real() / N + 0.5) % MOD,
@@ -64,4 +50,3 @@ void mul(int a[N], int b[N]) {
 		a[i] = ((dd << (L * 2)) + ((db + dc) << L) + da) % MOD;
 	}
 }
-

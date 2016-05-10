@@ -13,7 +13,6 @@ void Manacher(char text[], int n, int palindrome[]) {
 		}
 	}
 }
-
 void ExtendedKMP(char *a, char *b, int M, int N, int *Next, int *ret) {// a -> 模式串 b -> 匹配串
 	int i, j, k;
 	for (j = 0; 1 + j < M && a[j] == a[1 + j]; j++); Next[1] = j;
