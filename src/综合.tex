@@ -1,42 +1,31 @@
-弦图 \\
+\subsection{弦图}
 设 $next(v)$ 表示 $N(v)$ 中最前的点 . 
-令 w* 表示所有满足 $A \in B$ 的 w 中最后的一个点 , 
+令 $w*$ 表示所有满足 $A \in B$ 的 $w$ 中最后的一个点 , 
 判断 $v \cup N(v)$ 是否为极大团 , 
-只需判断是否存在一个 w, 
+只需判断是否存在一个 $w \in w*$, 
 满足 $Next(w)=v$ 且 $|N(v)| + 1 \leq |N(w)|$ 即可 . 
-\\
-\\
-五边形数 \\
-$
+\subsection{五边形数}
+$$
     \prod_{n=1}^{\infty}{(1-x^{n})}=\sum_{n=0}^{\infty}{(-1)^{n}(1-x^{2n+1})x^{n(3n+1)/2}}
-$
-\\
-\\
-重心 \\
-半径为 $r$ , 圆心角为 $\theta$ 的扇形重心与圆心的距离为 $(4r\sin{\theta / 2} / (3\theta))$ \\
-半径为 $r$ , 圆心角为 $\theta$ 的圆弧重心与圆心的距离为 $(4r\sin^3{\theta / 2} / (3(\theta-\sin{\theta})))$ \\
-\\
-第二类 Bernoulli number \\
-$
-    B_m = 1 - \sum_{k=0}^{m-1}{\binom{m}{k}\frac{B_{k}}{m-k+1}}$ \\
-    $S_m(n) = \sum_{k=1}^{n}{k^{m}} = \frac{1}{m+1}\sum_{k=0}^{m}{\binom{m+1}{k}B_{k}n^{m+1-k}}
-$
-\\
-\\
-Stirling 数 \\
+$$
+\subsection{重心}
+半径为 $r$ , 圆心角为 $\theta$ 的扇形重心与圆心的距离为 $\frac{4r\sin(\theta/2)}{3\theta}$ \\
+半径为 $r$ , 圆心角为 $\theta$ 的圆弧重心与圆心的距离为 $\frac{4r\sin^3(\theta/2)}{3(\theta-\sin(\theta))}$ \\
+\subsection{第二类 Bernoulli number}
+\begin{align*}
+    B_m &= 1 - \sum_{k=0}^{m-1}{\binom{m}{k}\frac{B_{k}}{m-k+1}} \\
+    S_m(n) &= \sum_{k=1}^{n}{k^{m}} = \frac{1}{m+1}\sum_{k=0}^{m}{\binom{m+1}{k}B_{k}n^{m+1-k}}
+\end{align*};
+\subsection{Stirling 数}
 第一类 :n 个元素的项目分作 k 个环排列的方法数目\\
-$
-    s(n, k) = (-1)^{n+k}|s(n, k)|
-    $\\
-    $
-    |s(n, 0)|=0, |s(1, 1)|=1,
-    $\\
-    $
-    |s(n, k)|=|s(n-1, k-1)|+(n-1)*|s(n-1, k)|
-$
-\\
+\begin{align*}
+    s(n, k) &= (-1)^{n+k}|s(n, k)| \\
+    |s(n, 0)| &=0\\ 
+    |s(1, 1)| &=1 \\
+    |s(n, k)| &=|s(n-1, k-1)|+(n-1)*|s(n-1, k)|
+\end{align*}
 第二类 :n 个元素的集定义 k 个等价类的方法数\\
-$
-    S(n,1)=S(n,n)=1,
-    S(n,k)=S(n-1,k-1)+k*S(n-1,k)
-$
+\begin{align*}
+    S(n,1)&=S(n,n)=1\\
+    S(n,k)&=S(n-1,k-1)+k*S(n-1,k)
+\end{align*}
