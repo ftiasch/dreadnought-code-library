@@ -39,8 +39,11 @@ int solve() {
 				for (; y <= n; ++ y) {
 					if (from[x + 1][y] == 2) break; 
 					if (y + 1 <= n && from[x + 1][y + 1] == 1) {
-						y ++;
-						break; 
-	}}}}}
+						y ++; break; 
+					}
+				}
+			}
+		}
+	}
 	return ret;
 }

@@ -38,15 +38,16 @@
 %\renewcommand\section{\penalty-100\vfilneg\stdsection}
 
 %\renewcommand\theFancyVerbLine{\arabic{FancyVerbLine}}
-\renewcommand{\theFancyVerbLine}{\small \oldstylenums{\arabic{FancyVerbLine}}}
+\renewcommand{\theFancyVerbLine}{\sffamily \textcolor[rgb]{0.5,0.5,0.5}{\scriptsize {\arabic{FancyVerbLine}}}}
 
 \setminted[cpp]{
 	style=xcode,
 	mathescape,
 	linenos,
 	autogobble,
-	baselinestretch=1.0,
+	baselinestretch=0.9,
 	tabsize=2,
+	fontsize=\normalsize,
 	%bgcolor=Gray,
 	frame=single,
 	framesep=1mm,
