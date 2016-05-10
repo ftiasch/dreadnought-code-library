@@ -47,6 +47,9 @@ struct Point {
 	Point unit() const {
 		return *this / len();
 	}
+	int operator < (const Point &that) const {
+		return 0;
+	}
 };
 double det(Point a, Point b)
 {
@@ -56,16 +59,20 @@ double dot(Point a, Point b)
 {
 	return a.x * b.x + a.y * b.y;
 }
+double det(Point s, Point a, Point b)
+{
+	return (a.x - s.x) * (b.y - s.y) - (b.x - s.x) * (a.y - s.y);
+}
 
 struct Line {
 	Point a, b;
 	Line(Point a, Point b) : a(a), b(b) {}
 };
 
-Point isLL(const Line &l0, const Line &l1) {
-	double s0 = det(l1.b - l1.a, l0.a - l1.a),
-		   s1 = -det(l1.b - l1.a, l0.b - l1.a);
-	return (l0.a * s1 + l0.b * s0) / (s0 + s1);
+Point isLL(const Line &l1, const Line &l2) {
+	double s1 = det(l2.b - l2.a, l1.a - l2.a),
+		   s2 = -det(l2.b - l2.a, l1.b - l2.a);
+	return (l1.a * s2 + l1.b * s1) / (s1 + s2);
 }
 bool onSeg(const Line &l, const Point &p) { // 点在线段上
 	return sign(det(p - l.a, l.b - l.a)) == 0 && sign(dot(p - l.a, p - l.b)) <= 0;
@@ -104,10 +111,10 @@ bool isCL(Circle a, Line l, Point &p1, Point &p2) {
 // 求圆与圆的交面积
 double areaCC(const Circle &c1, const Circle &c2) {
 	double d = (c1.o - c2.o).len();
-	if (sign(d - (c1.r + c2.r)) > 0) {
+	if (sign(d - (c1.r + c2.r)) >= 0) {
 		return 0;
 	}
-	if (sign(d - abs(c1.r - c2.r)) < 0) {
+	if (sign(d - abs(c1.r - c2.r)) <= 0) {
 		double r = min(c1.r, c2.r);
 		return r * r * PI;
 	}
@@ -174,6 +181,39 @@ vector<Line> intanCC(const Circle &c1, const Circle &c2)
 	return ret;
 }
 
+bool contain(vector<Point> polygon, Point p) { // 判断点 p 是否被多边形包含，包括落在边界上
+	int ret = 0, n = polygon.size();
+	for(int i = 0; i < n; ++ i) {
+		Point u = polygon[i], v = polygon[(i + 1) % n];
+		if (onSeg(Line(u, v), p)) return true;
+		if (sign(u.y - v.y) <= 0) swap(u, v);
+		if (sign(p.y - u.y) > 0 || sign(p.y - v.y) <= 0) continue;
+		ret += sign(det(p, v, u)) > 0;
+	}
+	return ret & 1;
+}
+
+vector<Point> convexCut(const vector<Point>&ps, Line l) { // 用半平面 (q1,q2) 的逆时针方向去切凸多边形
+	vector<Point> qs; 
+	int n = ps.size();
+	for (int i = 0; i < n; ++i) {
+		Point p1 = ps[i], p2 = ps[(i + 1) % n];
+		int d1 = sign(det(l.a, l.b, p1)), d2 = sign(det(l.a, l.b, p2));
+		if (d1 >= 0) qs.push_back(p1);
+		if (d1 * d2 < 0) qs.push_back(isLL(Line(p1, p2), l));
+	}
+	return qs;
+}
+vector<Point> convexHull(vector<Point> ps) { // 求点集 ps 组成的凸包
+	int n = ps.size(); if (n <= 1) return ps;
+	sort(ps.begin(), ps.end());
+	vector<Point> qs;
+	for (int i = 0; i < n; qs.push_back(ps[i++])) 
+		while (qs.size() > 1 && sign(det(qs[qs.size()-2],qs.back(),ps[i])) <= 0) qs.pop_back();
+	for (int i = n - 2, t = qs.size(); i >= 0; qs.push_back(ps[i--])) 
+		while ((int)qs.size() > t && sign(det(qs[(int)qs.size()-2],qs.back(),ps[i])) <= 0) qs.pop_back();
+	qs.pop_back(); return qs;
+}
 
 int main()
 {
