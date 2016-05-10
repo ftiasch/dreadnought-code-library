@@ -1,11 +1,75 @@
 # **Dreadnought Code Library for World Finals 2016**
 
+# Final List
+## Tier 1
+- 多边形与圆面积交
+- 二维几何
+- 半平面交
+- 三维几何操作合并
+- 三维凸包
+- 圆面积模板
+- 三角形的心
+- 凸包上快速询问
+- 经纬度求球面对短距离
+- 最大团
+- Hungarian
+- 带花树
+- Hopcroft
+- 素数判定/整数分解
+- 日期公式
+- 线性规划
+- FFT
+- Manacher/Z ALgo
+- 后缀数组（倍增）
+- 后缀自动机
+- 字符串最小表示
+- Splay Tree
+- LCT
+- 直线下个点个数
+- JavaIO
+- vimrc
+
+## Tier 2
+- Delaunay 三角剖分
+- 后缀树（With Pop Front）
+- Dominator Tree
+- Scherier-Sims
+- DLX
+- 最小树形图（求方案）
+- 最小覆盖球
+- 环状LCS
+
+- 费用流
+- 轻重链剖分
+- 二次剩余
+- Pell方程
+- 无向图最小割
+- 长方体表面两点最短距离
+
+## 墓地
+- KD Tree
+- 极大团
+- 动态最小生成树
+- Romberg
+- NTT
+- FWT
+- DC3
+- 图同构Hash
+- 消圈
+
+## 结论
+- 弦图相关
+- 各种公式，结论
+- 积分表
+
 # List of Todo
 
 ## To be checked
 
 - 二维几何
 - 三角形的心
+- Hopcroft
+- 经纬度
 
 ## New/Improve
 - ~~Hungarian Algorithm (With proper initialization and n != m)~~
