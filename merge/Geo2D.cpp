@@ -48,7 +48,8 @@ struct Point {
 		return *this / len();
 	}
 	int operator < (const Point &that) const {
-		return 0;
+		int d = sign(x - that.x); if (d) return d < 0;
+		return sign(y - that.y) < 0;
 	}
 };
 double det(Point a, Point b)
@@ -98,6 +99,7 @@ struct Circle {
 	double r;
 	Circle (Point o = Point(0, 0), double r = 0) : o(o), r(r) {}
 };
+
 // 求圆与直线的交点
 bool isCL(Circle a, Line l, Point &p1, Point &p2) { 
 	if (sign(det(l.a - a.o, l.b - a.o) / (l.a - l.b).len()) > 0) return false;
@@ -217,5 +219,9 @@ vector<Point> convexHull(vector<Point> ps) { // 求点集 ps 组成的凸包
 
 int main()
 {
+	Circle c1, c2;
+	c1.o = Point(0, 0); c1.r = 10;
+	c2.o = Point(10, 10); c1.r = 10;
+	Point p1, p2;
 	return 0;
 }
