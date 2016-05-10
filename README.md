@@ -1,7 +1,7 @@
 # **Dreadnought Code Library for World Finals 2016**
 
 # Final List
-
+## Tier 1
 - 多边形与圆面积交
 - 二维几何
 - 半平面交
@@ -26,23 +26,25 @@
 - Splay Tree
 - LCT
 - 直线下个点个数
+- JavaIO
+- vimrc
+
+## Tier 2
+- Delaunay 三角剖分
+- 后缀树（With Pop Front）
+- Dominator Tree
+- Scherier-Sims
+- DLX
+- 最小树形图（求方案）
+- 最小覆盖球
+- 环状LCS
 
 - 费用流
-- DLX
-- Dominator Tree
 - 轻重链剖分
-- 后缀树（With Pop Front）
 - 二次剩余
 - Pell方程
 - 无向图最小割
-- 最小树形图（求方案）
 - 长方体表面两点最短距离
-- 最小覆盖球
-- Scherier-Sims
-- Delaunay 三角剖分
-- 环状LCS
-- JavaIO
-- vimrc
 
 ## 墓地
 - KD Tree
@@ -67,6 +69,7 @@
 - 二维几何
 - 三角形的心
 - Hopcroft
+- 经纬度
 
 ## New/Improve
 - ~~Hungarian Algorithm (With proper initialization and n != m)~~
