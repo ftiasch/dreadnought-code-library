@@ -1,0 +1,53 @@
+\contentsline {section}{多边形与圆面积交}{2}
+\contentsline {section}{二维几何}{2}
+\contentsline {section}{$n\qopname \relax o{log}n$ 半平面交}{4}
+\contentsline {section}{Delaunay 三角剖分}{5}
+\contentsline {section}{三维几何操作合并}{7}
+\contentsline {section}{三维凸包}{8}
+\contentsline {section}{凸包上快速询问}{9}
+\contentsline {section}{圆的面积模板 ($n^2\qopname \relax o{log}n$)}{10}
+\contentsline {section}{三角形的心}{11}
+\contentsline {section}{最小覆盖球}{12}
+\contentsline {section}{经纬度求球面最短距离}{12}
+\contentsline {section}{长方体表面两点最短距离}{12}
+\contentsline {section}{最大团}{13}
+\contentsline {section}{极大团计数}{13}
+\contentsline {section}{KM}{14}
+\contentsline {section}{最小树形图}{15}
+\contentsline {section}{无向图最小割}{15}
+\contentsline {section}{带花树}{16}
+\contentsline {section}{动态最小生成树}{17}
+\contentsline {section}{Hopcroft}{17}
+\contentsline {section}{素数判定}{18}
+\contentsline {section}{启发式分解}{18}
+\contentsline {section}{二次剩余}{19}
+\contentsline {section}{Pell 方程}{19}
+\contentsline {section}{日期公式}{19}
+\contentsline {section}{Schreier-Sims}{19}
+\contentsline {section}{Romberg}{21}
+\contentsline {section}{线性规划}{21}
+\contentsline {section}{FFT}{21}
+\contentsline {section}{NTT}{22}
+\contentsline {section}{FWT}{22}
+\contentsline {section}{Manacher/ 扩展 KMP}{23}
+\contentsline {section}{后缀数组 ( 倍增 )}{23}
+\contentsline {section}{后缀数组 (DC3)}{24}
+\contentsline {section}{后缀自动机}{24}
+\contentsline {section}{后缀树 (With Walk)}{24}
+\contentsline {section}{后缀树 (With Pop Front)}{27}
+\contentsline {section}{字符串最小表示}{29}
+\contentsline {section}{轻重链剖分}{29}
+\contentsline {section}{KD Tree}{30}
+\contentsline {section}{Splay Tree}{31}
+\contentsline {section}{Link Cut Tree}{31}
+\contentsline {section}{Dominator Tree}{32}
+\contentsline {section}{DancingLinks}{33}
+\contentsline {section}{弦图相关}{34}
+\contentsline {section}{图同构 Hash}{34}
+\contentsline {section}{环状最长公共子序列}{34}
+\contentsline {section}{直线下有多少个格点}{34}
+\contentsline {section}{费用流}{35}
+\contentsline {section}{综合}{35}
+\contentsline {section}{积分表}{36}
+\contentsline {section}{Java}{36}
+\contentsline {section}{Vimrc}{37}
