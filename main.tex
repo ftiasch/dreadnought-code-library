@@ -97,7 +97,7 @@
 }
 
 %configure titles
-\title{\LARGE{Dracarys} \\[2ex] \Large{Team Referrence Library} }
+\title{\LARGE{Dreadnought} \\[2ex] \Large{Standard Code Library} }
 \date{\today}
 
 %THE SCL BEGINS
@@ -116,138 +116,151 @@
 \newpage
 \begin{spacing}{0.8}
 
-\section{多边形与圆面积交}
-\inputminted{cpp}{merge/areaCT.cpp}
-
 \section{二维几何}
+
+\subsection{二维几何基本操作}
 \inputminted{cpp}{merge/Geo2D.cpp}
 
-\section{$n\log n$ 半平面交}
+\subsection{$n\log n$ 半平面交}
 \inputminted{cpp}{merge/HalfPlaneIntersection.cpp}
 
-\section{Delaunay 三角剖分}
-\inputminted{cpp}{improve/DelaunayTriangulation.cpp}
-
-\section{三维几何操作合并}
-\inputminted{cpp}{merge/3DGeo.cpp}
-
-\section{三维凸包}
-\inputminted{cpp}{src/三维凸包.cpp}
-
-\section{凸包上快速询问}
-\inputminted{cpp}{improve/PlayWithConvex.cpp}
-
-\section{圆的面积模板 ($n^2\log n$)}
-\inputminted{cpp}{merge/CircleArea.cpp}
-
-\section{三角形的心}
+\subsection{三角形的心}
 \inputminted{cpp}{improve/Triangle.cpp}
 
-\section{最小覆盖球}
+\subsection{圆与多边形面积交}
+\inputminted{cpp}{merge/areaCT.cpp}
+
+\subsection{圆的面积模板 ($n^2\log n$)}
+\inputminted{cpp}{merge/CircleArea.cpp}
+
+\subsection{凸包快速询问}
+\inputminted{cpp}{improve/PlayWithConvex.cpp}
+
+\subsection{Delaunay 三角剖分}
+\inputminted{cpp}{improve/DelaunayTriangulation.cpp}
+
+\section{三维几何}
+
+\subsection{三维几何基本操作}
+\inputminted{cpp}{merge/3DGeo.cpp}
+
+\subsection{三维凸包求重心}
+\inputminted{cpp}{src/三维凸包.cpp}
+
+\subsection{最小覆盖球}
 \inputminted{cpp}{src/最小覆盖球.cpp}
 
-\section{经纬度求球面最短距离}
-\inputminted{cpp}{src/经纬度求球面最短距离.cpp}
+\section{图论}
 
-\section{长方体表面两点最短距离}
-\inputminted{cpp}{src/长方体表面两点最短距离.cpp}
-
-\section{最大团}
-\inputminted{cpp}{improve/MaximumClique.cpp}
-
-\section{KM}
+\subsection{Hungarian}
 \inputminted{cpp}{improve/Hungarian.cpp}
 
-\section{最小树形图}
-\inputminted{cpp}{improve/LiuZhu.cpp}
-
-\section{无向图最小割}
-\inputminted{cpp}{src/无向图最小割.cpp}
-
-\section{带花树}
-\inputminted{cpp}{src/带花树.cpp}
-
-\section{Hopcroft}
+\subsection{Hopcroft}
 \inputminted{cpp}{src/Hopcroft.cpp}
 
-\section{素数判定}
-\inputminted{cpp}{src/素数判定.cpp}
+\subsection{最大团}
+\inputminted{cpp}{improve/MaximumClique.cpp}
 
-\section{启发式分解}
-\inputminted{cpp}{src/启发式分解.cpp}
+\subsection{最小树形图}
+\inputminted{cpp}{improve/LiuZhu.cpp}
 
-\section{二次剩余}
-\inputminted{cpp}{src/二次剩余.cpp}
+\subsection{带花树}
+\inputminted{cpp}{src/带花树.cpp}
 
-\section{Pell 方程}
-\inputminted{cpp}{src/Pell方程.cpp}
-
-\section{日期公式}
-\inputminted{cpp}{improve/日期公式.cpp}
-
-\section{Schreier-Sims}
-\inputminted{cpp}{improve/SchreierSims.cpp}
-
-\section{线性规划}
-\inputminted{cpp}{src/线性规划.cpp}
-
-\section{FFT}
-\inputminted{cpp}{improve/FFT.cpp}
-
-\section{Manacher/ 扩展 KMP}
-\inputminted{cpp}{merge/Manacher.cpp}
-
-\section{后缀数组 ( 倍增 )}
-\inputminted{cpp}{src/后缀数组(nlogn).cpp}
-
-\section{后缀自动机}
-\inputminted{cpp}{src/后缀自动机.cpp}
-
-\section{后缀树 (With Pop Front)}
-\inputminted{cpp}{improve/SuffixTree2.cpp}
-
-\section{字符串最小表示}
-\inputminted{cpp}{src/字符串最小表示.cpp}
-
-\section{轻重链剖分}
-\inputminted{cpp}{src/轻重链剖分.cpp}
-
-\section{Splay Tree}
-\inputminted{cpp}{src/Splay.cpp}
-
-\section{Link Cut Tree}
-\inputminted{cpp}{improve/LCT.cpp}
-
-\section{Dominator Tree}
+\subsection{Dominator Tree}
 \inputminted{cpp}{improve/DominatorTree.cpp}
 
-\section{DancingLinks}
-\inputminted{cpp}{src/DancingLinks.cpp}
-
-\section{环状最长公共子序列}
-\inputminted{cpp}{improve/CycleLongest.cpp}
-
-\section{直线下有多少个格点}
-\inputminted{cpp}{src/直线下格点统计.cpp}
-
-\section{费用流}
+\section{主流}
 \inputminted{cpp}{improve/MincostFlow.cpp}
 
-\end{spacing}
-\end{multicols}
-\section{积分表}
+\subsection{无向图最小割}
+\inputminted{cpp}{src/无向图最小割.cpp}
+
+\section{数论}
+
+\subsection{素数判定}
+\inputminted{cpp}{src/素数判定.cpp}
+
+\subsection{启发式分解}
+\inputminted{cpp}{src/启发式分解.cpp}
+
+\subsection{直线下整点个数}
+\inputminted{cpp}{src/直线下格点统计.cpp}
+
+\subsection{二次剩余}
+\inputminted{cpp}{src/二次剩余.cpp}
+
+\subsection{Pell 方程}
+\inputminted{cpp}{src/Pell方程.cpp}
+
+\section{代数}
+
+\subsection{FFT}
+\inputminted{cpp}{improve/FFT.cpp}
+
+\subsection{线性规划}
+\inputminted{cpp}{src/线性规划.cpp}
+
+\subsection{Schreier-Sims}
+\inputminted{cpp}{improve/SchreierSims.cpp}
+
+\section{字符串}
+
+\subsection{后缀数组 ( 倍增 )}
+\inputminted{cpp}{src/后缀数组(nlogn).cpp}
+
+\subsection{后缀自动机}
+\inputminted{cpp}{src/后缀自动机.cpp}
+
+\subsection{Manacher/ 扩展 KMP}
+\inputminted{cpp}{merge/Manacher.cpp}
+
+\subsection{字符串最小表示}
+\inputminted{cpp}{src/字符串最小表示.cpp}
+
+\subsection{后缀树 (With Pop Front)}
+\inputminted{cpp}{improve/SuffixTree2.cpp}
+
+\section{数据结构}
+
+\subsection{Splay Tree}
+\inputminted{cpp}{src/Splay.cpp}
+
+\subsection{Link Cut Tree}
+\inputminted{cpp}{improve/LCT.cpp}
+
+\subsection{轻重链剖分}
+\inputminted{cpp}{src/轻重链剖分.cpp}
+
+\section{综合}
+
+\subsection{DancingLinks}
+\inputminted{cpp}{src/DancingLinks.cpp}
+
+\subsection{日期公式}
+\inputminted{cpp}{improve/日期公式.cpp}
+
+\subsection{环状最长公共子序列}
+\inputminted{cpp}{improve/CycleLongest.cpp}
+
+\subsection{经纬度球面距离}
+\inputminted{cpp}{src/经纬度求球面最短距离.cpp}
+
+\subsection{长方体表面两点最短距离}
+\inputminted{cpp}{src/长方体表面两点最短距离.cpp}
+
+\section{其他}
+
+\subsection{简易积分表}
 \input{src/积分表.tex}
 
-\begin{multicols}{2}
-\begin{spacing}{0.8}
-
-\section{Java}
+\subsection{Java 读入优化}
 \inputminted{java}{src/Main.java}
 
-\section{Vimrc}
+\subsection{Vimrc}
 \inputminted{text}{src/vimrc.vim}
-\end{spacing}
 
+\end{spacing}
 \end{multicols}
 \end{document}
 %THE SCL ENDS

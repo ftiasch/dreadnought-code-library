@@ -1,42 +1,51 @@
-\contentsline {section}{多边形与圆面积交}{2}
 \contentsline {section}{二维几何}{2}
-\contentsline {section}{$n\qopname \relax o{log}n$ 半平面交}{3}
-\contentsline {section}{Delaunay 三角剖分}{4}
-\contentsline {section}{三维几何操作合并}{5}
-\contentsline {section}{三维凸包}{5}
-\contentsline {section}{凸包上快速询问}{6}
-\contentsline {section}{圆的面积模板 ($n^2\qopname \relax o{log}n$)}{8}
-\contentsline {section}{三角形的心}{8}
-\contentsline {section}{最小覆盖球}{8}
-\contentsline {section}{经纬度求球面最短距离}{9}
-\contentsline {section}{长方体表面两点最短距离}{9}
-\contentsline {section}{最大团}{9}
-\contentsline {section}{KM}{10}
-\contentsline {section}{最小树形图}{10}
-\contentsline {section}{无向图最小割}{11}
-\contentsline {section}{带花树}{11}
-\contentsline {section}{Hopcroft}{12}
-\contentsline {section}{素数判定}{12}
-\contentsline {section}{启发式分解}{12}
-\contentsline {section}{二次剩余}{13}
-\contentsline {section}{Pell 方程}{13}
-\contentsline {section}{日期公式}{13}
-\contentsline {section}{Schreier-Sims}{13}
-\contentsline {section}{线性规划}{14}
-\contentsline {section}{FFT}{15}
-\contentsline {section}{Manacher/ 扩展 KMP}{15}
-\contentsline {section}{后缀数组 ( 倍增 )}{16}
-\contentsline {section}{后缀自动机}{16}
-\contentsline {section}{后缀树 (With Pop Front)}{16}
-\contentsline {section}{字符串最小表示}{18}
-\contentsline {section}{轻重链剖分}{18}
-\contentsline {section}{Splay Tree}{18}
-\contentsline {section}{Link Cut Tree}{19}
-\contentsline {section}{Dominator Tree}{19}
-\contentsline {section}{DancingLinks}{20}
-\contentsline {section}{环状最长公共子序列}{20}
-\contentsline {section}{直线下有多少个格点}{21}
-\contentsline {section}{费用流}{21}
-\contentsline {section}{积分表}{22}
-\contentsline {section}{Java}{22}
-\contentsline {section}{Vimrc}{23}
+\contentsline {subsection}{二维几何基本操作}{2}
+\contentsline {subsection}{$n\qopname \relax o{log}n$ 半平面交}{3}
+\contentsline {subsection}{三角形的心}{4}
+\contentsline {subsection}{圆与多边形面积交}{4}
+\contentsline {subsection}{圆的面积模板 ($n^2\qopname \relax o{log}n$)}{4}
+\contentsline {subsection}{凸包快速询问}{5}
+\contentsline {subsection}{Delaunay 三角剖分}{6}
+\contentsline {section}{三维几何}{7}
+\contentsline {subsection}{三维几何基本操作}{7}
+\contentsline {subsection}{三维凸包求重心}{8}
+\contentsline {subsection}{最小覆盖球}{9}
+\contentsline {section}{图论}{9}
+\contentsline {subsection}{Hungarian}{9}
+\contentsline {subsection}{Hopcroft}{9}
+\contentsline {subsection}{最大团}{10}
+\contentsline {subsection}{最小树形图}{11}
+\contentsline {subsection}{带花树}{11}
+\contentsline {subsection}{Dominator Tree}{12}
+\contentsline {section}{主流}{12}
+\contentsline {subsection}{无向图最小割}{13}
+\contentsline {section}{数论}{13}
+\contentsline {subsection}{素数判定}{13}
+\contentsline {subsection}{启发式分解}{14}
+\contentsline {subsection}{直线下整点个数}{14}
+\contentsline {subsection}{二次剩余}{14}
+\contentsline {subsection}{Pell 方程}{14}
+\contentsline {section}{代数}{15}
+\contentsline {subsection}{FFT}{15}
+\contentsline {subsection}{线性规划}{15}
+\contentsline {subsection}{Schreier-Sims}{16}
+\contentsline {section}{字符串}{16}
+\contentsline {subsection}{后缀数组 ( 倍增 )}{16}
+\contentsline {subsection}{后缀自动机}{17}
+\contentsline {subsection}{Manacher/ 扩展 KMP}{17}
+\contentsline {subsection}{字符串最小表示}{18}
+\contentsline {subsection}{后缀树 (With Pop Front)}{18}
+\contentsline {section}{数据结构}{19}
+\contentsline {subsection}{Splay Tree}{19}
+\contentsline {subsection}{Link Cut Tree}{20}
+\contentsline {subsection}{轻重链剖分}{20}
+\contentsline {section}{综合}{21}
+\contentsline {subsection}{DancingLinks}{21}
+\contentsline {subsection}{日期公式}{21}
+\contentsline {subsection}{环状最长公共子序列}{21}
+\contentsline {subsection}{经纬度球面距离}{22}
+\contentsline {subsection}{长方体表面两点最短距离}{22}
+\contentsline {section}{其他}{22}
+\contentsline {subsection}{简易积分表}{22}
+\contentsline {subsection}{Java 读入优化}{22}
+\contentsline {subsection}{Vimrc}{23}
