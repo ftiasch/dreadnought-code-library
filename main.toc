@@ -17,7 +17,7 @@
 \contentsline {subsection}{最小树形图}{11}
 \contentsline {subsection}{带花树}{11}
 \contentsline {subsection}{Dominator Tree}{12}
-\contentsline {section}{主流}{12}
+\contentsline {subsection}{主流}{12}
 \contentsline {subsection}{无向图最小割}{13}
 \contentsline {section}{数论}{13}
 \contentsline {subsection}{素数判定}{13}
@@ -47,5 +47,12 @@
 \contentsline {subsection}{长方体表面两点最短距离}{22}
 \contentsline {section}{其他}{22}
 \contentsline {subsection}{简易积分表}{22}
-\contentsline {subsection}{Java 读入优化}{22}
+\contentsline {subsection}{常用结论}{22}
+\contentsline {subsection}{弦图}{22}
+\contentsline {subsection}{五边形数}{22}
+\contentsline {subsection}{重心}{22}
+\contentsline {subsection}{第二类 Bernoulli number}{23}
+\contentsline {subsection}{Stirling 数}{23}
+\contentsline {subsection}{三角公式}{23}
+\contentsline {subsection}{Java 读入优化}{23}
 \contentsline {subsection}{Vimrc}{23}

@@ -5,9 +5,9 @@
 只需判断是否存在一个 $w \in w*$, 
 满足 $Next(w)=v$ 且 $|N(v)| + 1 \leq |N(w)|$ 即可 . 
 \subsection{五边形数}
-$$
+$
     \prod_{n=1}^{\infty}{(1-x^{n})}=\sum_{n=0}^{\infty}{(-1)^{n}(1-x^{2n+1})x^{n(3n+1)/2}}
-$$
+$
 \subsection{重心}
 半径为 $r$ , 圆心角为 $\theta$ 的扇形重心与圆心的距离为 $\frac{4r\sin(\theta/2)}{3\theta}$ \\
 半径为 $r$ , 圆心角为 $\theta$ 的圆弧重心与圆心的距离为 $\frac{4r\sin^3(\theta/2)}{3(\theta-\sin(\theta))}$ \\
@@ -15,7 +15,7 @@ $$
 \begin{align*}
     B_m &= 1 - \sum_{k=0}^{m-1}{\binom{m}{k}\frac{B_{k}}{m-k+1}} \\
     S_m(n) &= \sum_{k=1}^{n}{k^{m}} = \frac{1}{m+1}\sum_{k=0}^{m}{\binom{m+1}{k}B_{k}n^{m+1-k}}
-\end{align*};
+\end{align*}
 \subsection{Stirling 数}
 第一类 :n 个元素的项目分作 k 个环排列的方法数目\\
 \begin{align*}
@@ -29,3 +29,48 @@ $$
     S(n,1)&=S(n,n)=1\\
     S(n,k)&=S(n-1,k-1)+k*S(n-1,k)
 \end{align*}
+\subsection{三角公式}
+
+\begin{footnotesize}
+\noindent
+\mbox{\vbox to 11pt{  \hbox{$
+\sin(a \pm b) = \sin a \cos b \pm \cos a \sin b
+$}  }}
+\
+\mbox{\vbox to 11pt{  \hbox{$
+\cos(a \pm b) = \cos a \cos b \mp \sin a \sin b
+$}  }}
+\\
+\mbox{\vbox to 11pt{  \hbox{$
+\tan(a \pm b) = \frac{\tan(a)\pm\tan(b)}{1 \mp \tan(a)\tan(b)}
+$}  }}
+\
+\mbox{\vbox to 11pt{  \hbox{$
+\tan(a) \pm \tan(b) = \frac{\sin(a \pm b)}{\cos(a)\cos(b)}
+$}  }}
+\\
+\mbox{\vbox to 11pt{  \hbox{$
+\sin(a) + \sin(b) = 2\sin(\frac{a + b}{2})\cos(\frac{a - b}{2})
+$}  }}
+\
+\mbox{\vbox to 11pt{  \hbox{$
+\sin(a) - \sin(b) = 2\cos(\frac{a + b}{2})\sin(\frac{a - b}{2})
+$}  }}
+\\
+\mbox{\vbox to 11pt{  \hbox{$
+\cos(a) + \cos(b) = 2\cos(\frac{a + b}{2})\cos(\frac{a - b}{2})
+$}  }}
+\
+\mbox{\vbox to 11pt{  \hbox{$
+\cos(a) - \cos(b) = -2\sin(\frac{a + b}{2})\sin(\frac{a - b}{2})
+$}  }}
+\\
+\mbox{\vbox to 11pt{  \hbox{$
+\sin(na) = n\cos^{n-1}a\sin a - \binom{n}{3}\cos^{n-3}a \sin^3a + \binom{n}{5}\cos^{n-5}a\sin^5a - \dots
+$}  }}
+\\
+\mbox{\vbox to 11pt{  \hbox{$
+\cos(na) = \cos^{n}a - \binom{n}{2}\cos^{n-2}a \sin^2a + \binom{n}{4}\cos^{n-4}a\sin^4a - \dots
+$}  }}
+
+\end{footnotesize}
