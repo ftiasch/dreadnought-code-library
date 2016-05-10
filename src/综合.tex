@@ -1,23 +1,25 @@
-定理 1: 最小覆盖数 $=$ 最大匹配数\\
-定理 2: 最大独立集 S 与 最小覆盖集 T 互补。\\
-算法:
-\begin{enumerate}
-\item[1.] 做最大匹配 , 没有匹配的空闲点 $\in S$
-\item[2.] 如果 $u\in S$ 那么 u 的临点必然属于 T
-\item[3.] 如果一对匹配的点中有一个属于 T 那么另外一个属于 S
-\item[4.] 还不能确定的 , 把左子图的放入 S, 右子图放入 T
-\end{enumerate}
-算法结束
+弦图 \\
+设 $next(v)$ 表示 $N(v)$ 中最前的点 . 
+令 w* 表示所有满足 $A \in B$ 的 w 中最后的一个点 , 
+判断 $v \cup N(v)$ 是否为极大团 , 
+只需判断是否存在一个 w, 
+满足 $Next(w)=v$ 且 $|N(v)| + 1 \leq |N(w)|$ 即可 . 
 \\
 \\
-上下界无源汇可行流 : 不用添 $T-> S$， 判断是否流量平衡\\
-上下界有源汇可行流 : 添 $T\rightarrow S$( 下界 $0$, 上界 $\infty$)， 判断是否流量平衡\\
-上下界最小流 : 不添 $T\rightarrow S$ 先流一遍 , 再添 $T\rightarrow S$( 下界 $0$, 上界 $\infty$) 在残图上流一遍 , 答案为 $S\rightarrow T$ 的流量值\\
-上下界最大流 : 添 $T\rightarrow S$（ 下界 $0$, 上界 $\infty$) 流一遍，再在残图上流一遍S到T的最大流，答案为前者的 $S\rightarrow T$ 的值 $+$ 残图中 $S\rightarrow T$ 的最大流\\
-\\
-Stirling 公式\ 
+五边形数 \\
 $
-    n!=\sqrt{2\pi n}(\frac{n}{e})^n
+    \prod_{n=1}^{\infty}{(1-x^{n})}=\sum_{n=0}^{\infty}{(-1)^{n}(1-x^{2n+1})x^{n(3n+1)/2}}
+$
+\\
+\\
+重心 \\
+半径为 $r$ , 圆心角为 $\theta$ 的扇形重心与圆心的距离为 $(4r\sin{\theta / 2} / (3\theta))$ \\
+半径为 $r$ , 圆心角为 $\theta$ 的圆弧重心与圆心的距离为 $(4r\sin^3{\theta / 2} / (3(\theta-\sin{\theta})))$ \\
+\\
+第二类 Bernoulli number \\
+$
+    B_m = 1 - \sum_{k=0}^{m-1}{\binom{m}{k}\frac{B_{k}}{m-k+1}}$ \\
+    $S_m(n) = \sum_{k=1}^{n}{k^{m}} = \frac{1}{m+1}\sum_{k=0}^{m}{\binom{m+1}{k}B_{k}n^{m+1-k}}
 $
 \\
 \\
