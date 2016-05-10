@@ -8,17 +8,11 @@
    改成实数只需修改 sign 函数，以及把 long long 改为 double 即可
    构造函数时传入凸包要求无重点, 面积非空, 以及 pair(x,y) 的最小点放在第一个
 */
-#include <vector>
-#include <functional>
-using namespace std;
-
 const int INF = 1000000000;
-
 struct Convex
 {
 	int n;
-	vector<Point> a;
-	vector<Point> upper, lower;
+	vector<Point> a, upper, lower;
 	Convex(vector<Point> _a) : a(_a) {
 		n = a.size();
 		int ptr = 0;
@@ -27,9 +21,7 @@ struct Convex
 		for(int i = ptr; i < n; ++ i) upper.push_back(a[i]);
 		upper.push_back(a[0]);
 	}
-	int sign(long long x) {
-		return x < 0 ? -1 : x > 0;
-	}
+	int sign(long long x) { return x < 0 ? -1 : x > 0; }
 	pair<long long, int> get_tangent(vector<Point> &convex, Point vec) {
 		int l = 0, r = (int)convex.size() - 2;
 		for( ; l + 1 < r; ) {
