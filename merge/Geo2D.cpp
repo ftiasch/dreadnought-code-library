@@ -32,10 +32,10 @@ struct Point {
 	Point operator / (const double &that) const {
 		return Point(x / that, y / that);
 	}
-	Point rotate(const double ang) { //逆时针旋转 ang 弧度
+	Point rotate(const double ang) { // 逆时针旋转 ang 弧度
 		return Point(cos(ang) * x - sin(ang) * y, cos(ang) * y + sin(ang) * x);
 	}
-	Point turn90() { //逆时针旋转 90 度
+	Point turn90() { // 逆时针旋转 90 度
 		return Point(-y, x);
 	}
 	double len2() const {
@@ -67,23 +67,23 @@ Point isLL(const Line &l0, const Line &l1) {
 		   s1 = -det(l1.b - l1.a, l0.b - l1.a);
 	return (l0.a * s1 + l0.b * s0) / (s0 + s1);
 }
-bool onSeg(const Line &l, const Point &p) { //点在线段上
+bool onSeg(const Line &l, const Point &p) { // 点在线段上
 	return sign(det(p - l.a, l.b - l.a)) == 0 && sign(dot(p - l.a, p - l.b)) <= 0;
 }
-Point projection(const Line &l, const Point &p) { //点到直线投影
+Point projection(const Line &l, const Point &p) { // 点到直线投影
 	return l.a + (l.b - l.a) * (dot(p - l.a, l.b - l.a) / (l.b - l.a).len2());
 }
 double disToLine(const Line &l, const Point &p) {
 	return abs(det(p - l.a, l.b - l.a) / (l.b - l.a).len());
 }
-double disToSeg(const Line &l, const Point &p) { //点到线段距离
+double disToSeg(const Line &l, const Point &p) { // 点到线段距离
 	return sign(dot(p - l.a, l.b - l.a)) * sign(dot(p - l.b, l.a - l.b)) != 1 ?
 		disToLine(l, p) : min((p - l.a).len(), (p - l.b).len());
 }
-Point symmetryPoint(const Point a, const Point b) { //点 b 关于点 a 的中心对称点
+Point symmetryPoint(const Point a, const Point b) { // 点 b 关于点 a 的中心对称点
 	return a + a - b;
 }
-Point reflection(const Line &l, const Point &p) { //点关于直线的对称点
+Point reflection(const Line &l, const Point &p) { // 点关于直线的对称点
 	return symmetryPoint(projection(l, p), p);
 }
 struct Circle {

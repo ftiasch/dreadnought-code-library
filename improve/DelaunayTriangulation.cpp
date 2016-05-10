@@ -1,11 +1,11 @@
 /*
-Delaunay Triangulation 随机增量算法：
-节点数至少为点数的 6 倍，空间消耗较大注意计算内存使用。
-建图的过程在 build 中，注意初始化内存池和初始三角形的坐标范围（ Triangulation::LOTS ）。
-Triangulation::find 返回包含某点的三角形。
-Triangulation::add_point 将某点加入三角剖分。
+Delaunay Triangulation 随机增量算法 :
+节点数至少为点数的 6 倍, 空间消耗较大注意计算内存使用
+建图的过程在 build 中, 注意初始化内存池和初始三角形的坐标范围 (Triangulation::LOTS)
+Triangulation::find 返回包含某点的三角形
+Triangulation::add_point 将某点加入三角剖分
 某个 Triangle 在三角剖分中当且仅当它的 has_children 为 0
-如果要找到三角形 u 的邻域，则枚举它的所有 u.edge[i].tri ，该条边的两个点为 u.p[(i+1)%3],u.p[(i+2)%3]
+如果要找到三角形 u 的邻域, 则枚举它的所有 u.edge[i].tri, 该条边的两个点为 u.p[(i+1)%3], u.p[(i+2)%3]
 */
 const int N = 100000 + 5;
 const int MAX_TRIS = N * 6;
