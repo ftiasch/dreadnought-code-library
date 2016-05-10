@@ -1,52 +1,41 @@
-int from[1010],wh[1010],g[1010];
-int num[100010],nxt[100010],tot;
-int n,m,ans,h,t,q[1010],dx[1010],dy[1010];
-bool bfs(){
-	bool ret=false;
-	h=0;t=0;
-	for(int i=0;i<n;i++) if(wh[i]==-1) t++, q[t]=i;
-	memset(dx,0,sizeof(dx)), memset(dy,0,sizeof(dy));
-	while(h++<t){
-		for(int i=g[q[h]];i!=0;i=nxt[i])
-			if(dy[num[i]]==0){
-				dy[num[i]]=dx[q[h]]+1;
-				if(from[num[i]]==-1) ret=true;
-				else{
-					dx[from[num[i]]]=dx[q[h]]+2;
-					q[++t]=from[num[i]];
+// 左侧 N 个点, 右侧 K 个点 , 1-based, 初始化将 matx[],maty[] 都置为 0
+int N, K;
+int que[N], dx[N], dy[N], matx[N], maty[N];
+int BFS()
+{
+	int flag = 0, qt = 0, qh = 0;
+	for(int i = 1; i <= K; ++ i) dy[i] = 0;
+	for(int i = 1; i <= N; ++ i) { 
+		dx[i] = 0; 
+		if (! matx[i]) que[qt ++] = i;
+	}
+	while (qh < qt) {
+		int u = que[qh ++];
+		for(Edge *e = E[u]; e; e = e->n)
+			if (! dy[e->t]) {
+				dy[e->t] = dx[u] + 1;
+				if (! maty[e->t]) flag = true;
+				else {
+					dx[maty[e->t]] = dx[u] + 2;
+					que[qt ++] = maty[e->t];
 				}
 			}
 	}
-	return ret;
+	return flag;
 }
-bool dfs(int x){
-	for(int i=g[x];i!=0;i=nxt[i]){
-		if(dy[num[i]]==dx[x]+1){
-			dy[num[i]]=0;
-			if(from[num[i]]==-1||dfs(from[num[i]])){
-				wh[x]=num[i];from[num[i]]=x;return true;
+int DFS(int u)
+{
+	for(Edge *e = E[u]; e; e = e->n)
+		if (dy[e->t] == dx[u] + 1) {
+			dy[e->t] = 0;
+			if (! maty[e->t] || DFS(maty[e->t])) { 
+				matx[u] = e->t; maty[e->t] = u; 
+				return true;
 			}
 		}
-	}
 	return false;
 }
-void hopcroft(){
-	memset(from,-1,sizeof(from)), memset(wh,-1,sizeof(wh));
-	while(bfs())
-		for(int i=0;i<n;i++)
-			if(wh[i]==-1&&dfs(i)) ans++;
-}
-void insert(int x,int y){ tot++;num[tot]=y;nxt[tot]=g[x];g[x]=tot; }
-int main(){
-	while(scanf("%d %d",&n,&m)==2){
-		tot=0; memset(g,0,sizeof(g));
-		for(int i=0;i<n;i++){ 
-			int x; scanf("%d",&x);
-			for(int j=0;j<x;j++){
-				int y; scanf("%d",&y);
-				y--; insert(i,y);
-			}
-		}
-		ans=0; hopcroft(); printf("%d\n",ans);
-	}
+void Hopcroft()
+{
+	while (BFS()) for(int i = 1; i <= N; ++ i) if (! matx[i]) DFS(i);
 }
