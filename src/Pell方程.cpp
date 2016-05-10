@@ -13,6 +13,10 @@ int main() {
 				a[i+1]=(g[i]+a[2])/h[i]; p[i]=a[i]*p[i-1]+p[i-2];
 				q[i]=a[i]*q[i-1]+q[i-2];
 				if (sqr((ULL)(p[i]))-n*sqr((ULL)(q[i]))==1){
-					A=p[i];B=q[i];break; }
-			} cout << A << ' ' << B <<endl;
-		}}}
+					A=p[i];B=q[i];break; 
+				}
+			} 
+			cout << A << ' ' << B <<endl;
+		}
+	}
+}

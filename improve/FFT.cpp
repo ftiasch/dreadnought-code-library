@@ -1,4 +1,4 @@
-// double 精度对$10^9+7$ 取模最多可以做到$2^20$
+// double 精度对$10^9+7$ 取模最多可以做到$2^{20}$
 const int MOD = 1000003;
 const double PI = acos(-1);
 typedef complex<double> Complex;
@@ -24,7 +24,10 @@ void FFT(Complex p[], int n) {
 				Complex t = w[rm * j] * p1;
 				p1 = p2 - t;
 				p2 = p2 + t;
-}}}}
+			}
+		}
+	}
+}
 Complex A[N], B[N], C[N], D[N];
 void mul(int a[N], int b[N]) {
 	for (int i = 0; i < N; ++i) {
