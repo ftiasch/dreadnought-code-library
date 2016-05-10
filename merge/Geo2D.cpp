@@ -1,75 +1,11 @@
-#include <iostream>
-#include <cmath>
-#include <vector>
-
-using namespace std;
-
-const double PI = acos(-1.0);
-const double EPS = 1e-8;
-
-int sign(double x)
-{
-	return x < -EPS ? -1 : x > EPS;
-}
-
-double newSqrt(double x)
-{
-	return x < 0 ? 0 : sqrt(x);
-}
-
 struct Point {
-	double x, y;
-	Point(double x = 0, double y = 0) : x(x), y(y) {}
-	Point operator + (const Point &that) const {
-		return Point(x + that.x, y + that.y);
-	}
-	Point operator - (const Point &that) const {
-		return Point(x - that.x, y - that.y);
-	}
-	Point operator * (const double &that) const {
-		return Point(x * that, y * that);
-	}
-	Point operator / (const double &that) const {
-		return Point(x / that, y / that);
-	}
 	Point rotate(const double ang) { // 逆时针旋转 ang 弧度
 		return Point(cos(ang) * x - sin(ang) * y, cos(ang) * y + sin(ang) * x);
 	}
 	Point turn90() { // 逆时针旋转 90 度
 		return Point(-y, x);
 	}
-	double len2() const {
-		return x * x + y * y;
-	}
-	double len() const {
-		return sqrt(x * x + y * y);
-	}
-	Point unit() const {
-		return *this / len();
-	}
-	int operator < (const Point &that) const {
-		int d = sign(x - that.x); if (d) return d < 0;
-		return sign(y - that.y) < 0;
-	}
 };
-double det(Point a, Point b)
-{
-	return a.x * b.y - b.x * a.y;
-}
-double dot(Point a, Point b)
-{
-	return a.x * b.x + a.y * b.y;
-}
-double det(Point s, Point a, Point b)
-{
-	return (a.x - s.x) * (b.y - s.y) - (b.x - s.x) * (a.y - s.y);
-}
-
-struct Line {
-	Point a, b;
-	Line(Point a, Point b) : a(a), b(b) {}
-};
-
 Point isLL(const Line &l1, const Line &l2) {
 	double s1 = det(l2.b - l2.a, l1.a - l2.a),
 		   s2 = -det(l2.b - l2.a, l1.b - l2.a);
@@ -94,22 +30,17 @@ Point symmetryPoint(const Point a, const Point b) { // 点 b 关于点 a 的中�
 Point reflection(const Line &l, const Point &p) { // 点关于直线的对称点
 	return symmetryPoint(projection(l, p), p);
 }
-struct Circle {
-	Point o;
-	double r;
-	Circle (Point o = Point(0, 0), double r = 0) : o(o), r(r) {}
-};
-
 // 求圆与直线的交点
 bool isCL(Circle a, Line l, Point &p1, Point &p2) { 
-	if (sign(det(l.a - a.o, l.b - a.o) / (l.a - l.b).len()) > 0) return false;
-	Point o = isLL(Line(a.o, a.o + (l.b - l.a).turn90()), l);
-	Point delta = (l.b - l.a).unit() * newSqrt(a.r * a.r - (o - a.o).len2());
-	p1 = o + delta;
-	p2 = o - delta;
+	double x = dot(l.a - a.o, l.b - l.a),
+		y = (l.b - l.a).len2(),
+		d = x * x - y * ((l.a - a.o).len2() - a.r * a.r);
+	if (sign(d) < 0) return false;
+	d = max(d, 0.0);
+	Point p = l.a - ((l.b - l.a) * (x / y)), delta = (l.b - l.a) * (sqrt(d) / y);
+	p1 = p + delta, p2 = p - delta;
 	return true;
 }
-
 // 求圆与圆的交面积
 double areaCC(const Circle &c1, const Circle &c2) {
 	double d = (c1.o - c2.o).len();
@@ -124,7 +55,6 @@ double areaCC(const Circle &c1, const Circle &c2) {
 		   t1 = acos(x / c1.r), t2 = acos((d - x) / c2.r);
 	return c1.r * c1.r * t1 + c2.r * c2.r * t2 - d * c1.r * sin(t1);
 }
-
 // 求圆与圆的交点，注意调用前要先判定重圆
 bool isCC(Circle a, Circle b, Point &p1, Point &p2) { 
 	double s1 = (a.o - b.o).len();
@@ -136,22 +66,18 @@ bool isCC(Circle a, Circle b, Point &p1, Point &p2) {
 	p1 = o + delta, p2 = o - delta;
 	return true;
 }
-
-// 求点到圆的切点，按关于点的左手方向返回两个点
-bool tanCP(const Circle &c, const Point &p0, Point &p1, Point &p2)
-{
+// 求点到圆的切点，按关于点的顺时针方向返回两个点
+bool tanCP(const Circle &c, const Point &p0, Point &p1, Point &p2) {
 	double x = (p0 - c.o).len2(), d = x - c.r * c.r;
-	if (d < EPS) return false;
+	if (d < EPS) return false; // 点在圆上认为没有切点
 	Point p = (p0 - c.o) * (c.r * c.r / x);
 	Point delta = ((p0 - c.o) * (-c.r * sqrt(d) / x)).turn90();
 	p1 = c.o + p + delta;
 	p2 = c.o + p - delta;
 	return true;
 }
-
-// 求圆到圆的外共切线，按关于 c1.o 的左手方向返回两条线
-vector<Line> extanCC(const Circle &c1, const Circle &c2)
-{
+// 求圆到圆的外共切线，按关于 c1.o 的顺时针方向返回两条线
+vector<Line> extanCC(const Circle &c1, const Circle &c2) {
 	vector<Line> ret;
 	if (sign(c1.r - c2.r) == 0) {
 		Point dir = c2.o - c1.o;
@@ -169,20 +95,17 @@ vector<Line> extanCC(const Circle &c1, const Circle &c2)
 	}
 	return ret;
 }
-
-// 求圆到圆的内共切线，按关于 c1.o 的左手方向返回两条线
-vector<Line> intanCC(const Circle &c1, const Circle &c2)
-{
+// 求圆到圆的内共切线，按关于 c1.o 的顺时针方向返回两条线
+vector<Line> intanCC(const Circle &c1, const Circle &c2) {
 	vector<Line> ret;
 	Point p = (c1.o * c2.r + c2.o * c1.r) / (c1.r + c2.r);
 	Point p1, p2, q1, q2;
-	if (tanCP(c1, p, p1, p2) && tanCP(c2, p, q1, q2)) {
+	if (tanCP(c1, p, p1, p2) && tanCP(c2, p, q1, q2)) { // 两圆相切认为没有切线
 		ret.push_back(Line(p1, q1));
 		ret.push_back(Line(p2, q2));
 	}
 	return ret;
 }
-
 bool contain(vector<Point> polygon, Point p) { // 判断点 p 是否被多边形包含，包括落在边界上
 	int ret = 0, n = polygon.size();
 	for(int i = 0; i < n; ++ i) {
@@ -194,7 +117,6 @@ bool contain(vector<Point> polygon, Point p) { // 判断点 p 是否被多边形
 	}
 	return ret & 1;
 }
-
 vector<Point> convexCut(const vector<Point>&ps, Line l) { // 用半平面 (q1,q2) 的逆时针方向去切凸多边形
 	vector<Point> qs; 
 	int n = ps.size();
@@ -215,13 +137,4 @@ vector<Point> convexHull(vector<Point> ps) { // 求点集 ps 组成的凸包
 	for (int i = n - 2, t = qs.size(); i >= 0; qs.push_back(ps[i--])) 
 		while ((int)qs.size() > t && sign(det(qs[(int)qs.size()-2],qs.back(),ps[i])) <= 0) qs.pop_back();
 	qs.pop_back(); return qs;
-}
-
-int main()
-{
-	Circle c1, c2;
-	c1.o = Point(0, 0); c1.r = 10;
-	c2.o = Point(10, 10); c1.r = 10;
-	Point p1, p2;
-	return 0;
 }
