@@ -2,6 +2,11 @@
 
 # List of Todo
 
+## To be checked
+
+- 二维几何
+- 三角形的心
+
 ## New/Improve
 - ~~Hungarian Algorithm (With proper initialization and n != m)~~
 - Suffix Tree (With walker/With erase)
