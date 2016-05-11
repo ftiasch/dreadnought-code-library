@@ -1,12 +1,10 @@
 import java.io.*;
 import java.util.*;
 import java.math.*;
-
 public class Main{
 	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	PrintWriter writer = new PrintWriter(System.out);
 	StringTokenizer tokenizer = null;
-
 	void solve() throws Exception {
 	}
 	void run()throws Exception{

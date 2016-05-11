@@ -138,8 +138,11 @@ void erase() {
 				} else {
 					cur = cur->suf ? cur->suf : root;
 				}
-				while (curLen && walk(cur->ch[text[curP]])) continue;
-}}}}}
+				while (curLen && walk(cur->ch[text[curP]])) continue; 
+			}
+		}
+	}
+}
 int n;
 char s[N], buf[N];
 int ord[N], stop, sord[N << 1];

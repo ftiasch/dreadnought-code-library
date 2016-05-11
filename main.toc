@@ -9,7 +9,7 @@
 \contentsline {section}{三维几何}{7}
 \contentsline {subsection}{三维几何基本操作}{7}
 \contentsline {subsection}{三维凸包求重心}{8}
-\contentsline {subsection}{最小覆盖球}{9}
+\contentsline {subsection}{求四点外界球}{9}
 \contentsline {section}{图论}{9}
 \contentsline {subsection}{Hungarian}{9}
 \contentsline {subsection}{Hopcroft}{9}
@@ -17,7 +17,7 @@
 \contentsline {subsection}{最小树形图}{11}
 \contentsline {subsection}{带花树}{11}
 \contentsline {subsection}{Dominator Tree}{12}
-\contentsline {subsection}{主流}{12}
+\contentsline {subsection}{主流}{13}
 \contentsline {subsection}{无向图最小割}{13}
 \contentsline {section}{数论}{13}
 \contentsline {subsection}{素数判定}{13}
@@ -50,7 +50,7 @@
 \contentsline {subsection}{常用结论}{22}
 \contentsline {subsection}{弦图}{22}
 \contentsline {subsection}{五边形数}{22}
-\contentsline {subsection}{重心}{22}
+\contentsline {subsection}{重心}{23}
 \contentsline {subsection}{第二类 Bernoulli number}{23}
 \contentsline {subsection}{Stirling 数}{23}
 \contentsline {subsection}{三角公式}{23}

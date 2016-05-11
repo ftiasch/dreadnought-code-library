@@ -1,3 +1,4 @@
+// 注意，无法处理小于四点的退化情况
 int nouter; Tpoint outer[4], res; double radius;
 void ball() {
 	Tpoint q[3]; double m[3][3], sol[3], L[3], det;

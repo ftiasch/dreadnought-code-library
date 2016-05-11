@@ -70,7 +70,7 @@ struct Convex
 		} else if ((upper[id - 1] - p).det(upper[id] - p) < 0) return false;
 		return true;
 	}
-	// 求点 p 关于凸包的两个切点，如果在凸包外则有序返回编号，多解返回任意一个。否则返回 false
+	// 求点 p 关于凸包的两个切点，如果在凸包外则有序返回编号，共线的多个切点返回任意一个，否则返回 false
 	bool get_tangent(Point p, int &i0, int &i1) { 
 		if (contain(p)) return false;
 		i0 = i1 = 0;
@@ -82,14 +82,14 @@ struct Convex
 		binary_search((int)lower.size() - 1 + id, (int)lower.size() - 1 + (int)upper.size(), p, i0, i1);
 		return true;
 	}
-	// 求凸包上和向量 vec 叉积最大的点，返回编号，有多个返回任意一个
+	// 求凸包上和向量 vec 叉积最大的点，返回编号，共线的多个切点返回任意一个
 	int get_tangent(Point vec) { 
 		pair<long long, int> ret = get_tangent(upper, vec);
 		ret.second = (ret.second + (int)lower.size() - 1) % n;
 		ret = max(ret, get_tangent(lower, vec));
 		return ret.second;
 	}
-	// 求凸包和直线 u,v 的交点，如果无严格相交返回 false 。如果有则是和 (i,next(i)) 的交点，两个点无序，交在点上不确定返回两条线段之一。
+	// 求凸包和直线 u,v 的交点, 如果无严格相交返回 false. 如果有则是和 (i,next(i)) 的交点, 两个点无序, 交在点上不确定返回前后两条线段其中之一
 	bool get_intersection(Point u, Point v, int &i0, int &i1) { 
 		int p0 = get_tangent(u - v), p1 = get_tangent(v - u);
 		if (sign((v - u).det(a[p0] - u)) * sign((v - u).det(a[p1] - u)) < 0) {

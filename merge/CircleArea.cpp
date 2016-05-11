@@ -54,5 +54,8 @@ void solve() {
 				if (ang < 0) {
 					ang += PI * 2;
 				}
-				area[cnt] += ang * c[i].r * c[i].r / 2 - sin(ang) * c[i].r * c[i].r / 2;
-}}}}
+				area[cnt] += ang * c[i].r * c[i].r / 2 - sin(ang) * c[i].r * c[i].r / 2; 
+			}
+		}
+	}
+}
