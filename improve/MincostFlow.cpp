@@ -33,7 +33,7 @@ int aug(int p,int limit){
 	return limit-ll;
 }
 PII mincostFlow(){
-	for(int i=S;i<=T;++i) dist[i]=i==T?inf:0;
+	for(int i=S;i<=T;++i) dist[i]=i!=T?inf:0;
 	while(!Q.empty()) Q.pop(); Q.push(PII(0,T));
 	while(!Q.empty()){
 		int x=Q.top().first,y=Q.top().second; Q.pop(); if(dist[y]<x) continue;
