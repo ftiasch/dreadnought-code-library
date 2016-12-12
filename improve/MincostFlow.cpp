@@ -2,6 +2,7 @@
 // for an edge(s, t): u is the capacity, v is the cost, nxt is the next edge,
 // op is the opposite edge
 // this code can not deal with negative cycles
+// S = 0, T = maxnode
 typedef pair<int,int> PII; 
 struct edge{ int t,u,v; edge *nxt,*op; }E[MAXE],*V[MAXV];
 int D[MAXN], dist[MAXN], maxflow, mincost; bool in[MAXN];
@@ -18,7 +19,7 @@ bool modlabel(){
 			}
 	}
 	if(D[T]==inf) return false;
-	for(int i=S;i<=T;++i) if(D[i]>D[T]) dist[i]+=D[T]-D[i];
+	for(int i=S;i<=T;++i) if(D[i]<D[T]) dist[i]+=D[T]-D[i];
 	return true;
 }
 int aug(int p,int limit){
