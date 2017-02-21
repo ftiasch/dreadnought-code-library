@@ -38,8 +38,8 @@ PII mincostFlow(){
 	while(!Q.empty()) Q.pop(); Q.push(PII(0,T));
 	while(!Q.empty()){
 		int x=Q.top().first,y=Q.top().second; Q.pop(); if(dist[y]<x) continue;
-		for(edge *ii=V[y];ii;ii=ii->nxt) if(ii->op->u&&ii->v+x<dist[ii->t]
-			dist[ii->t]=ii->v+x,Q.push(PII(dist[ii->t],ii->t));
+		for(edge *ii=V[y];ii;ii=ii->nxt) if(ii->op->u&&ii->op->v+x<dist[ii->t]
+			dist[ii->t]=ii->op->v+x,Q.push(PII(dist[ii->t],ii->t));
 	}
 	maxflow=mincost=0;
 	do{
