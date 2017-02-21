@@ -45,7 +45,7 @@ PII mincostFlow(){
 	do{
 		do{
 			memset(in,0,sizeof(in));
-		}while(aug(S,maxflow));
+		}while(aug(S,inf));
 	}while(modlabel());
 	return PII(maxflow,mincost);
 }
